@@ -51,6 +51,9 @@
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -70,9 +73,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http.Formatting">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
@@ -92,6 +92,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -102,6 +104,14 @@
     <Compile Include="Migrations\202002110839288_AddProjectTable.cs" />
     <Compile Include="Migrations\202002110839288_AddProjectTable.designer.cs">
       <DependentUpon>202002110839288_AddProjectTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002121258199_SetStatutsToNullable.cs" />
+    <Compile Include="Migrations\202002121258199_SetStatutsToNullable.designer.cs">
+      <DependentUpon>202002121258199_SetStatutsToNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002121316018_SignatureDateToNullable.cs" />
+    <Compile Include="Migrations\202002121316018_SignatureDateToNullable.designer.cs">
+      <DependentUpon>202002121316018_SignatureDateToNullable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Client.cs" />
@@ -120,7 +130,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202002110811047_AddClientTable.resx">
@@ -128,6 +137,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002110839288_AddProjectTable.resx">
       <DependentUpon>202002110839288_AddProjectTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002121258199_SetStatutsToNullable.resx">
+      <DependentUpon>202002121258199_SetStatutsToNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002121316018_SignatureDateToNullable.resx">
+      <DependentUpon>202002121316018_SignatureDateToNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

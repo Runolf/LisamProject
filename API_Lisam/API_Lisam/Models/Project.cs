@@ -16,10 +16,10 @@ namespace API_Lisam.Models
     public class Project
     {
         public int ProjectId { get; set; }
-        public DateTime SignatureDate { get; set; }
+        public DateTime? SignatureDate { get; set; }
         public string ProjectNumber { get; set; }
         public string ProjectLeader { get; set; }
-        public Statuts Statut { get; set; }
+        public Statuts? Statut { get; set; }
         public IList<Client> Clients { get; set; }
     }
 }
