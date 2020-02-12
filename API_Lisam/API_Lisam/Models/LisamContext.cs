@@ -13,7 +13,21 @@ namespace API_Lisam.Models
         public DbSet<Project>Projects { get; set; }
         public LisamContext():base("name=DefaultConnection")
         {
+            
+        }
+
+        /*
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Project>()
+                .HasMany(c => c.Clients)
+                .WithRequired(p => p.Project)
+                .HasForeignKey(fk => fk.ProjectId);
+
+            base.OnModelCreating(modelBuilder);
 
         }
+        
+         */
     }
 }

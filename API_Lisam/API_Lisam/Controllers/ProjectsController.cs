@@ -35,6 +35,7 @@ namespace API_Lisam.Controllers
         {
             try
             {
+                
                 Context.Projects.Add(P);
                 Context.SaveChanges();
 
@@ -93,9 +94,14 @@ namespace API_Lisam.Controllers
             Context.SaveChanges();
             return Ok();
         }
-
-        
-        
-      
+ 
+        public int GetidByProjectNumber(string ProjectNumber)
+        {
+            Project Project = Get()
+                .Where(P => P.ProjectNumber == ProjectNumber)
+                .ToList()
+                .FirstOrDefault();
+            return Project.ProjectId;
+        }
     }
 }

@@ -22,9 +22,12 @@ namespace API_Lisam.Models
             set { _address = Street + " " + ZipCode + " " + City; }
         }
 
-
         public string Email { get; set; }
         public string Number { get; set; }
         public string Language { get; set; }
+
+        // test foreign key
+        public int? ProjectId { get; set; }
+        public Project Project{ get; set; }
     }
 }
