@@ -80,7 +80,7 @@ namespace API_Lisam.Controllers
         public IHttpActionResult Delete(int Id)
         {
             Client client = Context.Clients.Find(Id);
-            if (client != null)
+            if (client == null)
             {
                 return NotFound();
             }

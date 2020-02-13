@@ -86,7 +86,7 @@ namespace API_Lisam.Controllers
         public IHttpActionResult Delete(int Id)
         {
             Project project = Context.Projects.Find(Id);
-            if (project != null)
+            if (project == null)
             {
                 return NotFound();
             }
