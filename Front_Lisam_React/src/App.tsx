@@ -1,9 +1,13 @@
-import React, {FunctionComponent} from 'react';
+import React, {FunctionComponent, useState, useEffect} from 'react';
 
   
 const App: /*React.FC*/ FunctionComponent = () => {
- const name: String = 'React';
+ const [name, setName] = useState<string>();
     
+ useEffect(() => {
+    setName('React');
+    }
+ );
  return (
   <h1>Hello, {name} !</h1>
  )
