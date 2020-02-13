@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+      "target": "es5", // version du JS
+      "lib": [
+        "dom",
+        "dom.iterable",
+        "esnext"
+      ],
+      "allowJs": true,
+      "skipLibCheck": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "strict": true,
+      "forceConsistentCasingInFileNames": true,
+      "module": "esnext",
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "noEmit": true,
+      "jsx": "react" // sert pour le tsx. Melange entre typescript et jsx. 
+    },
+    "include": [
+      "src" // indique l endroit du fichier où doit être compiler les fichiers ts
+    ]
+  }
