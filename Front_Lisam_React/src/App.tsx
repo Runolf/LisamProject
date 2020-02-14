@@ -1,13 +1,13 @@
 import React, {FunctionComponent, useState, useEffect} from 'react';
 
   
-const App: /*React.FC*/ FunctionComponent = () => {
+const App: FunctionComponent = () => {
  const [name, setName] = useState<string>();
-    
+   
  useEffect(() => {
-    setName('React');
+    setName(encodeURI('http://localhost:44331/api/Client/3'));
     }
- );
+   , []);
  return (
   <h1>Hello, {name} !</h1>
  )
