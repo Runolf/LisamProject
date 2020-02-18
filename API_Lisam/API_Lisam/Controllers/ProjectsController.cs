@@ -35,7 +35,7 @@ namespace API_Lisam.Controllers
         {
             try
             {
-                
+                //P.SignatureDate = new DateTime();
                 Context.Projects.Add(P);
                 Context.SaveChanges();
 

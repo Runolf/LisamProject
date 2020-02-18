@@ -11,6 +11,7 @@ namespace API_Lisam.Controllers
     public class ClientController : ApiController
     {
         private ProjectsController PController = new ProjectsController();
+        private Project P = new Project();
         private LisamContext Context = new LisamContext();
 
         public IList<Client> Get()
@@ -31,8 +32,8 @@ namespace API_Lisam.Controllers
             
             try
             {
-              // int test =  PController.GetidByProjectNumber();
-
+                C.ProjectId =  PController.GetidByProjectNumber(P.ProjectNumber);
+               
                 C.Address = C.ZipCode + ", " + C.City + ", " + C.Street;
                 Context.Clients.Add(C);
                 Context.SaveChanges();
