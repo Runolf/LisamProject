@@ -3,11 +3,7 @@ import Project from '../models/project';
 export default class ProjectService{ 
     
     static getProjects(): Promise<Project[]> {
-        return fetch('http://localhost:44331/api/Projects', {
-            method: 'GET',
-            body: JSON.stringify(Project),
-            headers: {'Content-Type': 'application/json'} 
-        })
+        return fetch('http://localhost:44331/api/Projects')
           .then(response => response.json())
           .catch(error => this.handleError(error));
       }
