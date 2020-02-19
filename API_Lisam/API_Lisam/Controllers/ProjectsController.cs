@@ -7,12 +7,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using API_Lisam.Models;
 using Newtonsoft.Json;
 
 namespace API_Lisam.Controllers
 {
+    [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     public class ProjectsController : ApiController
     {
         private LisamContext Context = new LisamContext();

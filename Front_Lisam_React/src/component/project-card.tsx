@@ -7,7 +7,7 @@ type Props = {
 
 const projectCard: FunctionComponent<Props> = ({project}) => {
     return (
-    <div>Ce composant affiche la donnée: {project.ProjectNumber}</div>
+    <div>Ce composant affiche la donnée: {project.ProjectLeader}</div>
     )
 };
 

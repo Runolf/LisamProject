@@ -152,3 +152,6 @@ C:\Users\alexa\source\repos\Lisam\LisamProject\API_Lisam\API_Lisam\obj\Debug\API
 C:\Users\alexa\source\repos\Lisam\LisamProject\API_Lisam\API_Lisam\obj\Debug\API_Lisam.pdb
 C:\Users\alexa\source\repos\Lisam\LisamProject\API_Lisam\API_Lisam\obj\Debug\API_Lisam.Migrations.AddProjectHouse.resources
 C:\Users\stagiaire02\source\repos\LisamProject\API_Lisam\API_Lisam\obj\Debug\API_Lisam.Migrations.AddProjectHouse.resources
+C:\Users\alexa\source\repos\Lisam\LisamProject\API_Lisam\API_Lisam\bin\System.Web.Cors.dll
+C:\Users\alexa\source\repos\Lisam\LisamProject\API_Lisam\API_Lisam\bin\System.Web.Http.Cors.dll
+C:\Users\alexa\source\repos\Lisam\LisamProject\API_Lisam\API_Lisam\bin\System.Web.Http.Cors.xml

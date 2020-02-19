@@ -8,12 +8,6 @@ import ProjectCard from '../component/project-card';
 
 const List: FunctionComponent = () => {
 
-    // const [projects, setProjects] = useState<Project[]>([]);
-
-    // useEffect(() => { ProjectService.getProjects().then(projects => setProjects(projects)); }, []);
-
-    //const projects = ["test", "1", "2"];
-
     const projects = useProject();
 
     return (
@@ -28,15 +22,15 @@ const List: FunctionComponent = () => {
 
 
     // const projects = useProject();
-    
+
     // return (
     //     <div>
     //         <h1 className="center">Lisam</h1>
     //          <div className="container">
     //           <div className="row">
 
-               
-            
+
+
     //           </div>
     //             <Link className="btn-floating btn-large waves-effect waves-light red z-depth-3"
     //               style={{position: 'fixed', bottom: '25px', right: '25px'}} to="/pokemon/add">
@@ -48,4 +42,4 @@ const List: FunctionComponent = () => {
 
 }
 
-export default List; 
+export default List;
