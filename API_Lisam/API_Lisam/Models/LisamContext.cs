@@ -8,7 +8,7 @@ namespace API_Lisam.Models
 {
     public class LisamContext: DbContext
     {
-        // to contact the API = https://localhost:44331/
+        // to contact the API = http://localhost:44331/
         public DbSet<Client>Clients { get; set; }
         public DbSet<Project>Projects { get; set; }
        public LisamContext() : base("name=DefaultConnection") { }

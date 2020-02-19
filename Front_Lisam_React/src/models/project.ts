@@ -1,3 +1,5 @@
+import Client from "./client";
+
 enum statut {
     Open = 1,
     Signed = 2,
@@ -7,23 +9,26 @@ enum statut {
 }
 export default class Project{
     
-    projectId: number;
-    signatureDate: Date;
-    projectNumber: string;
-    projectLeader: string;
-    statut: statut;
+    ProjectId: number;
+    SignatureDate : Date;
+    ProjectNumber: string;
+    ProjectLeader: string;
+    Statut: statut;
+    Clients: Client;
 
     constructor(
         projectId: number,
-        signatureDate: Date = new Date(),
+        signatureDate: Date,
         projectNumber: string,
         projectLeader: string,
         statut: statut,
+        client: Client
     ) {
-        this.projectId = projectId;
-        this.projectLeader = projectLeader; 
-        this.projectNumber = projectNumber;
-        this.signatureDate = signatureDate;
-        this.statut = statut;
+        this.ProjectId = projectId;
+        this.ProjectLeader = projectLeader; 
+        this.ProjectNumber = projectNumber;
+        this.SignatureDate = signatureDate;
+        this.Statut = statut;
+        this.Clients = client; 
     }
 }
