@@ -1,15 +1,25 @@
 import React, {FunctionComponent, useState, useEffect} from 'react';
+import {BrowserRouter as Router, Switch,Route, Link} from 'react-router-dom';
+import pageNotFound from './pages/page-not-found';
 
   
 const App: FunctionComponent = () => {
- const [name, setName] = useState<string>();
-   
- useEffect(() => {
-    setName(encodeURI('http://localhost:44331/api/Client/3'));
-    }
-   , []);
+
  return (
-  <h1>Hello, {name} !</h1>
+  <Router>
+    <div>
+      {/*Barre de navigation commune à toutes les pages*/}
+      <nav>
+        <div className="nav-wrapper teal">
+          <Link to="/" className="brand-logo center">Home</Link>
+        </div>
+      </nav>
+      {/*Gestionnaire des routes*/}
+      <Switch>
+        <Route component={pageNotFound}/>
+      </Switch>
+    </div>
+  </Router>
  )
 }
   
