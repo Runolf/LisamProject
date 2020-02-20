@@ -6,7 +6,7 @@ export const useProject = () => {
     const [projects, setProjects] = useState<Project[]>([]);
 
     useEffect(() => { ProjectService.getProjects().then(projects => setProjects(projects)); }, []);
-  //useEffect(() => { PokemonServices.getPokemons().then(pokemons=> setPokemons(pokemons)); }, []);
+//  useEffect(() => { ClientService.getClients().then(clients => setClients(clients     )); }, []);
 
   return projects;
 }

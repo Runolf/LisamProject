@@ -5,9 +5,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace API_Lisam.Controllers
 {
+    [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     public class ClientController : ApiController
     {
         
@@ -15,12 +17,14 @@ namespace API_Lisam.Controllers
         private Project P = new Project();
         private LisamContext Context = new LisamContext();
 
+        
         public IList<Client> Get()
         {
             IList<Client> Clients = Context.Clients.Where(C => C.ClientId > 0).ToList();
             Context.SaveChanges();
             return Clients;
         }
+       
         public Client Get(int id)
         {
             Client C = Context.Clients.Find(id);
@@ -33,8 +37,8 @@ namespace API_Lisam.Controllers
             
             try
             {
-                C.ProjectId =  PController.GetidByProjectNumber(P.ProjectNumber);
-               
+                //C.ProjectId =  PController.GetidByProjectNumber(P.ProjectNumber);
+
                 C.Address = C.ZipCode + ", " + C.City + ", " + C.Street;
                 Context.Clients.Add(C);
                 Context.SaveChanges();

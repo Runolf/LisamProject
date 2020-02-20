@@ -1,21 +1,27 @@
 import React, {FunctionComponent} from 'react';
 import Project from '../models/project';
-import {statut} from '../models/statut';
+import Client from '../models/client';
+//import {statut} from '../models/statut';
 import  './project-card.css';
 
+
 type Props = {
-    project: Project
+    project: Project,
+    client?: Client
 };
 
 
-const projectCard: FunctionComponent<Props> = ({project}) => {
+const projectCard: FunctionComponent<Props> = ({project, client}) => {
+    
     return (
         <div className="row" >
-            <div className="card-content col m2"></div>
-            <div className="card-content col grey darken-2 m2 center border">Project Number: {project.ProjectNumber} </div>
-            <div className="card-content col grey darken-1 m2 center border">Project leader: {project.ProjectLeader} </div>
-            <div className="card-content col grey darken-1 m2 center border">Statut: {project.Statut} </div>
-            <div className="card-content col grey darken-1 m2 center border">Signature Date: {project.SignatureDate} </div>
+            <div className="card-content col m1"></div>
+            <div className="card-content col grey darken-2 m2 center border"><span className="champ">Client Name:</span> {client} </div>
+            <div className="card-content col grey darken-2 m2 center border"><span className="champ">Project Number:</span> {project.ProjectNumber} </div>
+            <div className="card-content col grey darken-1 m2 center border"><span className="champ">Project Leader:</span> {project.ProjectLeader} </div>
+            <div className="card-content col grey darken-1 m2 center border"><span className="champ">Statut: </span> {project.Statut} </div>
+            <div className="card-content col grey darken-1 m2 center border"><span className="champ">Signature Date:</span> {project.SignatureDate} </div>
+            <div className="card-content col m1"></div>
         </div>
    
     )
