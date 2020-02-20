@@ -10,6 +10,7 @@ namespace API_Lisam.Controllers
 {
     public class ClientController : ApiController
     {
+        
         private ProjectsController PController = new ProjectsController();
         private Project P = new Project();
         private LisamContext Context = new LisamContext();
@@ -55,7 +56,7 @@ namespace API_Lisam.Controllers
             try
             {
                 Client client  = Context.Clients.Find(Id);
-
+                
                 client.Company_Name = (Modif.Company_Name != null)? Modif.Company_Name:client.Company_Name;
                 client.City = (Modif.City != null)? Modif.City: client.City;
                 client.Street = (Modif.Street != null)? Modif.Street: client.Street;

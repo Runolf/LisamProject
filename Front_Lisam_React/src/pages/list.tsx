@@ -1,6 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import {useProject} from '../hooks/project-hook';
 import ProjectCard from '../component/project-card';
+import './list.css';
 //import {Link} from 'react-router-dom';
 //import ProjectService from '../services/project-service';
 //import Project from '../models/project';
@@ -11,11 +12,11 @@ const List: FunctionComponent = () => {
     const projects = useProject();
 
     return (
-        <ul>
-            { projects.map((P) => (
-                <ProjectCard key={P.ProjectId} project={P}/>
-            )) }
-        </ul>
+            <div className="col grid">
+                { projects.map((P) => (
+                    <ProjectCard key={P.ProjectId} project={P}/>
+                )) }
+            </div>
     );
 
 

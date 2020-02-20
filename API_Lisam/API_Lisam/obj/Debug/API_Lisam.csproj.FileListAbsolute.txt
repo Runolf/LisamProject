@@ -155,3 +155,6 @@ C:\Users\stagiaire02\source\repos\LisamProject\API_Lisam\API_Lisam\obj\Debug\API
 C:\Users\alexa\source\repos\Lisam\LisamProject\API_Lisam\API_Lisam\bin\System.Web.Cors.dll
 C:\Users\alexa\source\repos\Lisam\LisamProject\API_Lisam\API_Lisam\bin\System.Web.Http.Cors.dll
 C:\Users\alexa\source\repos\Lisam\LisamProject\API_Lisam\API_Lisam\bin\System.Web.Http.Cors.xml
+C:\Users\stagiaire02\source\repos\LisamProject\API_Lisam\API_Lisam\bin\System.Web.Cors.dll
+C:\Users\stagiaire02\source\repos\LisamProject\API_Lisam\API_Lisam\bin\System.Web.Http.Cors.dll
+C:\Users\stagiaire02\source\repos\LisamProject\API_Lisam\API_Lisam\bin\System.Web.Http.Cors.xml

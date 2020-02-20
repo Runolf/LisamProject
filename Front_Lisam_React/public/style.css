@@ -1,0 +1,11 @@
+html{
+    color: white;
+}
+
+nav{
+    background-color: #212121;
+}
+
+.nav-link{
+    margin-right: 1%;
+}

@@ -11,10 +11,13 @@ const App: FunctionComponent = () => {
     <div>
       {/*Barre de navigation commune à toutes les pages*/}
       <nav>
-        <div className="nav-wrapper teal">
-          <Link to="/" className="brand-logo center">Home</Link>
-          <Link to="/list" className="center">List</Link>
+        <div className="nav-wrapper">
+          <div id = "nav-mobile" className="grey darken-4 center">
+            <Link to="/" className="nav-link">Home</Link>
+            <Link to="/list" className="nav-link">List</Link>
+          </div>
         </div>
+        
       </nav>
       {/*Gestionnaire des routes*/}
       <Switch>
