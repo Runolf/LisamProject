@@ -1,16 +1,17 @@
 export default class Client{
-    clientId: number;
-    companyName: string;
 
-    street: string;
-    zipCode: string;
+   ClientId: number;
+   Company_Name: string;
+
+    Street: string;
+    ZipCode: string;
     city: string; 
     
-    email: string;
-    language: string;
-    number: string;
+    Email: string;
+    Language: string;
+    Number: string;
 
-    projectId: number;
+    ProjectId: number;
 
     constructor(
         clientId: number,
@@ -23,14 +24,14 @@ export default class Client{
         number: string,
         projectId: number
     ) {
-        this.clientId = clientId;
-        this.companyName = companyName;
-        this.street = street;
-        this.zipCode = zipCode;
+        this.ClientId = clientId;
+        this.Company_Name = companyName;
+        this.Street = street;
+        this.ZipCode = zipCode;
         this.city = city;
-        this.email = email;
-        this.language = language;
-        this.number = number;
-        this.projectId = projectId;
+        this.Email = email;
+        this.Language = language;
+        this.Number = number;
+        this.ProjectId = projectId;
     }
 }

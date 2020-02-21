@@ -12,7 +12,7 @@ const List: FunctionComponent = () => {
     return (
             <div className="col grid">
                 { client.map((C) =>
-                    <ClientCard key={C.clientId} client={C}/> 
+                    <ClientCard key={C.ClientId} client={C}/> 
                     )} 
 
             </div>
