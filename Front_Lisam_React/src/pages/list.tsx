@@ -13,7 +13,7 @@ const List: FunctionComponent = () => {
             <div className="col grid">
                 {projects.map((P) =>
                     <ProjectCard key={P.ProjectId} project={P}/> 
-                    )} 
+                )} 
             </div>
     );
 

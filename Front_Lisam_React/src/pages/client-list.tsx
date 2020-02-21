@@ -6,12 +6,11 @@ import './list.css';
 
 const List: FunctionComponent = () => {
 
-    //const projects = useProject();
     const client = useClient();
-
+    
     return (
             <div className="col grid">
-                { client.map((C) =>
+                { client.map((C) => 
                     <ClientCard key={C.ClientId} client={C}/> 
                     )} 
 

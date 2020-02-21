@@ -5,8 +5,10 @@ import ProjectService from '../services/project-service';
 export const useProject = () => {
     const [projects, setProjects] = useState<Project[]>([]);
 
-    useEffect(() => { ProjectService.getProjects().then(projects => setProjects(projects)); }, []);
-//  useEffect(() => { ClientService.getClients().then(clients => setClients(clients     )); }, []);
+    useEffect(() => 
+              { ProjectService.getProjects()
+                .then(projects => setProjects(projects)); }
+            , []);
 
   return projects;
 }

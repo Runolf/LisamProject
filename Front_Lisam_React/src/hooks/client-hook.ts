@@ -5,6 +5,9 @@ import ClientService from '../services/client-services';
 export const useClient = () => {
     const [clients, setClients] = useState<Client[]>([]);
 
-    useEffect(() => { ClientService.getClients().then(clients => setClients(clients));}, [] );
+    useEffect(() =>
+                    { ClientService.getClients()
+                      .then(clients => setClients(clients));}
+              , [] );
   return clients;
 }
