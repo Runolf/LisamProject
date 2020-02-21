@@ -5,7 +5,7 @@ export default class Client{
 
     Street: string;
     ZipCode: string;
-    city: string; 
+    City: string; 
     
     Email: string;
     Language: string;
@@ -18,7 +18,7 @@ export default class Client{
         companyName: string,
         street: string,
         zipCode: string,
-        city: string,
+        City: string,
         email: string,
         language: string,
         number: string,
@@ -28,7 +28,7 @@ export default class Client{
         this.Company_Name = companyName;
         this.Street = street;
         this.ZipCode = zipCode;
-        this.city = city;
+        this.City = City;
         this.Email = email;
         this.Language = language;
         this.Number = number;

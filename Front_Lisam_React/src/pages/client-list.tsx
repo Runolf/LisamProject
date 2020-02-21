@@ -9,12 +9,26 @@ const List: FunctionComponent = () => {
     const client = useClient();
     
     return (
-            <div className="col grid">
-                { client.map((C) => 
-                    <ClientCard key={C.ClientId} client={C}/> 
-                    )} 
-
-            </div>
+        <div>
+            <table className="container">
+                    <thead>
+                        <tr style={{color: "black"}}>
+                            <th>Client Name</th>
+                            <th>The table header</th>
+                            <th>The table header</th>
+                            <th>The table header</th>
+                            <th>The table header</th>
+                        </tr>
+                     </thead>
+                     <tbody className="row grid">
+                     { client.map((C) => 
+                        <ClientCard key={C.ClientId} borderColor="green" client={C}/> 
+                        )} 
+                     </tbody>
+                
+            </table>
+        </div>
+            
     );
 
 

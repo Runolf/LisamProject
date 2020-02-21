@@ -9,6 +9,6 @@ export const useProject = () => {
               { ProjectService.getProjects()
                 .then(projects => setProjects(projects)); }
             , []);
-
+  
   return projects;
 }

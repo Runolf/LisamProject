@@ -1,7 +1,7 @@
 export  enum statut {
-        Open ,
-        Signed, 
-        Factured,
-        Work_In_Progress,
-        Closed
+        Open = 1,
+        Signed = 2, 
+        Factured = 3,
+        Work_in_progress = 4,
+        Closed = 5
     }
