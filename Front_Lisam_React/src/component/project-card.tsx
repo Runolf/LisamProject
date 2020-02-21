@@ -1,6 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import Project from '../models/project';
 import Client from '../models/client';
+//import FormatDate from '../helpers/format-date';
 //import {statut} from '../models/statut';
 import  './project-card.css';
 

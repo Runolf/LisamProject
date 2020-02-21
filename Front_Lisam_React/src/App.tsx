@@ -1,6 +1,6 @@
 import React, {FunctionComponent} from 'react';
 import {BrowserRouter as Router, Switch,Route, Link} from 'react-router-dom';
-import List from './pages/list';
+import ProjectList from './pages/project-list';
 import ClientList from './pages/client-list';
 import pageNotFound from './pages/page-not-found';
 
@@ -14,8 +14,7 @@ const App: FunctionComponent = () => {
       <nav>
         <div className="nav-wrapper">
           <div id = "nav-mobile" className="grey darken-4 center">
-            <Link to="/" className="nav-link">Home</Link>
-            <Link to="/list" className="nav-link">List</Link>
+            <Link to="/project-list" className="nav-link">Project-List</Link>
             <Link to="/client-list" className="nav-link">Client-list</Link>
           </div>
         </div>
@@ -23,8 +22,8 @@ const App: FunctionComponent = () => {
       </nav>
       {/*Gestionnaire des routes*/}
       <Switch>
-        <Route exact path="/" component={List}/>
-        <Route exact path="/list" component={List}/>
+        <Route exact path="/" component={ProjectList}/>
+        <Route exact path="/project-list" component={ProjectList}/>
         <Route exact path="/client-list" component={ClientList}/>
         <Route component={pageNotFound}/>
       </Switch>
