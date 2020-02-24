@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+      "noImplicitAny": false, // https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type
       "target": "es5", // version du JS
       "lib": [
         "dom",

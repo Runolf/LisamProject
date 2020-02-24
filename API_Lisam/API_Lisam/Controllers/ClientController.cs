@@ -68,7 +68,8 @@ namespace API_Lisam.Controllers
                 client.Number = (Modif.Number != null)? Modif.Number: client.Number;
                 client.Language = (Modif.Language != null)?Modif.Language:client.Language;
                 client.Email = (Modif.Email != null)?Modif.Email:client.Email;
-                client.Address = client.ZipCode + ", " + client.City + ", " + client.Street; 
+                client.Address = client.ZipCode + ", " + client.City + ", " + client.Street;
+                client.ProjectId = (Modif.ProjectId != null) ? Modif.ProjectId : client.ProjectId;
 
 
                 Context.SaveChanges();

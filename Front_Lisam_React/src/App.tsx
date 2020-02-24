@@ -4,6 +4,7 @@ import ProjectList from './pages/project-list';
 import ClientList from './pages/client-list';
 import ClientDetail from '../src/pages/client-detail';
 import pageNotFound from './pages/page-not-found';
+import { BothList } from './pages/bothlist';
 
   
 const App: FunctionComponent = () => {
@@ -26,6 +27,7 @@ const App: FunctionComponent = () => {
         <Route exact path="/" component={ProjectList}/>
         <Route exact path="/project-list" component={ProjectList}/>
         <Route exact path="/client-list" component={ClientList}/>
+        <Route exact path="/both" component={BothList}/>
         <Route exact path="/client/:id" component={ClientDetail}/>
         <Route component={pageNotFound}/>
       </Switch>

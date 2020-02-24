@@ -4,7 +4,7 @@ import {statut} from '../models/statut';
 
 export default class Project{
     
-    ProjectId: number;
+    ProjectId: number ;
     SignatureDate : Date;
     ProjectNumber: string;
     ProjectLeader: string;

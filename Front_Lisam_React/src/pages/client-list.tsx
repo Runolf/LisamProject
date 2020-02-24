@@ -1,16 +1,16 @@
 import React, {FunctionComponent} from 'react';
-import { useClient } from '../hooks/client-hook';
+import { useClients } from '../hooks/clients-hook';
 import ClientCard from '../component/client-card';
 import './list.css';
 
 
 const List: FunctionComponent = () => {
 
-    const client = useClient();
+    const client = useClients();
     
     return (
         <div>
-            <table className="container">
+            <table className="container responsive-table centered ">
                     <thead>
                         <tr style={{color: "black"}}>
                             <th>Client Name</th>

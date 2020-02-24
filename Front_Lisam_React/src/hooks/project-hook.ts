@@ -2,13 +2,15 @@ import {useEffect, useState} from 'react';
 import Project from '../models/project';
 import ProjectService from '../services/project-service';
 
-export const useProject = () => {
-    const [projects, setProjects] = useState<Project[]>([]);
+export const useProject = (id : number | null) => {
+    const [project, setProject] = useState<Project | null>();
 
+   // if(id !== null) ne fonctionne pas
     useEffect(() => 
-              { ProjectService.getProjects()
-                .then(projects => setProjects(projects)); }
+              { if(id !== null)
+                ProjectService.getProject(id)
+                .then(project => setProject(project)); }
             , []);
   
-  return projects;
+  return project;
 }

@@ -8,7 +8,7 @@ export default class ClientService{
       }
 
       static getClient(id: number): Promise<Client|null> {
-        return fetch('http://localhost:44331/api/Client')
+        return fetch(`http://localhost:44331/api/Client/${id}`)
           .then(response => response.json())
           .then(data => this.isEmpty(data)?null:data)
           .catch(error => this.handleError(error));

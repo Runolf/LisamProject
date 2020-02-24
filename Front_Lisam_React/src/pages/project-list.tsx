@@ -1,12 +1,12 @@
 import React, {FunctionComponent} from 'react';
-import {useProject} from '../hooks/project-hook';
+import {useProjects} from '../hooks/projects-hook';
 import ProjectCard from '../component/project-card';
 import './list.css';
 //import { useClient } from '../hooks/client-hook';
 
 const List: FunctionComponent = () => {
 
-    const projects = useProject();
+    const projects = useProjects();
     //const client = useClient();
 
     return (
