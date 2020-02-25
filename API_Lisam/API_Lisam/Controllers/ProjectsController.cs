@@ -34,7 +34,6 @@ namespace API_Lisam.Controllers
         public Project Get(int id)
         {
             Project P = Context.Projects.Find(id);
-            Context.SaveChanges();
             return P; 
         }
 

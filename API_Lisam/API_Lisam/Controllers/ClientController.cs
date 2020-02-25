@@ -21,14 +21,12 @@ namespace API_Lisam.Controllers
         public IList<Client> Get()
         {
             IList<Client> Clients = Context.Clients.Where(C => C.ClientId > 0).ToList();
-            Context.SaveChanges();
             return Clients;
         }
        
         public Client Get(int id)
         {
             Client C = Context.Clients.Find(id);
-            Context.SaveChanges();
             return C;
         }
 
