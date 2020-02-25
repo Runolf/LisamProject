@@ -84,7 +84,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
             <div>
                 {isEditForm && (
                     <div>
-                        <h1>Edit</h1>
+                        <h3>Edit</h3>
                         <span className="btn-floating halfway-fab waves-effect waves-light">
                             <i className="material-icons" onClick={deleteClient}>delete</i>
                         </span>
@@ -94,7 +94,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
 
             <div>
                 {isAddForm && (
-                    <h1>Adding</h1>
+                    <h3>Adding</h3>
                 )}
             </div>
 

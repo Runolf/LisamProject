@@ -8,5 +8,25 @@ type Params = { id: string };
 
 const ClientEdit: FunctionComponent<RouteComponentProps<Params>> = ({match}) => {
     const [client, setClient] = useState<Client | null>(null);
-    
-}
+
+    useEffect(() => {
+            ClientServices.getClient(+match.params.id)
+            .then(client => setClient(client));
+        } , [match.params.id]
+    );
+
+    return (
+        <div>
+            {client? (
+                    <div className="row">
+                     <h2 className="header center">Éditer { client.Company_Name }</h2>
+                     <ClientForm client={client} isEditForm={true}></ClientForm>
+                </div>
+            ) : (
+                <h4 className="center">Aucun client à afficher !</h4>
+             )}
+        </div>
+    )
+};
+
+export default ClientEdit;
