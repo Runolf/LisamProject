@@ -14,10 +14,10 @@ const List: FunctionComponent = () => {
                     <thead>
                         <tr style={{color: "black"}}>
                             <th>Client Name</th>
-                            <th>The table header</th>
-                            <th>The table header</th>
-                            <th>The table header</th>
-                            <th>The table header</th>
+                            <th>E-Mail</th>
+                            <th>Language</th>
+                            <th>Phone number</th>
+                            <th>Address</th>
                         </tr>
                      </thead>
                      <tbody className="row grid">
