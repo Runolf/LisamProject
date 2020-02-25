@@ -22,9 +22,13 @@ namespace API_Lisam.Controllers
         
 
         public IList<Project> Get()
-        {
-            IList<Project> Projects = Context.Projects.Where(P => P.ProjectId > 0).ToList();
-            Context.SaveChanges();
+        { /*
+            include ici sert à include l'objet client correspondant au projet dans le get
+
+             */
+            IList<Project> Projects = Context.Projects
+                .Include(p => p.Client)
+                .Where(P => P.ProjectId > 0).ToList();
             return Projects;
         }
         public Project Get(int id)
