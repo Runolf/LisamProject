@@ -58,6 +58,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
     
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
+
         client.Company_Name = form.companyName.value;
         client.Email = form.email.value;
         client.Language = form.language.value;
@@ -68,16 +69,17 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
         client.ProjectId = form.projectId.value;
 
         isEditForm?updateClient():addClient();
+        
     }
 
     const handleInputChange = (e : React.ChangeEvent<HTMLInputElement>) => {
+
         const fieldName: string = e.target.name;
         const fieldValue: string = e.target.value;
 
         const newField: Field = {[fieldName] : {value: fieldValue}};
         setForm({...form, ...newField});
     }
-
 
     return(
         <form className="container" onSubmit={e => handleSubmit(e)}>
@@ -128,6 +130,11 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
                     <input id="zipCode" name="zipCode" type="text" className="form-control" value={form.zipCode.value} onChange={e => handleInputChange(e)}></input>       
                     <label htmlFor="street">street</label>
                     <input id="street" name="street" type="text" className="form-control" value={form.street.value} onChange={e => handleInputChange(e)}></input>
+            </div>
+
+            <div className="form-group">
+                    <label htmlFor="projectId">projectId</label>
+                    <input id="projectId" name="projectId" type="text" className="form-control" value={form.projectId.value} onChange={e => handleInputChange(e)}></input>        
             </div>
             
             
