@@ -3,6 +3,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import ClientForm from '../component/client-form';
 import Client from '../models/client';
 import ClientServices from '../services/client-services';
+import '../pages/detail.css';
 
 type Params = { id: string };
 
@@ -16,7 +17,7 @@ const ClientEdit: FunctionComponent<RouteComponentProps<Params>> = ({match}) => 
     );
 
     return (
-        <div>
+        <div className="detail">
             {client? (
                     <div className="row">
                      <h2 className="header center">Éditer { client.Company_Name }</h2>

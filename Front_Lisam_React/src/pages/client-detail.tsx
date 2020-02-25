@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
-import { RouteComponentProps} from 'react-router-dom';
+import { RouteComponentProps, Link} from 'react-router-dom';
 import Client from '../models/client';
 import ClientService from '../services/client-services';
 import "./detail.css";
@@ -18,12 +18,17 @@ const ClientDetail: FunctionComponent<RouteComponentProps<Params>> = ({match}) =
     return (
     <div className="detail">{client? (
     <div> 
+        <div>
+        <Link to={`/client-edit/${client.ClientId}`} className="btn right grey waves-effect waves-light">
+           <i className="material-icons">edit</i>
+        </Link>
+        </div>
         <h1>{client.Company_Name}</h1>
         <p>Language: {client.Language}</p>
         <p>Mail: {client.Email}</p> 
         <p>Number: {client.Number}</p> 
         <p>Adress: {client.Street + " " + client.ZipCode + " " + client.City}</p>
-        
+
     </div>
     
     ):(

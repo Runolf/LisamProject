@@ -36,15 +36,15 @@ export default class ClientService{
       .catch(error => this.handleError(error));
   } 
 
-  static deleteClient(client: Client): Promise<Client>{
+  static deleteClient(client: Client): Promise<{}>{
 
-    return fetch(`http://localhost:44331/api/Client${client.ClientId}`,{
+    return fetch(`http://localhost:44331/api/Client/${client.ClientId}`,{
     method: 'DELETE',
     headers: {'Content-Type': 'application/json'} 
   })
     .then(response => response.json())
     .catch(error => this.handleError(error));
-} 
+}
 
       static isEmpty(data: Object): boolean {
         return Object.keys(data).length === 0;

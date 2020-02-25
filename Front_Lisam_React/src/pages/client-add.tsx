@@ -7,11 +7,11 @@ type Params = { id: string };
 const ClientAdd:FunctionComponent = () => {
     const [client] = useState<Client>();
 
-    return (
-        <div className="row">
-            <h2 className="header center">Ajouter un pokemon </h2>
-                <ClientForm client={client} isEditForm={false}></ClientForm>
-        </div>
+    return ( null
+        // <div className="row">
+        //     <h2 className="header center">Ajouter un pokemon </h2>
+        //         <ClientForm client={client} isEditForm={false}></ClientForm>
+        // </div>
     );
 }
 

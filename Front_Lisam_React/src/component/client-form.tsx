@@ -82,23 +82,25 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
     return(
         <form onSubmit={e => handleSubmit(e)}>
             <div>
-                {isEditForm && (
-                    <div>
-                        <h3>Edit</h3>
-                        <span className="btn-floating halfway-fab waves-effect waves-light">
-                            <i className="material-icons" onClick={deleteClient}>delete</i>
-                        </span>
-                    </div>
-                )}
-            </div>
-
             <div>
-                {isAddForm && (
-                    <h3>Adding</h3>
-                )}
-            </div>
+                    {isEditForm && (
+                        <div>
+                            <h3>Edit</h3>
+                            <span className="btn-floating halfway-fab waves-effect waves-light">
+                                <i className="material-icons" onClick={deleteClient}>delete</i>
+                            </span>
+                        </div>
+                    )}
+                </div>
 
-            <button type="submit" className="btn">Valider</button>
+                <div>
+                    {isAddForm && (
+                        <h3>Adding</h3>
+                    )}
+                </div>
+            </div>
+                
+            <button type="submit" className="btn grey darken-3 waves-effect waves-black">Valider</button>
         </form>
 
     )

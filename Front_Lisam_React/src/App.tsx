@@ -17,8 +17,8 @@ const App: FunctionComponent = () => {
       <nav>
         <div className="nav-wrapper">
           <div id = "nav-mobile" className="grey darken-4 center">
-            <Link to="/project-list" className="nav-link">Project-List</Link>
-            <Link to="/client-list" className="nav-link">Client-list</Link>
+            <Link to="/project" className="nav-link">Project-List</Link>
+            <Link to="/client" className="nav-link">Client-list</Link>
           </div>
         </div>
         
@@ -26,11 +26,12 @@ const App: FunctionComponent = () => {
       {/*Gestionnaire des routes*/}
       <Switch>
         <Route exact path="/" component={ProjectList}/>
-        <Route exact path="/project-list" component={ProjectList}/>
-        <Route exact path="/client-list" component={ClientList}/>
+        <Route exact path="/project" component={ProjectList}/>
+        <Route exact path="/client" component={ClientList}/>
         <Route exact path="/both" component={BothList}/>
         <Route exact path="/client-edit/:id" component={ClientEdit}/>
         <Route exact path="/client/:id" component={ClientDetail}/>
+        <Route exact path="/client-edit/" component={pageNotFound}/>
         <Route component={pageNotFound}/>
       </Switch>
     </div>

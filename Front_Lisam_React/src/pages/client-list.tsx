@@ -23,7 +23,7 @@ const List: FunctionComponent = () => {
                      <tbody className="row grid">
                      { client.map((C) => 
                         <ClientCard key={C.ClientId} borderColor="green" client={C}/> 
-                        )} 
+                        )}  
                      </tbody>
                 
             </table>
