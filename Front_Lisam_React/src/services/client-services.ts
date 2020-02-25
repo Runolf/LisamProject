@@ -28,7 +28,7 @@ export default class ClientService{
 
     static updateClient(client: Client): Promise<Client>{
 
-      return fetch(`http://localhost:44331/api/Client${client.ClientId}`,{
+      return fetch(`http://localhost:44331/api/Client/${client.ClientId}`,{
       method: 'PUT',
       body: JSON.stringify(client),
       headers: {'Content-Type': 'application/json'} 
@@ -36,6 +36,7 @@ export default class ClientService{
       .then(response => response.json())
       .catch(error => this.handleError(error));
   } 
+
 
   static deleteClient(client: Client): Promise<{}>{
 
