@@ -16,28 +16,28 @@
 
         protected override void Seed(API_Lisam.Models.LisamContext context)
         {
-            context.Projects.AddOrUpdate(p => p.ProjectNumber,
-               new Models.Project
-               {
-                   ProjectLeader = "Jean-François Licausi",
-                   ProjectNumber = "01",
-                   SignatureDate = new DateTime(2020, 02, 11),
-                   Clients = new Collection<Client>()
-                   {
-                            new Client()
-                            {
-                                 Company_Name = "Lisam",
-                                 Email = "lisam@hotmail.com",
-                                 Number = "067 49 00 03",
-                                 City = "Ecaussinnes",
-                                 Street = "Rue Jean Jaurès",
-                                 ZipCode = "7190",
-                                 Language = "French"
-                            }
-                   }
-               }
+           // context.Projects.AddOrUpdate(p => p.ProjectNumber,
+           //    new Models.Project
+           //    {
+           //        ProjectLeader = "Jean-François Licausi",
+           //        ProjectNumber = "01",
+           //        SignatureDate = new DateTime(2020, 02, 11),
+           //        Clients = new Collection<Client>()
+           //        {
+           //                 new Client()
+           //                 {
+           //                      Company_Name = "Lisam",
+           //                      Email = "lisam@hotmail.com",
+           //                      Number = "067 49 00 03",
+           //                      City = "Ecaussinnes",
+           //                      Street = "Rue Jean Jaurès",
+           //                      ZipCode = "7190",
+           //                      Language = "French"
+           //                 }
+           //        }
+           //    }
 
-           );
+           //);
         }
     }
 }

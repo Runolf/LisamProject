@@ -21,8 +21,7 @@ type Field = {
     city: Field, 
     email: Field,
     language: Field,
-    number: Field,
-    projectId: Field
+    number: Field
 }
 
 const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
@@ -34,10 +33,10 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
         number: {value: client.Number},
         city: {value: client.City},
         street: {value: client.Street},
-        zipCode: {value: client.ZipCode}, 
-        projectId: {value: client.ProjectId}
+        zipCode: {value: client.ZipCode}
     });
     const history = useHistory();
+
     const updateClient = () => {
         ClientService.updateClient(client)
         .then(() => history.push(`/client/${client.ClientId}`));
@@ -66,7 +65,6 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
         client.City = form.city.value;
         client.ZipCode = form.zipCode.value;
         client.Street = form.street.value;
-        client.ProjectId = form.projectId.value;
 
         isEditForm?updateClient():addClient();
         
@@ -80,6 +78,12 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
         const newField: Field = {[fieldName] : {value: fieldValue}};
         setForm({...form, ...newField});
     }
+
+    // const getIdProjectByNumber: number = (projectNumber: string) => {
+        
+    //     ClientService.getClient()
+
+    // }
 
     return(
         <form className="container" onSubmit={e => handleSubmit(e)}>
@@ -131,14 +135,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
                     <label htmlFor="street">street</label>
                     <input id="street" name="street" type="text" className="form-control" value={form.street.value} onChange={e => handleInputChange(e)}></input>
             </div>
-
-            <div className="form-group">
-                    <label htmlFor="projectId">projectId</label>
-                    <input id="projectId" name="projectId" type="text" className="form-control" value={form.projectId.value} onChange={e => handleInputChange(e)}></input>        
-            </div>
-            
-            
-                
+                            
             <button type="submit" className="btn grey darken-3 waves-effect waves-black">Valider</button>
         </form>
 

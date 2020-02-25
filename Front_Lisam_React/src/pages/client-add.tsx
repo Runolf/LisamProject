@@ -4,9 +4,7 @@ import Client from '../models/client';
 
 const ClientAdd:FunctionComponent = () => {
 
-    const [client] = useState<Client>(new Client(
-    0,"no value","no value","no value","no value","no value","no value","no value",0
-            ));
+    const [client] = useState<Client>(new Client());
 
     return ( 
         <div className="row">

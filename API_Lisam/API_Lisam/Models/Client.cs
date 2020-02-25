@@ -27,7 +27,9 @@ namespace API_Lisam.Models
         public string Language { get; set; }
 
         // test foreign key
-        public int? ProjectId { get; set; }
-        public Project Project{ get; set; }
+        public IList<Project> Projects
+        {
+            get; set;
+        }
     }
 }

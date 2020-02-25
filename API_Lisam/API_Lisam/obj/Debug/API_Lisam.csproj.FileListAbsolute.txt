@@ -64,7 +64,6 @@ C:\Users\stagiaire02\source\repos\LisamProject\API_Lisam\API_Lisam\bin\System.Ne
 C:\Users\stagiaire02\source\repos\LisamProject\API_Lisam\API_Lisam\bin\System.Web.Http.xml
 C:\Users\stagiaire02\source\repos\LisamProject\API_Lisam\API_Lisam\bin\System.Web.Http.WebHost.xml
 C:\Users\stagiaire02\source\repos\LisamProject\API_Lisam\API_Lisam\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\stagiaire02\source\repos\LisamProject\API_Lisam\API_Lisam\obj\Debug\API_Lisam.csprojAssemblyReference.cache
 C:\Users\stagiaire02\source\repos\LisamProject\API_Lisam\API_Lisam\obj\Debug\API_Lisam.csproj.CopyComplete
 C:\Users\stagiaire02\source\repos\LisamProject\API_Lisam\API_Lisam\obj\Debug\API_Lisam.dll
 C:\Users\stagiaire02\source\repos\LisamProject\API_Lisam\API_Lisam\obj\Debug\API_Lisam.pdb
@@ -158,3 +157,5 @@ C:\Users\alexa\source\repos\Lisam\LisamProject\API_Lisam\API_Lisam\bin\System.We
 C:\Users\stagiaire02\source\repos\LisamProject\API_Lisam\API_Lisam\bin\System.Web.Cors.dll
 C:\Users\stagiaire02\source\repos\LisamProject\API_Lisam\API_Lisam\bin\System.Web.Http.Cors.dll
 C:\Users\stagiaire02\source\repos\LisamProject\API_Lisam\API_Lisam\bin\System.Web.Http.Cors.xml
+C:\Users\stagiaire02\source\repos\LisamProject\API_Lisam\API_Lisam\obj\Debug\API_Lisam.csprojAssemblyReference.cache
+C:\Users\stagiaire02\source\repos\LisamProject\API_Lisam\API_Lisam\obj\Debug\API_Lisam.Migrations.ModifyForeignKey.resources

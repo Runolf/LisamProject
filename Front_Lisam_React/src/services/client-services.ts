@@ -8,7 +8,7 @@ export default class ClientService{
           .catch(error => this.handleError(error));
       }
 
-      static getClient(id: number): Promise<Client|null> {
+    static getClient(id: number): Promise<Client|null> {
         return fetch(`http://localhost:44331/api/Client/${id}`)
           .then(response => response.json())
           .then(data => this.isEmpty(data)?null:data)
@@ -18,6 +18,7 @@ export default class ClientService{
     static addClient(client: Client): Promise<Client>{
 
        delete client.ClientId;
+       //delete client.Projects;
 
         return fetch(`http://localhost:44331/api/Client`,{
         method: 'POST',
@@ -41,7 +42,7 @@ export default class ClientService{
   } 
 
 
-  static deleteClient(client: Client): Promise<{}>{
+    static deleteClient(client: Client): Promise<{}>{
 
     return fetch(`http://localhost:44331/api/Client/${client.ClientId}`,{
     method: 'DELETE',
@@ -53,11 +54,11 @@ export default class ClientService{
 
 
 
-      static isEmpty(data: Object): boolean {
+    static isEmpty(data: Object): boolean {
         return Object.keys(data).length === 0;
       }
     
-      static handleError(error: Error): void {
+    static handleError(error: Error): void {
         console.error(error);
       }
 }

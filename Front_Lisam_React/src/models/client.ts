@@ -1,3 +1,5 @@
+import Project from "./project";
+
 export default class Client{
 
    ClientId: number;
@@ -11,18 +13,18 @@ export default class Client{
     Language: string;
     Number: string;
 
-    ProjectId: number;
+    Projects: Project[] ;
 
     constructor(
-        clientId: number,
-        companyName: string,
-        street: string,
-        zipCode: string,
-        City: string,
-        email: string,
-        language: string,
-        number: string,
-        projectId: number
+        clientId: number = 0,
+        companyName: string = "no value",
+        street: string = "no value",
+        zipCode: string = "no value",
+        City: string = "no value",
+        email: string = "no value",
+        language: string = "no value",
+        number: string = "no value",
+        Projects: Project[] = new Project[0]()
     ) {
         this.ClientId = clientId;
         this.Company_Name = companyName;
@@ -32,6 +34,6 @@ export default class Client{
         this.Email = email;
         this.Language = language;
         this.Number = number;
-        this.ProjectId = projectId;
+        this.Projects = Projects;
     }
 }

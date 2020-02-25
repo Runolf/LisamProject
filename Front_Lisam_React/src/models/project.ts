@@ -9,7 +9,7 @@ export default class Project{
     ProjectNumber: string;
     ProjectLeader: string;
     Statut: statut;
-    Clients: Client;
+    ClientId: number;
 
     constructor(
         projectId: number,
@@ -17,13 +17,13 @@ export default class Project{
         projectNumber: string,
         projectLeader: string,
         statut: statut,
-        client: Client
+        clientId: number
     ) {
         this.ProjectId = projectId;
         this.ProjectLeader = projectLeader; 
         this.ProjectNumber = projectNumber;
         this.SignatureDate = signatureDate;
         this.Statut = statut;
-        this.Clients = client; 
+        this.ClientId = clientId; 
     }
 }

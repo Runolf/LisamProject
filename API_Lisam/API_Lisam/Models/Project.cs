@@ -20,6 +20,8 @@ namespace API_Lisam.Models
         public string ProjectNumber { get; set; }
         public string ProjectLeader { get; set; }
         public Statuts? Statut { get; set; }
-        public IList<Client> Clients { get; set; }
+        
+        public int? ClientId { get; set; }
+        public Client Client { get; set; }
     }
 }

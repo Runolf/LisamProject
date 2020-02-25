@@ -127,6 +127,10 @@
     <Compile Include="Migrations\202002121843215_AddProjectHouse.designer.cs">
       <DependentUpon>202002121843215_AddProjectHouse.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002251515177_ModifyForeignKey.cs" />
+    <Compile Include="Migrations\202002251515177_ModifyForeignKey.designer.cs">
+      <DependentUpon>202002251515177_ModifyForeignKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\LisamContext.cs" />
@@ -163,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002121843215_AddProjectHouse.resx">
       <DependentUpon>202002121843215_AddProjectHouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002251515177_ModifyForeignKey.resx">
+      <DependentUpon>202002251515177_ModifyForeignKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
