@@ -6,6 +6,7 @@ import ClientDetail from '../src/pages/client-detail';
 import pageNotFound from './pages/page-not-found';
 import { BothList } from './pages/bothlist';
 import ClientEdit from './pages/client-edit';
+import ClientAdd from './pages/client-add';
 
   
 const App: FunctionComponent = () => {
@@ -29,6 +30,7 @@ const App: FunctionComponent = () => {
         <Route exact path="/project" component={ProjectList}/>
         <Route exact path="/client" component={ClientList}/>
         <Route exact path="/both" component={BothList}/>
+        <Route exact path="/client-add/" component={ClientAdd}/>
         <Route exact path="/client-edit/:id" component={ClientEdit}/>
         <Route exact path="/client/:id" component={ClientDetail}/>
         <Route exact path="/client-edit/" component={pageNotFound}/>

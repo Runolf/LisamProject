@@ -17,6 +17,8 @@ export default class ClientService{
 
     static addClient(client: Client): Promise<Client>{
 
+       delete client.ClientId;
+
         return fetch(`http://localhost:44331/api/Client`,{
         method: 'POST',
         body: JSON.stringify(client),
@@ -25,6 +27,7 @@ export default class ClientService{
         .then(response => response.json())
         .catch(error => this.handleError(error));
     } 
+
 
     static updateClient(client: Client): Promise<Client>{
 
