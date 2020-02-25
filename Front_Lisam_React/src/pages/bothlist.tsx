@@ -9,6 +9,7 @@ import { useClients } from '../hooks/clients-hook';
 import { useClient } from '../hooks/client-hook';
 import { useProject } from '../hooks/project-hook';
 
+
 export const BothList: FunctionComponent = () =>{
     const clients = useClients();
 
@@ -19,27 +20,27 @@ export const BothList: FunctionComponent = () =>{
         4) retourner l'objet
     */
 
-    const GetProject = (idCLient: number): Project | null | undefined => {
-        //1 
-        var Cli = useClient(idCLient); 
-        //2
-         var FKProject:number|null|undefined = (Cli?.ProjectId !== undefined)? Cli.ProjectId :null;
-        //3
-         var Pro:Project|undefined|null = useProject(FKProject);
-        //4
-         return Pro;
+    // const GetProject = (idCLient: number): Project | null | undefined => {
+    //     //1 
+    //     var Cli = useClient(idCLient); 
+    //     //2
+    //      var FKProject:number|null|undefined = (Cli?.ProjectId !== undefined)? Cli.ProjectId :null;
+    //     //3
+    //      var Pro:Project|undefined|null = useProject(FKProject);
+    //     //4
+    //      return Pro;
 
-    }
+    // }
 
-    return (
-        <div className="col grid">
-            { 
-                clients.map((C) => <CandP key={C.ClientId} client={C} project={
-                        GetProject(C.ClientId)
-                }/>)
-            }
+    return ( null
+        // <div className="col grid">
+        //     { 
+        //         clients.map((C) => <CandP key={C.ClientId} client={C} project={
+        //                 GetProject(C.ClientId)
+        //         }/>)
+        //     }
             
-        </div>
+        // </div>
     )
 } 
 
