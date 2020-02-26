@@ -13,7 +13,7 @@ type Props = {
 const BothCard: FunctionComponent<Props> = ({project,client}) => {
     var st: string = statut[project.Statut];
     const history = useHistory();
-    
+
     const goToClient = (id:number) => {
         history.push(`/Client/${id}`);
      }
@@ -23,8 +23,8 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
      }
 
     return (
-        //Nom Client | Numero projet | Date Sign | Project Leader |	Statut | Detail/edit/delete 
-        
+        //Nom Client | Numero projet | Date Sign | Project Leader |	Statut | Detail/edit/delete
+
         <tr className="" style={{color: "white"}}>
             <td className="grey darken-2 m2 center border" onClick={() => goToClient(client.ClientId)}>{client.Company_Name} </td>
             <td className="grey darken-2 m2 center border" onClick={() => goToProject(project.ProjectId)}>{project.ProjectNumber}</td>
@@ -38,11 +38,11 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
                 <tr  className="button-list btn blue-grey darken-1" onClick={() => goToProject(project.ProjectId)}>Detail project</tr>
                 <tr  className="button-list btn blue-grey darken-1" onClick={() => goToClient(client.ClientId)}>Detail client</tr>
             </td>
-            
+
         </tr>
 
     )
 
-} 
+}
 
 export default BothCard;
