@@ -14,10 +14,7 @@ const List: FunctionComponent = () => {
                     <thead>
                         <tr style={{color: "black"}}>
                             <th>Client Name</th>
-                            <th>E-Mail</th>
-                            <th>Language</th>
-                            <th>Phone number</th>
-                            <th>Address</th>
+                            <th>Language</th> 
                         </tr>
                      </thead>
                      <tbody className="row grid">

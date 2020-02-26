@@ -16,8 +16,6 @@ const List: FunctionComponent = () => {
                         <tr style={{color: "black"}}>
                             <th>Project number</th>
                             <th>Project leader</th>
-                            <th>Statut</th>
-                            <th>Date signature</th>
                         </tr>
                      </thead>
                      <tbody className="row grid">

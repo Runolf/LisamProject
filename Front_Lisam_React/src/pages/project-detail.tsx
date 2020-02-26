@@ -8,6 +8,7 @@ import { statut } from '../models/statut';
 type Params = {id: string};
 
 const ProjectDetail: FunctionComponent<RouteComponentProps<Params>> = ({match}) => {
+    
     const [project, SetProject] = useState<Project|null>(null)
 
     useEffect(() => {
