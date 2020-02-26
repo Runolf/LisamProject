@@ -118,3 +118,5 @@ const ProjectForm: FunctionComponent<Props> = ({project, isEditForm}) => {
         </form>
     )
 }
+
+export default ProjectForm;

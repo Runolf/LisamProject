@@ -13,13 +13,13 @@ export default class Project{
     Client: Client
 
     constructor(
-        projectId: number,
-        signatureDate: Date,
-        projectNumber: string,
-        projectLeader: string,
-        statut: statut,
-        clientId: number,
-        client: Client
+        projectId: number = 0,
+        signatureDate: Date = new Date(),
+        projectNumber: string = "no value",
+        projectLeader: string = "no value",
+        statut: statut = 0,
+        clientId: number = 0,
+        client: Client = new Client()
     ) {
         this.ProjectId = projectId;
         this.ProjectLeader = projectLeader; 
