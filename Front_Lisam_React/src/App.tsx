@@ -8,6 +8,7 @@ import { BothList } from './pages/bothlist';
 import ClientEdit from './pages/client-edit';
 import ClientAdd from './pages/client-add';
 import ProjectDetail from './pages/project-detail';
+import ProjectAdd from './pages/project-add';
 
   
 const App: FunctionComponent = () => {
@@ -35,6 +36,7 @@ const App: FunctionComponent = () => {
         <Route exact path="/both" component={BothList}/>
 
         <Route exact path="/client-add/" component={ClientAdd}/>
+        <Route exact path="/project-add/" component={ProjectAdd}/>
 
         <Route exact path="/client-edit/:id" component={ClientEdit}/>
 

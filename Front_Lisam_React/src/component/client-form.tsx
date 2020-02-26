@@ -53,9 +53,9 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
         .then(() => history.push(`/client`));
       }
 
-    const isAddForm = () => {
-        return !isEditForm;
-    }
+    // const isAddForm = () => {
+    //     return !isEditForm;
+    // }
     
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
