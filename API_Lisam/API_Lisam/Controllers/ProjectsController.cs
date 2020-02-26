@@ -19,13 +19,13 @@ namespace API_Lisam.Controllers
     public class ProjectsController : ApiController
     {
         private LisamContext Context = new LisamContext();
-        
 
+        /*
+          include ici sert à include l'objet client correspondant au projet dans le get
+       */
+        [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
         public IList<Project> Get()
-        { /*
-            include ici sert à include l'objet client correspondant au projet dans le get
-
-             */
+        { 
             IList<Project> Projects = Context.Projects
                 .Include(p => p.Client)
                 .Where(P => P.ProjectId > 0).ToList();

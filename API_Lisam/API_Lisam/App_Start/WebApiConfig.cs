@@ -12,6 +12,8 @@ namespace API_Lisam
         {
             // Web API configuration and services
             config.EnableCors();
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling
+            = Newtonsoft.Json.ReferenceLoopHandling.Ignore; //ignore self reference pour projects ... c'est un test 
             // Web API routes
             config.MapHttpAttributeRoutes();
 

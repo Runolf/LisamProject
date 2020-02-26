@@ -11,26 +11,16 @@ import { useProject } from '../hooks/project-hook';
 
 
 export const BothList: FunctionComponent = () =>{
-    const clients = useClients();
+   const projects = useProjects();
 
-    /*
-        1) récupérer id client et retourner le client
-        2) stocker la fk du projet du client en question
-        3) récupérer le projet dont l'id est retourné par l'étape précédente
-        4) retourner l'objet
-    */
-
-    const GetClient = (idCLient: number)/*: Client*/ => {
-        
-    }
+  
 
     return (
+    
         <div className="col grid">
-            {/* { 
-                clients.map((C) => <CandP key={C.ClientId} client={C} project={
-                        GetClient()
-                }/>)
-            } */}
+             { 
+                projects.map((P) => <CandP key={P.ProjectId} project={P} client={P.Client}/>)
+            } 
             
         </div>
     );
