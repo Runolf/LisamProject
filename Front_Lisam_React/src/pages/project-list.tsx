@@ -10,10 +10,22 @@ const List: FunctionComponent = () => {
     //const client = useClient();
 
     return (
-            <div className="col grid">
-                {projects.map((P) =>
-                    <ProjectCard key={P.ProjectId} project={P}/> 
-                )} 
+            <div>
+                <table className="container responsive-table centered ">
+                    <thead>
+                        <tr style={{color: "black"}}>
+                            <th>Project number</th>
+                            <th>Project leader</th>
+                            <th>Statut</th>
+                            <th>Date signature</th>
+                        </tr>
+                     </thead>
+                     <tbody className="row grid">
+                    {projects.map((P) =>
+                        <ProjectCard key={P.ProjectId} project={P}/> 
+                    )} 
+                    </tbody>
+                </table>
             </div>
     );
 
