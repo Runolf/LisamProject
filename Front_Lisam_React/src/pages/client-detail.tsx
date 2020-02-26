@@ -28,6 +28,7 @@ const ClientDetail: FunctionComponent<RouteComponentProps<Params>> = ({match}) =
         <p>Mail: {client.Email}</p> 
         <p>Number: {client.Number}</p> 
         <p>Adress: {client.Street + " " + client.ZipCode + " " + client.City}</p>
+        <p>{/*client.Projects.map((P) => P.ProjectId)// Is considered as null */}</p>
 
     </div>
     

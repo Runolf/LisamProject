@@ -18,16 +18,17 @@ const App: FunctionComponent = () => {
       {/*Barre de navigation commune à toutes les pages*/}
       <nav>
         <div className="nav-wrapper">
-          <div id = "nav-mobile" className="grey darken-4 center">
-            <Link to="/project" className="nav-link">Project-List</Link>
-            <Link to="/client" className="nav-link">Client-list</Link>
-          </div>
+          <Link to="/" className="brand-logo left">Lisam</Link>
+            <div id = "nav-mobile" className="grey darken-4 center">
+              <Link to="/project" className="nav-link">Project-List</Link>
+              <Link to="/client" className="nav-link">Client-list</Link>
+            </div>
         </div>
         
       </nav>
       {/*Gestionnaire des routes*/}
       <Switch>
-        <Route exact path="/" component={ProjectList}/>
+        <Route exact path="/" component={BothList}/>
         <Route exact path="/project" component={ProjectList}/>
         <Route exact path="/client" component={ClientList}/>
 
@@ -41,7 +42,7 @@ const App: FunctionComponent = () => {
         <Route exact path="/project/:id" component={ProjectDetail}/>
 
         <Route exact path="/client-edit/" component={pageNotFound}/>
-        
+
         <Route component={pageNotFound}/>
       </Switch>
     </div>
