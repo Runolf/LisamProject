@@ -13,7 +13,7 @@ export default class Client{
     Language: string;
     Number: string;
 
-    Projects: Project[] ;
+    //Projects: Project[] = [];
 
     constructor(
         clientId: number = 0,
@@ -24,7 +24,7 @@ export default class Client{
         email: string = "no value",
         language: string = "no value",
         number: string = "no value",
-        Projects: Project[] = new Project[0]()
+        //Projects: Project[] = new Project[0]()
     ) {
         this.ClientId = clientId;
         this.Company_Name = companyName;
@@ -34,6 +34,6 @@ export default class Client{
         this.Email = email;
         this.Language = language;
         this.Number = number;
-        this.Projects = Projects;
+        //this.Projects = Projects;
     }
 }

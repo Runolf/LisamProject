@@ -21,7 +21,8 @@ type Field = {
     city: Field, 
     email: Field,
     language: Field,
-    number: Field
+    number: Field,
+    //Projects: Field 
 }
 
 const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
@@ -33,7 +34,8 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
         number: {value: client.Number},
         city: {value: client.City},
         street: {value: client.Street},
-        zipCode: {value: client.ZipCode}
+        zipCode: {value: client.ZipCode},
+       // Projects: {value: client.Projects}
     });
     const history = useHistory();
 
@@ -79,31 +81,23 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
         setForm({...form, ...newField});
     }
 
-    // const getIdProjectByNumber: number = (projectNumber: string) => {
-        
-    //     ClientService.getClient()
-
-    // }
 
     return(
         <form className="container" onSubmit={e => handleSubmit(e)}>
             <div>
                 <div>
-                        {isEditForm && (
+                        {isEditForm? (
                             <div>
                                 <h3>Edit</h3>
-                                <span className="btn-floating right waves-effect waves-light">
-                                    <i className="material-icons" onClick={deleteClient}>delete</i>
-                                </span>
+                                
+                            </div>
+                        ):(
+                            <div>
+                                <h3>Adding</h3>
                             </div>
                         )}
                 </div>
 
-                <div>
-                    {isAddForm && (
-                        <h3>Adding</h3>
-                    )}
-                </div>
             </div>
 
             <div className="form-group">
@@ -137,6 +131,9 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
             </div>
                             
             <button type="submit" className="btn grey darken-3 waves-effect waves-black">Valider</button>
+            <span className="btn-floating right waves-effect waves-light">
+               <i className="material-icons" onClick={deleteClient}>delete</i>
+            </span>
         </form>
 
     )

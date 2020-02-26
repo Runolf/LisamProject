@@ -18,23 +18,37 @@ const ProjectDetail: FunctionComponent<RouteComponentProps<Params>> = ({match}) 
 
         var st: string|null = (project == null)?null:statut[project.Statut];
         return (
-            <div className="detail">{project? (
-                <div> 
-                    <div>
-                    <Link to={`/project-edit/${project.ProjectId}`} className="btn right grey waves-effect waves-light">
-                       <i className="material-icons">edit</i>
-                    </Link>
-                    </div>
-                    <h1>Project: {project.ProjectNumber}</h1>
-                    <p>Project leader: {project.ProjectLeader}</p>
-                    <p>Signature date: {project.SignatureDate}</p> 
-                    <p>Statut: {st}</p> 
+            <div>
+                {project? (
+                <table className="container responsive-table centered table-detail">
+                    <thead>
+                        <tr style={{color: "black"}}>
+                           <th>Project: {project.ProjectNumber}
+                           <Link to={`/project-edit/${project.ProjectId}`} className="btn right grey waves-effect waves-light">
+                                <i className="material-icons">edit</i>
+                            </Link>
+                           </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr> 
+                            <td className="grey darken-2 m2 center border">Project leader: <br/>
+                            {project.ProjectLeader}</td>
+                        </tr>
+                        <tr>
+                            <td className="grey darken-2 m2 center border">Signature date:<br/> {project.SignatureDate}</td> 
+                        </tr>
+                        <tr>
+                            <td className="grey darken-2 m2 center border">Statut:<br/> {st}</td>
+                        </tr>
+                    </tbody>
                     
-                </div>
+                </table>
                 
                 ):(
                     <h5>Pas de projet trouvé</h5>
-                )}</div>
+                )}
+                </div>
         );
 }
 

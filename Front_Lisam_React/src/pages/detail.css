@@ -1,5 +1,19 @@
-.detail{
+.table-detail{
     color:black;
+    position: relative;
+    top: 50px;
+    left: 20px;
+    border: solid 1px black;
+}
+
+th{
+    font-size: 20px;
+    column-span: all;
+}
+
+td{
+    font-size: 15px;
+    color: white;
 }
 
 

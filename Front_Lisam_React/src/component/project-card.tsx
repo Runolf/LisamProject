@@ -1,8 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import Project from '../models/project';
 //import FormatDate from '../helpers/format-date';
-import {statut} from '../models/statut';
-import  './project-card.css';
+import  './card.css';
 import { useHistory } from 'react-router-dom';
 
 
@@ -19,9 +18,7 @@ const ProjectCard: FunctionComponent<Props> = ({project}) => {
     const goToProject = (id:number) => {
         history.push(`/Project/${id}`);
     }
-    
-    var st: string = statut[project.Statut];
-
+   
     return (
         <tr className="" style={{color: "white"}} onClick={() => goToProject(project.ProjectId)} >
             <td className="grey darken-2 m2 center border">{project.ProjectNumber} </td>

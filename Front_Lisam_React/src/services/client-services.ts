@@ -18,8 +18,8 @@ export default class ClientService{
     static addClient(client: Client): Promise<Client>{
 
        delete client.ClientId;
-       //delete client.Projects;
-
+      // delete client.Projects;
+       
         return fetch(`http://localhost:44331/api/Client`,{
         method: 'POST',
         body: JSON.stringify(client),

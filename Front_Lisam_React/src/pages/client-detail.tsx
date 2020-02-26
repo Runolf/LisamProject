@@ -16,25 +16,43 @@ const ClientDetail: FunctionComponent<RouteComponentProps<Params>> = ({match}) =
     }, [match.params.id]);
 
     return (
-    <div className="detail">{client? (
-    <div> 
-        <div>
-        <Link to={`/client-edit/${client.ClientId}`} className="btn right grey waves-effect waves-light">
-           <i className="material-icons">edit</i>
-        </Link>
-        </div>
-        <h1>{client.Company_Name}</h1>
-        <p>Language: {client.Language}</p>
-        <p>Mail: {client.Email}</p> 
-        <p>Number: {client.Number}</p> 
-        <p>Adress: {client.Street + " " + client.ZipCode + " " + client.City}</p>
-        <p>{/*client.Projects.map((P) => P.ProjectId)// Is considered as null */}</p>
+        <div> 
+            {client? (
+                <table className="container responsive-table centered table-detail">
+                    <thead>
+                        <tr style={{color: "black"}}> 
+                            <th>{client.Company_Name}
+                                <Link to={`/client-edit/${client.ClientId}`} className="btn right grey waves-effect waves-light">
+                                  <i className="material-icons">edit</i>
+                                </Link>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td className="grey darken-2 m2 center border">Language: <br/>{client.Language}</td>
+                        </tr>
+                        <tr>
+                            <td className="grey darken-2 m2 center border">E-mail: <br/>{client.Email}</td>
+                        </tr>
+                        <tr>
+                            <td className="grey darken-2 m2 center border">Number: <br/>{client.Number}</td>
+                        </tr>
+                        <tr>
+                            <td className="grey darken-2 m2 center border">Address: <br/>{client.Street + " " + client.ZipCode + " " + client.City}</td>
+                        </tr>
+                        
+                        {/* <tr>
+                            <td className="grey darken-2 m2 center border">{client.Projects.map((P) => P.ProjectId) Is considered as null }</td>
+                        </tr> */}
+                    </tbody>
+                </table>
 
-    </div>
-    
-    ):(
-        <h5>Pas de client trouvé</h5>
-    )}</div>
+                ):(
+                    <h5>Pas de client trouvé</h5>
+                )
+            }
+        </div>
     )
 }
 

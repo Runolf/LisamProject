@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useEffect } from 'react';
+import React, { FunctionComponent, useState} from 'react';
 import ClientForm from '../component/client-form';
 import Client from '../models/client';
 

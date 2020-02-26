@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import Project from '../models/project';
 import Client from '../models/client';
-import  './project-card.css';
+import  './card.css';
 import { statut } from '../models/statut';
 import { useHistory } from 'react-router-dom';
 
@@ -34,6 +34,11 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
                                                                                                                                                   .join("/")}</td>
             <td className="grey darken-2 m2 center border">{project.ProjectLeader}</td>
             <td className="grey darken-2 m2 center border">{st}</td>
+            <td className="m2 td-button">
+                <tr  className="button-list btn blue-grey darken-1" onClick={() => goToProject(project.ProjectId)}>Detail project</tr>
+                <tr  className="button-list btn blue-grey darken-1" onClick={() => goToClient(client.ClientId)}>Detail client</tr>
+            </td>
+            
         </tr>
 
     )
