@@ -7,6 +7,7 @@ import pageNotFound from './pages/page-not-found';
 import { BothList } from './pages/bothlist';
 import ClientEdit from './pages/client-edit';
 import ClientAdd from './pages/client-add';
+import ProjectDetail from './pages/project-detail';
 
   
 const App: FunctionComponent = () => {
@@ -29,11 +30,18 @@ const App: FunctionComponent = () => {
         <Route exact path="/" component={ProjectList}/>
         <Route exact path="/project" component={ProjectList}/>
         <Route exact path="/client" component={ClientList}/>
+
         <Route exact path="/both" component={BothList}/>
+
         <Route exact path="/client-add/" component={ClientAdd}/>
+
         <Route exact path="/client-edit/:id" component={ClientEdit}/>
+
         <Route exact path="/client/:id" component={ClientDetail}/>
+        <Route exact path="/project/:id" component={ProjectDetail}/>
+
         <Route exact path="/client-edit/" component={pageNotFound}/>
+        
         <Route component={pageNotFound}/>
       </Switch>
     </div>

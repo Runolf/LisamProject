@@ -2,22 +2,42 @@ import React, {FunctionComponent} from 'react';
 import Project from '../models/project';
 import Client from '../models/client';
 import  './project-card.css';
+import { statut } from '../models/statut';
+import { useHistory } from 'react-router-dom';
 
 type Props = {
     project: Project,
     client: Client
 };
 
-const bothCard: FunctionComponent<Props> = ({project,client}) => {
+const BothCard: FunctionComponent<Props> = ({project,client}) => {
+    var st: string = statut[project.Statut];
+    const history = useHistory();
+    
+    const goToClient = (id:number) => {
+        history.push(`/Client/${id}`);
+     }
+
+     const goToProject = (id:number) => {
+         history.push(`/Project/${id}`);
+     }
+
     return (
-        <div className="row" >
-            <div className="card-content col m1"></div>
-            <div className="card-content col grey darken-2 m2 center border">Client Name: {client.Company_Name} </div>
-            <div className="card-content col grey darken-2 m2 center border">Project number: {project.ProjectLeader}</div>
-        </div>
+        //Nom Client | Numero projet | Date Sign | Project Leader |	Statut | Detail/edit/delete 
+        
+        <tr className="" style={{color: "white"}}>
+            <td className="grey darken-2 m2 center border" onClick={() => goToClient(client.ClientId)}>{client.Company_Name} </td>
+            <td className="grey darken-2 m2 center border" onClick={() => goToProject(project.ProjectId)}>{project.ProjectNumber}</td>
+            <td className="grey darken-2 m2 center border">{project.SignatureDate.toString()
+                                                                                                                                                  .slice(0, 10)
+                                                                                                                                                  .split('-')
+                                                                                                                                                  .join("/")}</td>
+            <td className="grey darken-2 m2 center border">{project.ProjectLeader}</td>
+            <td className="grey darken-2 m2 center border">{st}</td>
+        </tr>
 
     )
 
 } 
 
-export default bothCard;
+export default BothCard;
