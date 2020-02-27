@@ -4,6 +4,8 @@ import Client from '../models/client';
 import  './card.css';
 import { statut } from '../models/statut';
 import { useHistory } from 'react-router-dom';
+import ClientService from '../services/client-services';
+import ProjectService from '../services/project-service';
 
 type Props = {
     project: Project,
@@ -22,6 +24,16 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
          history.push(`/Project/${id}`);
      }
 
+    const deleteClient = () =>  {
+        ClientService.deleteClient(client)
+        .then(() => history.push(`/both`));
+      }
+
+      const deleteProject = () => {
+        ProjectService.deleteProject(project)
+        .then(() => history.push(`/both`));
+    }
+
     return (
         //Nom Client | Numero projet | Date Sign | Project Leader |	Statut | Detail/edit/delete
 
@@ -34,9 +46,13 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
                                                                                                                                                   .join("/")}</td>
             <td className="grey darken-2 m2 center border">{project.ProjectLeader}</td>
             <td className="grey darken-2 m2 center border">{st}</td>
-            <td className="m2 td-button">
-                <tr  className="button-list btn blue-grey darken-1" onClick={() => goToProject(project.ProjectId)}>Detail project</tr>
-                <tr  className="button-list btn blue-grey darken-1" onClick={() => goToClient(client.ClientId)}>Detail client</tr>
+            <td className="m2 td-button-list">
+                <tr  className="button-list btn green darken-4" onClick={() => goToProject(project.ProjectId)}>Detail project</tr>
+                <tr  className="button-list btn green darken-4" onClick={() => goToClient(client.ClientId)}>Detail client</tr>
+            </td>
+            <td className="m2 td-button-list">
+                <tr  className="button-list btn red darken-4" onClick={() => deleteProject()}>Delete project</tr>
+                <tr  className="button-list btn red darken-4" onClick={() => deleteClient()}>Delete client</tr>
             </td>
 
         </tr>

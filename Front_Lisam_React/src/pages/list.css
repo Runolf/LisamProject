@@ -14,20 +14,35 @@ table{
     top: 30px;
 }
 
+th{
+    width: 500px;
+    border:1px solid black;
+}
+
 td{
-    width: 300px;
+    width: 500px;
     height: 100px;
 }
 
+
 .button-list{
-    margin-left: 10px;
-    width: 150px;
+    margin: 2px 2px 2px 5px;
+    width: 90px;
     height: 50px;
-    font-size: 12px;
-    font-weight: 400;   
-    
+    font-size: 8px;
+    font-weight: 100;
+    letter-spacing: 0.01px;
 }
 
-th{
-    border:1px solid black;
+.button-both{
+    margin: 2px 2px 2px 5px;
+    width: 90px;
+    height: 50px;
+    font-size: 8px;
+    font-weight: 100;
+    letter-spacing: 0.01px;
+}
+
+.td-button-list{
+    width: 100px;
 }
