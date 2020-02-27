@@ -9,7 +9,7 @@ export default class Project{
     ProjectNumber: string;
     ProjectLeader: string;
     Statut: statut;
-    ClientId?: number;
+    ClientId: number;
     Client: Client
 
     constructor(

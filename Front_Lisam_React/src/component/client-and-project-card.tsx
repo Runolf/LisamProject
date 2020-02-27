@@ -56,12 +56,34 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
             }</td>
             <td className="grey darken-2 m2 center border">{st}</td>
             <td className="m2 td-button-list">
+
+                {project?
                 <tr  className="button-list btn green darken-4" onClick={() => goToProject(project.ProjectId)}>Detail project</tr>
+                :
+                <tr  className="button-list btn grey darken-4">Detail project</tr>
+                }
+                
+                {client?
                 <tr  className="button-list btn green darken-4" onClick={() => goToClient(client.ClientId)}>Detail client</tr>
+                :
+                <tr  className="button-list btn grey darken-4">Detail client</tr>
+                }
+                
             </td>
             <td className="m2 td-button-list">
+
+            {project?
                 <tr  className="button-list btn red darken-4" onClick={() => deleteProject()}>Delete project</tr>
+                :
+                <tr  className="button-list btn grey darken-4">Delete project</tr>
+                }
+                
+                {client?
                 <tr  className="button-list btn red darken-4" onClick={() => deleteClient()}>Delete client</tr>
+                :
+                <tr  className="button-list btn grey darken-4">Delete client</tr>
+                }
+               
             </td>
 
         </tr>

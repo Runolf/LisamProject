@@ -34,8 +34,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
         number: {value: client.Number},
         city: {value: client.City},
         street: {value: client.Street},
-        zipCode: {value: client.ZipCode},
-       // Projects: {value: client.Projects}
+        zipCode: {value: client.ZipCode}
     });
     const history = useHistory();
 

@@ -2,6 +2,7 @@ import React, { FunctionComponent, useState } from 'react';
 import Project from '../models/project';
 import{useHistory} from 'react-router-dom';
 import ProjectService from '../services/project-service';
+import { useClients } from '../hooks/clients-hook';
 
 type Props = {
     project: Project,
@@ -18,7 +19,8 @@ type Form = {
     projectNumber: Field,
     projectLeader: Field,
     statut: Field,
-    signatureDate: Field
+    signatureDate: Field,
+    client: Field
     /*
      Champ pour ajouter le client -> faire une methode pour l'assigner. 
      Idée: faire aussi un bouton pour accéder au formulaire de création de client
@@ -27,11 +29,28 @@ type Form = {
 
 const ProjectForm: FunctionComponent<Props> = ({project, isEditForm}) => {
    
+    var Clients = useClients(); 
+    const getIdClientByName =  (name: string) => {
+        var result;
+     if(Clients !== null){
+       result = Clients.filter(client => client.Company_Name === name);
+     }else{
+         result = undefined
+        }
+    
+     var dude = result.shift();
+     if(dude.ClientId !== undefined)
+     return dude.ClientId;
+    }
+
+
     const [form, setForm] = useState<Form>({
         projectLeader: {value: project.ProjectLeader},
         projectNumber: {value: project.ProjectNumber},
         signatureDate: {value: project.SignatureDate},
-        statut: {value: project.Statut}
+        statut: {value: project.Statut},
+        
+        client : {value: (project.ClientId) }
     });
     const history = useHistory();
 
@@ -55,6 +74,7 @@ const ProjectForm: FunctionComponent<Props> = ({project, isEditForm}) => {
         project.ProjectNumber = form.projectNumber.value;
         project.SignatureDate = form.signatureDate.value;
         project.Statut = form.statut.value;
+        project.ClientId = form.client.value;
         
         isEditForm?updateProject():addProject();
     }
@@ -69,12 +89,11 @@ const ProjectForm: FunctionComponent<Props> = ({project, isEditForm}) => {
     }
 
 
-
     return(
         <form className="container" onSubmit={e => handleSubmit(e)}>
             
             <div>
-                <div>
+                <div> {/*is editForm */}
                         {isEditForm? (
                             <div>
                                 <h3>Edit</h3>
@@ -109,6 +128,11 @@ const ProjectForm: FunctionComponent<Props> = ({project, isEditForm}) => {
             <div className="form-group">
               <label htmlFor="signatureDate">signatureDate</label>
                <input id="signatureDate" name="signatureDate" type="text" className="form-control" value={form.signatureDate.value} onChange={e => handleInputChange(e)}></input>        
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="Client">Client</label>
+               <input id="Client" name="Client" type="text" className="form-control" value={form.client.value} onChange={e => handleInputChange(e)}></input>        
             </div>
 
             <button type="submit" className="btn grey darken-3 waves-effect waves-black">Valider</button>
