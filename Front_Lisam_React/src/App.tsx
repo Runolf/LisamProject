@@ -9,6 +9,7 @@ import ClientEdit from './pages/client-edit';
 import ClientAdd from './pages/client-add';
 import ProjectDetail from './pages/project-detail';
 import ProjectAdd from './pages/project-add';
+import ProjectEdit from './pages/project-edit';
 
   
 const App: FunctionComponent = () => {
@@ -39,6 +40,7 @@ const App: FunctionComponent = () => {
         <Route exact path="/project-add/" component={ProjectAdd}/>
 
         <Route exact path="/client-edit/:id" component={ClientEdit}/>
+        <Route exact path="/project-edit/:id" component={ProjectEdit}/>
 
         <Route exact path="/client/:id" component={ClientDetail}/>
         <Route exact path="/project/:id" component={ProjectDetail}/>
