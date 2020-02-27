@@ -20,7 +20,7 @@ const List: FunctionComponent = () => {
                      </thead>
                      <tbody className="row grid">
                     {projects.map((P) =>
-                        <ProjectCard key={P.ProjectId} project={P}/> 
+                        <ProjectCard key={P.ProjectId} client={P.Client} project={P}/> 
                     )} 
                     </tbody>
                 </table>

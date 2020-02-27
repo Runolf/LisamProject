@@ -9,7 +9,7 @@ const ProjectAdd:FunctionComponent = () => {
     return ( 
         <div className="row">
             <h2 className="header center">Ajouter un project </h2>
-                <ProjectForm project={project} isEditForm={false}></ProjectForm>
+                <ProjectForm project={project} client={project.Client} isEditForm={false}></ProjectForm>
         </div>
     );
 }

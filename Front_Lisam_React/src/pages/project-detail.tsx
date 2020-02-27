@@ -4,10 +4,11 @@ import Project from '../models/project';
 import ProjectService from '../services/project-service';
 import "./detail.css";
 import { statut } from '../models/statut';
+import Client from '../models/client';
 
 type Params = {id: string};
-
-const ProjectDetail: FunctionComponent<RouteComponentProps<Params>> = ({match}) => {
+type Props = {client: Client}
+const ProjectDetail: FunctionComponent<RouteComponentProps<Params> & Props> = ({match, client}) => {
     
     const [project, SetProject] = useState<Project|null>(null)
 
@@ -16,6 +17,7 @@ const ProjectDetail: FunctionComponent<RouteComponentProps<Params>> = ({match}) 
         .then(project => SetProject(project));
         }, [match.params.id]);
 
+        
         var st: string|null = (project == null)?null:statut[project.Statut];
         return (
             <div>
@@ -41,6 +43,16 @@ const ProjectDetail: FunctionComponent<RouteComponentProps<Params>> = ({match}) 
                         <tr>
                             <td className="grey darken-2 m2 center border">Statut:<br/> {st}</td>
                         </tr>
+                        {client?
+                        <tr>
+                        <td className="grey darken-2 m2 center border">Client:<br/> {client.Company_Name}</td>
+                        </tr>
+                        :
+                        <tr>
+                            <td className="grey darken-2 m2 center border">Pas de client</td>
+                        </tr>
+                        }
+                        
                     </tbody>
                     
                 </table>

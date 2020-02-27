@@ -15,7 +15,7 @@ type Props = {
 const BothCard: FunctionComponent<Props> = ({project,client}) => {
     var st: string = statut[project.Statut];
     const history = useHistory();
-
+    
     const goToClient = (id:number) => {
         history.push(`/Client/${id}`);
      }
@@ -26,12 +26,13 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
 
     const deleteClient = () =>  {
         ClientService.deleteClient(client)
-        .then(() => history.push(`/both`));
+        .then(() => window.location.reload());
       }
 
       const deleteProject = () => {
         ProjectService.deleteProject(project)
-        .then(() => history.push(`/both`));
+        .then(() => window.location.reload());
+        
     }
 
     return (
@@ -39,14 +40,12 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
 
         <tr className="" style={{color: "white"}}>
             {client?
-            <td className="grey darken-2 m2 center border" onClick={() => goToClient(client.ClientId)}>{client.Company_Name} </td>
+            <td className="grey darken-2 m2 center border">{client.Company_Name} </td>
             : 
             <td className="grey darken-2 m2 center border">No client assigned to this project</td>
             }
             
-            
-            
-            <td className="grey darken-2 m2 center border" onClick={() => goToProject(project.ProjectId)}>{project.ProjectNumber}</td>
+            <td className="grey darken-2 m2 center border">{project.ProjectNumber}</td>
             <td className="grey darken-2 m2 center border">{project.SignatureDate.toString()
                                                                                                                                                   .slice(0, 10)
                                                                                                                                                   .split('-')
