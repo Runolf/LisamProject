@@ -17,7 +17,7 @@ const ProjectEdit: FunctionComponent<RouteComponentProps<Params>> = ({match}) =>
         ProjectServices.getProject(+match.params.id)
         .then(project => setProject(project));
     }, [match.params.id]);
-
+    
     return (
         <div className="detail">
             {project? (
@@ -26,7 +26,7 @@ const ProjectEdit: FunctionComponent<RouteComponentProps<Params>> = ({match}) =>
                      <ProjectForm project={project} client={project.Client} isEditForm={true}></ProjectForm>
                 </div>
             ) : (
-                <h4 className="center">Aucun client à afficher !</h4>
+                <h4 className="center">Aucun projet à afficher !</h4>
              )}
         </div>
     )

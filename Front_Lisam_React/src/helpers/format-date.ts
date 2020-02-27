@@ -1,5 +1,5 @@
 const formatDate = (date:Date = new Date()): string => {
-    return date.getFullYear().toString();  
+    return `${date.getDate()}/${date.getMonth()+1}/${date.getUTCFullYear()}`;
 }
 
 export default formatDate;

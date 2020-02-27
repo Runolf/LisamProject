@@ -17,7 +17,7 @@ export const BothList: FunctionComponent = () =>{
 const goToAddClient = () => {
    history.push(`/client-add`);
 }
-
+    
     return (
         <div>
             <table className="container responsive-table centered ">

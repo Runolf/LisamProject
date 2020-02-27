@@ -5,6 +5,7 @@ import ProjectService from '../services/project-service';
 import "./detail.css";
 import { statut } from '../models/statut';
 import Client from '../models/client';
+import formatDate from '../helpers/format-date';
 
 type Params = {id: string};
 type Props = {client: Client}
@@ -17,11 +18,15 @@ const ProjectDetail: FunctionComponent<RouteComponentProps<Params> & Props> = ({
         .then(project => SetProject(project));
         }, [match.params.id]);
 
+        var date;
+        if (project !== null) {
+         date = new Date(project.SignatureDate);
+        }
         
         var st: string|null = (project == null)?null:statut[project.Statut];
         return (
             <div>
-                {project? (
+                {project? ( 
                 <table className="container responsive-table centered table-detail">
                     <thead>
                         <tr style={{color: "black"}}>
@@ -38,7 +43,7 @@ const ProjectDetail: FunctionComponent<RouteComponentProps<Params> & Props> = ({
                             {project.ProjectLeader}</td>
                         </tr>
                         <tr>
-                            <td className="grey darken-2 m2 center border">Signature date:<br/> {project.SignatureDate}</td> 
+                            <td className="grey darken-2 m2 center border">Signature date:<br/> {formatDate(date)}</td> 
                         </tr>
                         <tr>
                             <td className="grey darken-2 m2 center border">Statut:<br/> {st}</td>

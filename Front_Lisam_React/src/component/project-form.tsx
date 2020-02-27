@@ -128,7 +128,7 @@ const ProjectForm: FunctionComponent<Props> = ({project ,isEditForm}) => {
             
             <div className="form-group">
               <label htmlFor="signatureDate">signatureDate</label>
-               <input id="signatureDate" name="signatureDate" type="text" className="form-control" value={form.signatureDate.value} onChange={e => handleInputChange(e)}></input>        
+               <input id="signatureDate" name="signatureDate" type="date" className="form-control" value={form.signatureDate.value} onChange={e => handleInputChange(e)}></input>        
             </div>
             
             {/*

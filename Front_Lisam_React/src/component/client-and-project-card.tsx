@@ -6,6 +6,7 @@ import { statut } from '../models/statut';
 import { useHistory } from 'react-router-dom';
 import ClientService from '../services/client-services';
 import ProjectService from '../services/project-service';
+import formatDate from '../helpers/format-date';
 
 type Props = {
     project: Project,
@@ -35,6 +36,11 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
         
     }
 
+    var date;
+    if (project !== null) {
+     date = new Date(project.SignatureDate);
+    }
+    
     return (
         //Nom Client | Numero projet | Date Sign | Project Leader |	Statut | Detail/edit/delete
 
@@ -46,10 +52,7 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
             }
             
             <td className="grey darken-2 m2 center border">{project.ProjectNumber}</td>
-            <td className="grey darken-2 m2 center border">{project.SignatureDate.toString()
-                                                                                                                                                  .slice(0, 10)
-                                                                                                                                                  .split('-')
-                                                                                                                                                  .join("/")}</td>
+            <td className="grey darken-2 m2 center border">{formatDate(date)}</td>
             <td className="grey darken-2 m2 center border">{project?
             (project.ProjectLeader):(<p>no project</p>)
             }</td>

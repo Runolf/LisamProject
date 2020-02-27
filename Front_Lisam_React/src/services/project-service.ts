@@ -34,10 +34,6 @@ export default class ProjectService{
      } 
      
      static updateProject(project: Project): Promise<Project>{
-
-      //delete project.ProjectId;
-     // delete project.Client; 
-      //delete project.ClientId;
       
       return fetch(`http://localhost:44331/api/Projects/${project.ProjectId}`,{
       method: 'PUT',
