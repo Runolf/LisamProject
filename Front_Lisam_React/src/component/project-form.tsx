@@ -167,7 +167,7 @@ const ProjectForm: FunctionComponent<Props> = ({project ,isEditForm}) => {
                  <label htmlFor="Client">Client</label>
                   <input id="Client" name="Client" type="text" className="form-control" value={form.client.value} onChange={e => handleInputChange(e)}></input>        
                </div>
-             */}
+            */}
 
             
            

@@ -54,18 +54,29 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
 
         <tr className="" style={{color: "white"}}>
             {client?
-            <td className="grey darken-2 m2 center border">{client.Company_Name} </td>
+            <td className="grey darken-2 m2 center border">{client.Company_Name} <br/>
+             <tr  className="button-list btn blue-grey darken-3 waves-effect waves-teal z-depth-3" onClick={() => goToClient(client.ClientId)}>Detail</tr>
+             <tr  className="button-list btn blue-grey darken-2 waves-effect waves-teal" onClick={() => goToModifyClient(client.ClientId)}>Modif</tr>
+             <tr  className="button-list btn blue-grey darken-1 waves-effect waves-teal" onClick={() => deleteClient()}>Delete</tr>
+            </td>
             : 
             <td className="grey darken-2 m2 center border">No client assigned to this project</td>
             }
             
-            <td className="grey darken-2 m2 center border">{project.ProjectNumber}</td>
+            <td className="grey darken-2 m2 center border">{project.ProjectNumber}<br/>
+            <tr  className="button-list btn blue-grey darken-3" onClick={() => goToProject(project.ProjectId)}>Detail</tr>
+            <tr  className="button-list btn blue-grey darken-2" onClick={() => goToModifyProject(project.ProjectId)}>Modif</tr>
+            <tr  className="button-list btn blue-grey darken-1" onClick={() => deleteProject()}>Delete</tr>
+            
+            </td>
             <td className="grey darken-2 m2 center border">{formatDate(date)}</td>
             <td className="grey darken-2 m2 center border">{project?
             (project.ProjectLeader):(<p>no project</p>)
             }</td>
             <td className="grey darken-2 m2 center border">{st}</td>
-            <td className="m2 td-button-list">
+           
+           
+            {/* <td className="m2 td-button-list">
 
                 {project?
                 <tr  className="button-list btn green darken-4" onClick={() => goToProject(project.ProjectId)}>Detail project</tr>
@@ -79,9 +90,9 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
                 <tr  className="button-list btn grey darken-4">Detail client</tr>
                 }
                 
-            </td>
+            </td> */}
 
-            <td className="m2 td-button-list">
+            {/* <td className="m2 td-button-list">
 
                 {project?
                 <tr  className="button-list btn blue darken-4" onClick={() => goToModifyProject(project.ProjectId)}>Modif project</tr>
@@ -95,11 +106,11 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
                 <tr  className="button-list btn grey darken-4">modifs client</tr>
                 }
 
-            </td>
+            </td> */}
 
             
 
-            <td className="m2 td-button-list">
+            {/* <td className="m2 td-button-list">
 
             {project?
                 <tr  className="button-list btn red darken-4" onClick={() => deleteProject()}>Delete project</tr>
@@ -113,7 +124,7 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
                 <tr  className="button-list btn grey darken-4">Delete client</tr>
                 }
                
-            </td>
+            </td> */}
 
         </tr>
 
