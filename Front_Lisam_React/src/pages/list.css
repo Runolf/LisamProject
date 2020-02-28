@@ -41,6 +41,8 @@ td{
     font-size: 8px;
     font-weight: 100;
     letter-spacing: 0.01px;
+    top: 10px;
+    position: relative;
 }
 
 .td-button-list{

@@ -36,6 +36,14 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
         
     }
 
+    const goToModifyProject = (id: number) => {
+        history.push(`/project-edit/${id}`);    
+    }
+
+    const goToModifyClient = (id: number) => {
+        history.push(`/client-edit/${id}`);    
+    }
+
     var date;
     if (project !== null) {
      date = new Date(project.SignatureDate);
@@ -72,6 +80,25 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
                 }
                 
             </td>
+
+            <td className="m2 td-button-list">
+
+                {project?
+                <tr  className="button-list btn blue darken-4" onClick={() => goToModifyProject(project.ProjectId)}>Modif project</tr>
+                :
+                <tr  className="button-list btn grey darken-4">modif project</tr>
+                }
+
+                {client?
+                <tr  className="button-list btn blue darken-4" onClick={() => goToModifyClient(client.ClientId)}>Modif client</tr>
+                :
+                <tr  className="button-list btn grey darken-4">modifs client</tr>
+                }
+
+            </td>
+
+            
+
             <td className="m2 td-button-list">
 
             {project?

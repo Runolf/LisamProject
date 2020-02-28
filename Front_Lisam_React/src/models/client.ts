@@ -21,7 +21,7 @@ export default class Client{
         street: string = "no value",
         zipCode: string = "no value",
         City: string = "no value",
-        email: string = "no value",
+        email: string = "xxx@xxx.xxx",
         language: string = "no value",
         number: string = "no value",
         //Projects: Project[] = new Project[0]()

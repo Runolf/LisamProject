@@ -23,7 +23,7 @@ const ProjectDetail: FunctionComponent<RouteComponentProps<Params> & Props> = ({
          date = new Date(project.SignatureDate);
         }
         
-        var st: string|null = (project == null)?null:statut[project.Statut];
+        var st: string|null = (project === null)?null:statut[project.Statut];
         return (
             <div>
                 {project? ( 
@@ -48,7 +48,7 @@ const ProjectDetail: FunctionComponent<RouteComponentProps<Params> & Props> = ({
                         <tr>
                             <td className="grey darken-2 m2 center border">Statut:<br/> {st}</td>
                         </tr>
-                        {client?
+                        { /* client?
                         <tr>
                         <td className="grey darken-2 m2 center border">Client:<br/> {client.Company_Name}</td>
                         </tr>
@@ -56,7 +56,7 @@ const ProjectDetail: FunctionComponent<RouteComponentProps<Params> & Props> = ({
                         <tr>
                             <td className="grey darken-2 m2 center border">Pas de client</td>
                         </tr>
-                        }
+                        */ }
                         
                     </tbody>
                     
