@@ -18,6 +18,7 @@ namespace API_Lisam.Controllers
     [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     public class ProjectsController : ApiController
     {
+        private ClientController ClientControl = new ClientController();
         private LisamContext Context = new LisamContext();
 
         /*
@@ -31,10 +32,23 @@ namespace API_Lisam.Controllers
                 .Where(P => P.ProjectId > 0).ToList();
             return Projects;
         }
-        public Project Get(int id)
-        {
-            Project P = Context.Projects.Find(id);
-            return P; 
+        public Project Get(int id){
+           
+           Project Test = Context.Projects.Find(id);
+
+            Type type = Test.GetType();
+                
+           if (Test == null) {
+             throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+
+            Project P = Context.Projects
+                   .Include(p => p.Client)
+                   .Where(p => p.ProjectId == id)
+                   .First();
+
+          return P;
+            
         }
 
         public HttpResponseMessage Post([FromBody]Project P)
@@ -43,6 +57,10 @@ namespace API_Lisam.Controllers
             {
                 //P.SignatureDate = new DateTime();
                 Context.Projects.Add(P);
+
+                //P.Client = ClientControl.Get(C.ClientId);
+                
+               
                 Context.SaveChanges();
 
                 var message = Request.CreateResponse(HttpStatusCode.Created, P);
@@ -75,6 +93,12 @@ namespace API_Lisam.Controllers
 
                 project.Statut = (Modif.Statut != null) ?
                     Modif.Statut : project.Statut;
+
+                project.ClientId = (Modif.ClientId != null) ?
+                    Modif.ClientId : project.ClientId;
+
+                project.Client = (Modif.Client != null)? 
+                    Modif.Client: project.Client;
 
                 Context.SaveChanges();
 

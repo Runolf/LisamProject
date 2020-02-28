@@ -48,15 +48,15 @@ const ProjectDetail: FunctionComponent<RouteComponentProps<Params> & Props> = ({
                         <tr>
                             <td className="grey darken-2 m2 center border">Statut:<br/> {st}</td>
                         </tr>
-                        { /* client?
+                        { project.Client?
                         <tr>
-                        <td className="grey darken-2 m2 center border">Client:<br/> {client.Company_Name}</td>
+                        <td className="grey darken-2 m2 center border">Client:<br/> {project.Client.Company_Name}</td>
                         </tr>
                         :
                         <tr>
                             <td className="grey darken-2 m2 center border">Pas de client</td>
                         </tr>
-                        */ }
+                         }
                         
                     </tbody>
                     

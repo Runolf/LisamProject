@@ -31,8 +31,8 @@ const ClientCard: FunctionComponent<Props> = ({client, borderColor = "#555555"})
 
     return (
         <tr className="" style={{color: "white"}} onClick={() => goToClient(client.ClientId)}>
+            <td className="grey darken-2 m2 center border">{client.ClientId}</td>
             <td className="grey darken-2 m2 center border">{client.Company_Name}</td>
-            <td className="grey darken-2 m2 center border">{client.Language}</td>
         </tr>
    
     )

@@ -12,9 +12,6 @@ namespace API_Lisam.Controllers
     [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     public class ClientController : ApiController
     {
-        
-        private ProjectsController PController = new ProjectsController();
-        private Project P = new Project();
         private LisamContext Context = new LisamContext();
 
         

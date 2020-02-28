@@ -13,8 +13,8 @@ const List: FunctionComponent = () => {
             <table className="container responsive-table centered ">
                     <thead>
                         <tr style={{color: "black"}}>
+                            <th>Identifiant</th> 
                             <th>Client Name</th>
-                            <th>Language</th> 
                         </tr>
                      </thead>
                      <tbody className="row grid">
