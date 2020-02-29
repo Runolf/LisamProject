@@ -17,17 +17,17 @@ export const BothList: FunctionComponent = () =>{
 const goToAddClient = () => {
    history.push(`/client-add`);
 }
-    
+
     return (
         <div>
             <table className="container responsive-table centered ">
                     <thead>
                         <tr style={{color: "black"}}>
                             <th>Client Name
-                            <td  className="button-both btn blue-grey darken-1" onClick={() => goToAddClient()}>Add client</td>
+                            <td  className="button-both btn blue-grey darken-1 waves-effect waves-teal z-depth-3" onClick={() => goToAddClient()}>Add client</td>
                             </th>
                             <th>Project number
-                            <td  className="button-both btn blue-grey darken-1" onClick={() => goToAddProject()}>Add project</td>
+                            <td  className="button-both btn blue-grey darken-1 waves-effect waves-teal z-depth-3" onClick={() => goToAddProject()}>Add project</td>
                             </th>
                             <th>Date signature</th>
                             <th>Project leader</th>
@@ -35,12 +35,11 @@ const goToAddClient = () => {
                         </tr>
                      </thead>
                      <tbody className="row grid">
-                        { 
+                        {
                             projects.map((P) => <CandP key={P.ProjectId} project={P} client={P.Client}/>)
-                        } 
+                        }
                     </tbody>
             </table>
         </div>
     );
-} 
-
+}

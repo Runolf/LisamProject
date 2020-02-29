@@ -1,7 +1,7 @@
 import Client from '../models/client';
 
-export default class ClientService{ 
-  
+export default class ClientService{
+
     static getClients(): Promise<Client[]> {
         return fetch('http://localhost:44331/api/Client')
           .then(response => response.json())
@@ -17,17 +17,17 @@ export default class ClientService{
 
     static addClient(client: Client): Promise<Client>{
 
-       delete client.ClientId;
+       //delete client.ClientId;
       // delete client.Projects;
-       
+
         return fetch(`http://localhost:44331/api/Client`,{
         method: 'POST',
         body: JSON.stringify(client),
-        headers: {'Content-Type': 'application/json'} 
+        headers: {'Content-Type': 'application/json'}
       })
         .then(response => response.json())
         .catch(error => this.handleError(error));
-    } 
+    }
 
 
     static updateClient(client: Client): Promise<Client>{
@@ -35,18 +35,18 @@ export default class ClientService{
       return fetch(`http://localhost:44331/api/Client/${client.ClientId}`,{
       method: 'PUT',
       body: JSON.stringify(client),
-      headers: {'Content-Type': 'application/json'} 
+      headers: {'Content-Type': 'application/json'}
     })
       .then(response => response.json())
       .catch(error => this.handleError(error));
-  } 
+  }
 
 
     static deleteClient(client: Client): Promise<{}>{
 
     return fetch(`http://localhost:44331/api/Client/${client.ClientId}`,{
     method: 'DELETE',
-    headers: {'Content-Type': 'application/json'} 
+    headers: {'Content-Type': 'application/json'}
   })
     .then(response => response.json())
     .catch(error => this.handleError(error));
@@ -57,7 +57,7 @@ export default class ClientService{
     static isEmpty(data: Object): boolean {
         return Object.keys(data).length === 0;
       }
-    
+
     static handleError(error: Error): void {
         console.error(error);
       }

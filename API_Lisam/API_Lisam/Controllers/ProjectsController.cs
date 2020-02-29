@@ -31,7 +31,7 @@ namespace API_Lisam.Controllers
                 .Include(p => p.Client)
                 .Where(P => P.ProjectId > 0).ToList();
             return Projects;
-        }
+        }   
         public Project Get(int id){
            
            Project Test = Context.Projects.Find(id);

@@ -9,7 +9,7 @@ export default class ProjectService{
           //return res;
       }
 
-      
+
       static getProject(id: number): Promise<Project|null> {
         return fetch(`http://localhost:44331/api/Projects/${id}`)
           .then(response => response.json())
@@ -20,35 +20,32 @@ export default class ProjectService{
       static addProject(project: Project): Promise<Project>{
 
         delete project.ProjectId;
-        delete project.Client; 
-        delete project.ClientId;
 
- 
          return fetch(`http://localhost:44331/api/Projects`,{
          method: 'POST',
          body: JSON.stringify(project),
-         headers: {'Content-Type': 'application/json'} 
+         headers: {'Content-Type': 'application/json'}
        })
          .then(response => response.json())
          .catch(error => this.handleError(error));
-     } 
-     
+     }
+
      static updateProject(project: Project): Promise<Project>{
-      
+
       return fetch(`http://localhost:44331/api/Projects/${project.ProjectId}`,{
       method: 'PUT',
       body: JSON.stringify(project),
-      headers: {'Content-Type': 'application/json'} 
+      headers: {'Content-Type': 'application/json'}
     })
       .then(response => response.json())
       .catch(error => this.handleError(error));
-  } 
+  }
 
   static deleteProject(project: Project): Promise<{}>{
 
     return fetch(`http://localhost:44331/api/Projects/${project.ProjectId}`,{
     method: 'DELETE',
-    headers: {'Content-Type': 'application/json'} 
+    headers: {'Content-Type': 'application/json'}
   })
     .then(response => response.json())
     .catch(error => this.handleError(error));

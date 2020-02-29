@@ -14,8 +14,8 @@ type Props = {
 }
 
 type Field = {
-    value?: any, 
-    error?:string, 
+    value?: any,
+    error?:string,
     isValid?: boolean
   }
 
@@ -26,15 +26,15 @@ type Form = {
     signatureDate: Field,
     clientId: Field
     /*
-     Champ pour ajouter le client -> faire une methode pour l'assigner. 
+     Champ pour ajouter le client -> faire une methode pour l'assigner.
      Idée: faire aussi un bouton pour accéder au formulaire de création de client
      */
 }
 
 const ProjectForm: FunctionComponent<Props> = ({project, client ,isEditForm}) => {
-   
+
     // GetIdClientByName and options
-        //var Clients = useClients(); 
+        //var Clients = useClients();
     // const getIdClientByName =  (name: string) => {
     //     var result;
     //  if(Clients !== null){
@@ -42,7 +42,7 @@ const ProjectForm: FunctionComponent<Props> = ({project, client ,isEditForm}) =>
     //  }else{
     //      result = undefined
     //     }
-    
+
     //  var dude = result.shift();
     //  if(dude.ClientId !== undefined)
     //  return dude.ClientId;
@@ -55,8 +55,8 @@ const ProjectForm: FunctionComponent<Props> = ({project, client ,isEditForm}) =>
     //     { value: statut.Signed ,label: 'Signed' } ,
     //     { value: statut.Work_in_progress ,label: 'Work in progress' }
     //   ];
-   
-    
+
+
     const [form, setForm] = useState<Form>({
         projectLeader: {value: project.ProjectLeader},
         projectNumber: {value: project.ProjectNumber},
@@ -87,7 +87,7 @@ const ProjectForm: FunctionComponent<Props> = ({project, client ,isEditForm}) =>
         project.SignatureDate = form.signatureDate.value;
         project.Statut = form.statut.value;
         project.ClientId = form.clientId.value;
-        
+
         isEditForm?updateProject():addProject();
     }
 
@@ -95,31 +95,31 @@ const ProjectForm: FunctionComponent<Props> = ({project, client ,isEditForm}) =>
 
         const fieldName: string = e.target.name;
         const fieldValue: string = e.target.value;
-        
+
         const newField: Field = {[fieldName] : {value: fieldValue}};
         setForm({...form, ...newField});
     }
 
        //handleSelectChange
-        // const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    //     const fieldName: string = e.target.name;
-    //     const fieldValue: string = e.target.value;
-        
-    //     const newField: Field = {[fieldName] : {value: fieldValue}};
-    //     setForm({...form, ...newField});
-    // }
-    
-    
+         const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+         const fieldName: string = e.target.name;
+         const fieldValue: string = e.target.value;
+
+         const newField: Field = {[fieldName] : {value: fieldValue}};
+         setForm({...form, ...newField});
+    }
+
+
 
     return(
         <form className="container" onSubmit={e => handleSubmit(e)}>
-            
+
             <div>
                 <div> {/*is editForm */}
                         {isEditForm? (
                             <div>
                                 <h3>Edit</h3>
-                                
+
                             </div>
                         ):(
                             <div>
@@ -129,7 +129,7 @@ const ProjectForm: FunctionComponent<Props> = ({project, client ,isEditForm}) =>
                 </div>
 
             </div>
-           
+
             {
             /* <div className="form-group">
               <label> choisissez le statut
@@ -137,37 +137,37 @@ const ProjectForm: FunctionComponent<Props> = ({project, client ,isEditForm}) =>
               </label>
             </div> */
             }
-                                
+
             <div className="form-group">
               <label htmlFor="projectNumber">projectNumber</label>
-               <input id="projectNumber" name="projectNumber" type="text" className="form-control" value={form.projectNumber.value} onChange={e => handleInputChange(e)}></input>        
+               <input id="projectNumber" name="projectNumber" type="text" className="form-control" value={form.projectNumber.value} onChange={e => handleInputChange(e)}></input>
             </div>
 
             <div className="form-group">
               <label htmlFor="projectLeader">projectLeader</label>
-               <input id="projectLeader" name="projectLeader" type="text" className="form-control" value={form.projectLeader.value} onChange={e => handleInputChange(e)}></input>        
+               <input id="projectLeader" name="projectLeader" type="text" className="form-control" value={form.projectLeader.value} onChange={e => handleInputChange(e)}></input>
             </div>
 
-            
+
             <div className="form-group">
               <label htmlFor="statut">statut: 1 open | 2 signed | 3 factured | 4 work in progress | 5 closed</label>
-               <input id="statut" name="statut" type="text" className="form-control" value={form.statut.value} onChange={e => handleInputChange(e)}></input>        
+               <input id="statut" name="statut" type="text" className="form-control" value={form.statut.value} onChange={e => handleInputChange(e)}></input>
             </div>
 
 
             <div className="form-group">
               <label htmlFor="signatureDate">signatureDate</label>
-               <input id="signatureDate" name="signatureDate" type="date" className="form-control" value={form.signatureDate.value} onChange={e => handleInputChange(e)}></input>        
+               <input id="signatureDate" name="signatureDate" type="date" className="form-control" value={form.signatureDate.value} onChange={e => handleInputChange(e)}></input>
             </div>
-            
-           
 
-               
+
+
+
               <div className="form-group">
                  <label htmlFor="Client">Client</label>
-                  <input id="Client" name="Client" type="number" className="form-control" onChange={e => handleInputChange(e)}></input>        
+                  <input id="Client" name="Client" type="text" className="form-control" onChange={e => handleInputChange(e)}></input>
                </div>
-           
+
             <button type="submit" className="btn grey darken-3 waves-effect waves-black">Valider</button>
             <span className="btn-floating right waves-effect waves-light">
                <i className="material-icons" onClick={deleteProject}>delete</i>
