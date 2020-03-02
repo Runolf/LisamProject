@@ -12,7 +12,6 @@ import ProjectAdd from './pages/project-add';
 import ProjectEdit from './pages/project-edit';
 import './app.css';
 
-  
 const App: FunctionComponent = () => {
 
  return (
@@ -54,6 +53,7 @@ const App: FunctionComponent = () => {
         <Route exact path="/project/" component={pageNotFound}/> 
 
         <Route component={pageNotFound}/>
+        
       </Switch>
     </div>
   </Router>

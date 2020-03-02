@@ -49,7 +49,13 @@ const ClientDetail: FunctionComponent<RouteComponentProps<Params>> = ({match}) =
                 </table>
 
                 ):(
-                    <h5>Pas de client trouvé</h5>
+                    <div className="center object-notfound">
+                        <h5>Pas de client trouvé</h5>
+                        <Link to="/" className="waves-effect waves-teal btn-flat">
+                           Home
+                       </Link>
+                    </div>
+                    
                 )
             }
         </div>

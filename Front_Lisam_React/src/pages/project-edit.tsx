@@ -22,7 +22,6 @@ const ProjectEdit: FunctionComponent<RouteComponentProps<Params>> = ({match}) =>
         <div className="detail">
             {project? (
                     <div className="row">
-                     <h2 className="header center">Éditer { project.ProjectNumber }</h2>
                      <ProjectForm project={project} client={project.Client} isEditForm={true}></ProjectForm>
                 </div>
             ) : (

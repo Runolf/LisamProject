@@ -32,22 +32,23 @@ namespace API_Lisam.Controllers
                 .Where(P => P.ProjectId > 0).ToList();
             return Projects;
         }   
-        public Project Get(int id){
+        public IHttpActionResult Get(int id){
            
-           Project Test = Context.Projects.Find(id);
+           Project P = Context.Projects.Find(id);
+           
 
-            if (Test != null)
+            if (P != null && P.SignatureDate != null)
             {
-                Project P = Context.Projects
+                P = Context.Projects
                   .Include(p => p.Client)
                   .Where(p => p.ProjectId == id)
                   .First();
 
-                return P;
+                return Ok(P);
             }
             else
             {
-                return null;
+                return NotFound();
             }
 
            
@@ -99,9 +100,6 @@ namespace API_Lisam.Controllers
 
                 project.ClientId = (Modif.ClientId != null) ?
                     Modif.ClientId : project.ClientId;
-
-                project.Client = (Modif.Client != null)? 
-                    Modif.Client: project.Client;
 
                 Context.SaveChanges();
 

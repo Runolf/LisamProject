@@ -1,8 +1,7 @@
 import React, { FunctionComponent, useState } from 'react';
 import Project from '../models/project';
-import{useHistory} from 'react-router-dom';
+import{useHistory, Link} from 'react-router-dom';
 import ProjectService from '../services/project-service';
-//import { useClients } from '../hooks/clients-hook';
 import Client from '../models/client';
 // import Select from 'react-select';
 // import { statut } from '../models/statut';
@@ -21,7 +20,7 @@ type Field = {
 
 type Form = {
     projectNumber: Field,
-    projectLeader: Field,
+    projectLeader: Field,   
     statut: Field,
     signatureDate: Field,
     clientId: Field
@@ -31,22 +30,7 @@ type Form = {
      */
 }
 
-const ProjectForm: FunctionComponent<Props> = ({project, client ,isEditForm}) => {
-
-    // GetIdClientByName and options
-        //var Clients = useClients();
-    // const getIdClientByName =  (name: string) => {
-    //     var result;
-    //  if(Clients !== null){
-    //    result = Clients.filter(client => client.Company_Name === name);
-    //  }else{
-    //      result = undefined
-    //     }
-
-    //  var dude = result.shift();
-    //  if(dude.ClientId !== undefined)
-    //  return dude.ClientId;
-    // }
+const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
 
     // const options = [
     //     { value: statut.Closed, label: 'Closed' },
@@ -61,8 +45,8 @@ const ProjectForm: FunctionComponent<Props> = ({project, client ,isEditForm}) =>
         projectLeader: {value: project.ProjectLeader},
         projectNumber: {value: project.ProjectNumber},
         signatureDate: {value: project.SignatureDate},
-        statut: {value: project.Statut},
-       clientId : {value: (project.ClientId) }
+        statut:        {value: project.Statut},
+        clientId :     {value: project.ClientId }
     });
     const history = useHistory();
 
@@ -94,36 +78,35 @@ const ProjectForm: FunctionComponent<Props> = ({project, client ,isEditForm}) =>
     const handleInputChange = (e : React.ChangeEvent<HTMLInputElement>) => {
 
         const fieldName: string = e.target.name;
-        const fieldValue: string = e.target.value;
+        const fieldValue: string|number = e.target.value;
 
         const newField: Field = {[fieldName] : {value: fieldValue}};
         setForm({...form, ...newField});
     }
 
-       //handleSelectChange
-         const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-         const fieldName: string = e.target.name;
-         const fieldValue: string = e.target.value;
+    // const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    //      const fieldName: string = e.target.name;
+    //      const fieldValue: string = e.target.value;
 
-         const newField: Field = {[fieldName] : {value: fieldValue}};
-         setForm({...form, ...newField});
-    }
+    //      const newField: Field = {[fieldName] : {value: fieldValue}};
+    //      setForm({...form, ...newField});
+    // }
 
 
 
     return(
         <form className="container" onSubmit={e => handleSubmit(e)}>
 
-            <div>
-                <div> {/*is editForm */}
+            <div>{/*is editForm */}
+                <div> 
                         {isEditForm? (
                             <div>
-                                <h3>Edit</h3>
+                                <h3 className="center" style={{color: 'black'}}>Edit {project.ProjectNumber}</h3>
 
                             </div>
                         ):(
                             <div>
-                                <h3>Adding</h3>
+                                <h3 className="center" style={{color: 'black'}}>Add product</h3>
                             </div>
                         )}
                 </div>
@@ -164,8 +147,9 @@ const ProjectForm: FunctionComponent<Props> = ({project, client ,isEditForm}) =>
 
 
               <div className="form-group">
-                 <label htmlFor="Client">Client</label>
-                  <input id="Client" name="Client" type="text" className="form-control" onChange={e => handleInputChange(e)}></input>
+                 <label htmlFor="Client">Client</label> <br/>
+                 <Link to="/client" target="_blank">Liste des clients par identifiant</Link>
+                  <input id="Client" name="clientId" value={form.clientId.value } type="number" className="form-control" onChange={e => handleInputChange(e)}></input>
                </div>
 
             <button type="submit" className="btn grey darken-3 waves-effect waves-black">Valider</button>

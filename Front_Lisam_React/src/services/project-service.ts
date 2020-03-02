@@ -20,6 +20,7 @@ export default class ProjectService{
       static addProject(project: Project): Promise<Project>{
 
         delete project.ProjectId;
+        delete project.Client;
 
          return fetch(`http://localhost:44331/api/Projects`,{
          method: 'POST',
@@ -31,7 +32,7 @@ export default class ProjectService{
      }
 
      static updateProject(project: Project): Promise<Project>{
-
+      
       return fetch(`http://localhost:44331/api/Projects/${project.ProjectId}`,{
       method: 'PUT',
       body: JSON.stringify(project),
@@ -39,6 +40,7 @@ export default class ProjectService{
     })
       .then(response => response.json())
       .catch(error => this.handleError(error));
+     
   }
 
   static deleteProject(project: Project): Promise<{}>{
