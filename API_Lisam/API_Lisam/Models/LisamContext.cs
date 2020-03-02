@@ -11,9 +11,9 @@ namespace API_Lisam.Models
         // to contact the API = http://localhost:44331/
         public DbSet<Client>Clients { get; set; }
         public DbSet<Project>Projects { get; set; }
-        //public LisamContext() : base("name=DefaultConnection") { }
+        public LisamContext() : base("name=DefaultConnection") { }
         //public LisamContext() : base("name=House") { }
-        public LisamContext() : base("name=HouseFix") { }
+        //public LisamContext() : base("name=HouseFix") { }
 
         /*
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -1,4 +1,4 @@
-import React, {FunctionComponent, } from 'react';
+import React, {FunctionComponent} from 'react';
 import CandP from '../component/client-and-project-card';
 import './list.css';
 import { useProjects } from '../hooks/projects-hook';

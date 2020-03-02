@@ -10,7 +10,7 @@ import ClientAdd from './pages/client-add';
 import ProjectDetail from './pages/project-detail';
 import ProjectAdd from './pages/project-add';
 import ProjectEdit from './pages/project-edit';
-//import Client from './models/client';
+import './app.css';
 
   
 const App: FunctionComponent = () => {
@@ -19,12 +19,12 @@ const App: FunctionComponent = () => {
   <Router>
     <div>
       {/*Barre de navigation commune à toutes les pages*/}
-      <nav>
+      <nav className="navvv">
         <div className="nav-wrapper">
-          <Link to="/" className="brand-logo left">Lisam</Link>
-            <div id = "nav-mobile" className="grey darken-4 center">
-              <Link to="/project" className="nav-link">Project-List</Link>
-              <Link to="/client" className="nav-link">Client-list</Link>
+          <Link to="/" className="brand-logo left lisam">Lisam</Link>
+            <div id = "nav-mobile" className="grey darken-4 center ul-nav">
+             <Link to="/project" className="nav-link a">Project-List</Link>
+             <Link to="/client" className="nav-link a">Client-list</Link>
             </div>
         </div>
         
@@ -32,6 +32,7 @@ const App: FunctionComponent = () => {
       {/*Gestionnaire des routes*/}
       <Switch>
         <Route exact path="/" component={BothList}/>
+        
         <Route exact path="/project" component={ProjectList}/>
         <Route exact path="/client" component={ClientList}/>
 
@@ -44,19 +45,13 @@ const App: FunctionComponent = () => {
         <Route exact path="/project-edit/:id" component={ProjectEdit}/>
 
         <Route exact path="/client/:id" component={ClientDetail}/>
-        <Route exact path="/project/:id" component={ProjectDetail}/>
-        
-           {
-             /*
-            <Route exact path="/projectWclient/:id" component={ProjectDetail}
-            render = {(props) => (<ProjectDetail {...props}  client={}/> ) }/> 
-            
-            
-            // https://tylermcginnis.com/react-router-pass-props-to-components/
-            // https://learnwithparam.com/blog/how-to-pass-props-in-react-router/ */
-           }
-
+        <Route exact path="/project/:id" component={ProjectDetail}/> 
+          
+        <Route exact path="/project-edit/" component={pageNotFound}/>
         <Route exact path="/client-edit/" component={pageNotFound}/>
+
+        <Route exact path="/client/" component={pageNotFound}/>
+        <Route exact path="/project/" component={pageNotFound}/> 
 
         <Route component={pageNotFound}/>
       </Switch>

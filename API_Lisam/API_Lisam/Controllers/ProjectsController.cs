@@ -36,18 +36,21 @@ namespace API_Lisam.Controllers
            
            Project Test = Context.Projects.Find(id);
 
-            Type type = Test.GetType();
-                
-           if (Test == null) {
-             throw new HttpResponseException(HttpStatusCode.NotFound);
+            if (Test != null)
+            {
+                Project P = Context.Projects
+                  .Include(p => p.Client)
+                  .Where(p => p.ProjectId == id)
+                  .First();
+
+                return P;
+            }
+            else
+            {
+                return null;
             }
 
-            Project P = Context.Projects
-                   .Include(p => p.Client)
-                   .Where(p => p.ProjectId == id)
-                   .First();
-
-          return P;
+           
             
         }
 

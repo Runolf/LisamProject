@@ -1,0 +1,14 @@
+.ul-nav{
+    list-style-type: none; 
+}
+
+.a{
+    margin-right: 20px;
+}
+.lisam{
+    position: relative;
+    left: 50px;
+    
+  /* margin-left: 50px; */
+}
+
