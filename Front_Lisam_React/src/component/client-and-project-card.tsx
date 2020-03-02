@@ -125,7 +125,7 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
                 }
 
             </td> */}
-
+        
         </tr>
 
     )

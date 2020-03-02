@@ -98,7 +98,8 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
                 </div>
 
             </div>
-
+            
+           
             <div className="form-group">
                     <label htmlFor="companyName">Company name</label>
                     <input id="companyName" name="companyName" type="text" className="form-control" value={form.companyName.value} onChange={e => handleInputChange(e)}></input>        

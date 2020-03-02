@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "The front-end project for the lisam's app!",
   "dependencies": {
+    "@types/jquery": "^3.3.33",
     "@types/node": "12.11.1",
     "@types/react": "16.9.9",
     "@types/react-dom": "16.9.2",

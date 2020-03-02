@@ -41,6 +41,11 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
     //   ];
 
 
+    
+
+
+    
+
     const [form, setForm] = useState<Form>({
         projectLeader: {value: project.ProjectLeader},
         projectNumber: {value: project.ProjectNumber},
@@ -121,13 +126,25 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
             </div> */
             }
 
+        <div className="form-group">
+            <div className="input-field col s12">
+                <label htmlFor="select">StatutSelect</label>
+                <select id="select" className="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+         </div>
+            <br/><br/>
             <div className="form-group">
-              <label htmlFor="projectNumber">projectNumber</label>
+              <label htmlFor="projectNumber">project Number</label>
                <input id="projectNumber" name="projectNumber" type="text" className="form-control" value={form.projectNumber.value} onChange={e => handleInputChange(e)}></input>
             </div>
 
             <div className="form-group">
-              <label htmlFor="projectLeader">projectLeader</label>
+              <label htmlFor="projectLeader">project Leader</label>
                <input id="projectLeader" name="projectLeader" type="text" className="form-control" value={form.projectLeader.value} onChange={e => handleInputChange(e)}></input>
             </div>
 
@@ -137,22 +154,23 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
                <input id="statut" name="statut" type="text" className="form-control" value={form.statut.value} onChange={e => handleInputChange(e)}></input>
             </div>
 
+            
 
             <div className="form-group">
-              <label htmlFor="signatureDate">signatureDate</label>
+              <label htmlFor="signatureDate">signature Date</label>
                <input id="signatureDate" name="signatureDate" type="date" className="form-control" value={form.signatureDate.value} onChange={e => handleInputChange(e)}></input>
             </div>
 
 
-
-
               <div className="form-group">
                  <label htmlFor="Client">Client</label> <br/>
-                 <Link to="/client" target="_blank">Liste des clients par identifiant</Link>
+                 <Link to="/client" target="_blank">List of clients by identifiant</Link>
                   <input id="Client" name="clientId" value={form.clientId.value } type="number" className="form-control" onChange={e => handleInputChange(e)}></input>
                </div>
 
-            <button type="submit" className="btn grey darken-3 waves-effect waves-black">Valider</button>
+             
+
+            <button type="submit" className="btn grey darken-3 waves-effect waves-black">Submit</button>
             <span className="btn-floating right waves-effect waves-light">
                <i className="material-icons" onClick={deleteProject}>delete</i>
             </span>
