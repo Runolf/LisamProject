@@ -1,7 +1,6 @@
 import React, {FunctionComponent} from 'react';
 import Client from '../models/client';
 import  './card.css';
-import { useHistory } from 'react-router-dom';
 
 
 type Props = {
@@ -11,26 +10,10 @@ type Props = {
 
 
 
-const ClientCard: FunctionComponent<Props> = ({client, borderColor = "#555555"}) => {
-
-    //const [color, setColor] = useState<string>();
-    const history = useHistory();
-    
-
-    const goToClient = (id:number) => {
-        history.push(`/Client/${id}`);
-     }
-    
-    //  const showBorderColor = () => {
-    //     setColor(borderColor);
-    //   };
-  
-    //   const HideBorderColor = () => {
-    //     setColor("#f5f5f5");
-    //   };
+const ClientCard: FunctionComponent<Props> = ({client}) => {
 
     return (
-        <tr className="" style={{color: "white"}} onClick={() => goToClient(client.ClientId)}>
+        <tr className="" style={{color: "white"}}>
             <td className="grey darken-2 m2 center border">{client.ClientId}</td>
             <td className="grey darken-2 m2 center border">{client.Company_Name}</td>
         </tr>

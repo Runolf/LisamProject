@@ -2,6 +2,7 @@ import React, { FunctionComponent, useState } from 'react';
 import Client from '../models/client';
 import{useHistory} from 'react-router-dom';
 import ClientService from '../services/client-services';
+import { useClients } from '../hooks/clients-hook';
 
 type Props = {
     client: Client,
@@ -37,7 +38,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
         zipCode: {value: client.ZipCode}
     });
     const history = useHistory();
-
+    const Clients = useClients();
     const updateClient = () => {
         ClientService.updateClient(client)
         .then(() => history.push(`/client/${client.ClientId}`));
@@ -68,8 +69,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
 
            isEditForm?updateClient():addClient();
         }
-        
-        
+      
     }
 
     const handleInputChange = (e : React.ChangeEvent<HTMLInputElement>) => {
@@ -83,24 +83,48 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
 
     const validateForm = () => {
       
-       let newForm: Form = form;
-       const validEmail: RegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/ ;
+        let newForm: Form = form;
+        const validEmail: RegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/ ;
         const noValueEmail: RegExp = /^[x]{1,}@[x]{1,}.[x]{1,}$/ ;
-       //MAIL VALIDATOR
+        
+        //MAIL VALIDATOR
        if(!validEmail.test(form.email.value) || noValueEmail.test(form.email.value)){
            const errorMsg:string = "enter a valid mail";
            const newField: Field = {value: form.email.value, error: errorMsg, isValid: false};
            newForm = {...newForm, ...{email: newField}};
-       }else{
+       }
+       else{
         const newField: Field = {value: form.email.value, isValid: true};
         newForm = {...newForm, ...{email: newField}};
        }
 
+       // CLIENT_NAME 
+       
+        const CName = Clients.map(C => C.Company_Name);
+       
+        var name:string  =  form.companyName.value;
+        var nameExist:boolean = false;
+        for(let test of CName){
+                if((name.toUpperCase() === test.toUpperCase())){
+                    nameExist = true;
+                    break;
+                }
+            }
+
+            if(nameExist === true){
+                const errorMsg:string = "that name exists";
+                const newField: Field = {value: form.companyName.value, error: errorMsg, isValid: false};
+                newForm = {...newForm, ...{companyName: newField}};
+            }
+            else{
+                const newField: Field = {value: form.companyName.value, isValid: true};
+                newForm = {...newForm, ...{companyName: newField}};
+            }
 
 
        setForm(newForm);
 
-       return (newForm.email.isValid === true)?true:false;
+       return (newForm.email.isValid && newForm.companyName.isValid === true)?true:false;
     }
 
     return(
@@ -127,15 +151,21 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
             
            
             <div className="form-group">
-                    <label htmlFor="companyName">Company name</label>
+                    {
+                        (form.companyName.isValid === false)?
+                        <label htmlFor="companyName" style={{color: 'red'}}>Company name : {form.companyName.error}</label>: <label htmlFor="companyName" style={{color: 'blue'}}>Company name</label>
+                    }
                     <input id="companyName" name="companyName" type="text" className="form-control" value={form.companyName.value} onChange={e => handleInputChange(e)}></input>        
             </div>
             
 
             <div className="form-group">
-                    <label htmlFor="email">E-mail</label>
+                    {
+                        (form.email.isValid === false)?
+                        <label htmlFor="email" style={{color: 'red'}}>E-mail : {form.email.error}</label>: <label htmlFor="email" style={{color: 'blue'}}>E-mail</label>
+                    }
                     <input id="email" name="email" type="text" className="form-control" value={form.email.value} onChange={e => handleInputChange(e)}></input>        
-                    {form.email.isValid === false? <h4 style={{color: 'red'}}>bad mail</h4>: <h4 style={{color: 'blue'}}>OK</h4> }
+                   
             </div>
 
             <div className="form-group">
@@ -158,7 +188,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
                     <input id="street" name="street" type="text" className="form-control" value={form.street.value} onChange={e => handleInputChange(e)}></input>
             </div>
                             
-            <button type="submit" className="btn grey darken-3 waves-effect waves-black">Valider</button>
+            <button type="submit" className="btn grey darken-3 waves-effect waves-black">Submit</button>
             
         </form>
 
