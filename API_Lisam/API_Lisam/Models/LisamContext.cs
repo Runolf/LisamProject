@@ -15,18 +15,17 @@ namespace API_Lisam.Models
         //public LisamContext() : base("name=House") { }
         //public LisamContext() : base("name=HouseFix") { }
 
-        /*
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Project>()
-                .HasMany(c => c.Clients)
-                .WithRequired(p => p.Project)
-                .HasForeignKey(fk => fk.ProjectId);
-
-            base.OnModelCreating(modelBuilder);
-
-        }
         
-         */
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Project>()
+        //        .HasOptional(j => j.Client)
+        //        .WithMany()
+        //        .WillCascadeOnDelete();
+        //    base.OnModelCreating(modelBuilder);
+
+        //}
+        
+         
     }
 }

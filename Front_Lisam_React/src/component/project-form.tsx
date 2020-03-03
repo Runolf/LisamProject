@@ -57,7 +57,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
 
     const updateProject = () => {
         ProjectService.updateProject(project)
-        .then(() =>  window.location.reload());
+        .then(() => history.push(`/project/${project.ProjectId}`) /*window.location.reload()*/);
     }
 
     const addProject = () => {
@@ -126,7 +126,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
             </div> */
             }
 
-        <div className="form-group">
+        <div className="form-group" >
             <div className="input-field col s12">
                 <label htmlFor="select">StatutSelect</label>
                 <select id="select" className="form-control">

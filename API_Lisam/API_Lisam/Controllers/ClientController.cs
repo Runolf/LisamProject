@@ -24,6 +24,9 @@ namespace API_Lisam.Controllers
         public IHttpActionResult Get(int id)
         {
             Client C = Context.Clients.Find(id);
+            
+
+
             if (C != null)
             {
                 return Ok(C);
@@ -71,7 +74,7 @@ namespace API_Lisam.Controllers
                 client.Language = (Modif.Language != null)?Modif.Language:client.Language;
                 client.Email = (Modif.Email != null)?Modif.Email:client.Email;
                 client.Address = client.ZipCode + ", " + client.City + ", " + client.Street;
-
+                client.Projects = (Modif.Projects != null) ? Modif.Projects : client.Projects;
 
                 Context.SaveChanges();
 

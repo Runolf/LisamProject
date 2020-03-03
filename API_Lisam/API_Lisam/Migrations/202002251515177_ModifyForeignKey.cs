@@ -11,7 +11,7 @@
             DropIndex("dbo.Clients", new[] { "ProjectId" });
             AddColumn("dbo.Projects", "ClientId", c => c.Int());
             CreateIndex("dbo.Projects", "ClientId");
-            AddForeignKey("dbo.Projects", "ClientId", "dbo.Clients", "ClientId");
+            AddForeignKey("dbo.Projects", "ClientId", "dbo.Clients", "ClientId", cascadeDelete: true);
             DropColumn("dbo.Clients", "ProjectId");
         }
         
@@ -22,7 +22,7 @@
             DropIndex("dbo.Projects", new[] { "ClientId" });
             DropColumn("dbo.Projects", "ClientId");
             CreateIndex("dbo.Clients", "ProjectId");
-            AddForeignKey("dbo.Clients", "ProjectId", "dbo.Projects", "ProjectId");
+            AddForeignKey("dbo.Clients", "ProjectId", "dbo.Projects", "ProjectId", cascadeDelete: false);
         }
     }
 }
