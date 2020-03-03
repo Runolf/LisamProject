@@ -108,7 +108,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
          const validStatut:RegExp = /^[1-5]$/;
         //MAIL VALIDATOR
         if(!validStatut.test(form.statut.value)){
-            const errorMsg:string = "enter a valid statut, between 1 and 5";
+            const errorMsg:string = "enter a valid statut for : ";
             const newField: Field = {value: form.statut.value, error: errorMsg, isValid: false};
             newForm = {...newForm, ...{statut: newField}};
         }else{
@@ -183,9 +183,10 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
 
             {/*status*/}
             <div className="form-group">
-              <label htmlFor="statut">statut: 1 open | 2 signed | 3 factured | 4 work in progress | 5 closed</label>
+            {form.statut.isValid === false?<label htmlFor="statut"  style={{color: 'red'}}>{form.statut.error}1 open | 2 signed | 3 factured | 4 work in progress | 5 closed</label> : <label htmlFor="statut">statut: 1 open | 2 signed | 3 factured | 4 work in progress | 5 closed</label> }
+              
                <input id="statut" name="statut" type="text" className="form-control" value={form.statut.value} onChange={e => handleInputChange(e)}></input>
-        {form.statut.isValid === false? <h4 style={{color: 'red'}}>{form.statut.error}</h4>: <h4 style={{color: 'blue'}}>OK</h4> }
+        
             </div>
 
             

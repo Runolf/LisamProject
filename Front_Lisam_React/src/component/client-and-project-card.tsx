@@ -51,8 +51,6 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
     }
 
     return (
-        //Nom Client | Numero projet | Date Sign | Project Leader |	Statut | Detail/edit/delete
-
         <tr className="" style={{color: "white"}}>
             {client?
             <td className="grey darken-2 m2 center border">{client.Company_Name} <br/>

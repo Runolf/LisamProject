@@ -86,7 +86,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
         let newForm: Form = form;
         const validEmail: RegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/ ;
         const noValueEmail: RegExp = /^[x]{1,}@[x]{1,}.[x]{1,}$/ ;
-        
+        const noValue: string = "no value";
         //MAIL VALIDATOR
        if(!validEmail.test(form.email.value) || noValueEmail.test(form.email.value)){
            const errorMsg:string = "enter a valid mail";
@@ -111,8 +111,8 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
                 }
             }
 
-            if(nameExist === true){
-                const errorMsg:string = "that name exists";
+            if(nameExist === true || name === "" || name === noValue){
+                const errorMsg:string = "that name exists or is not valid";
                 const newField: Field = {value: form.companyName.value, error: errorMsg, isValid: false};
                 newForm = {...newForm, ...{companyName: newField}};
             }
@@ -153,7 +153,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
             <div className="form-group">
                     {
                         (form.companyName.isValid === false)?
-                        <label htmlFor="companyName" style={{color: 'red'}}>Company name : {form.companyName.error}</label>: <label htmlFor="companyName" style={{color: 'blue'}}>Company name</label>
+                        <label htmlFor="companyName" style={{color: 'red'}}>Company name : {form.companyName.error}</label>: <label htmlFor="companyName" >Company name</label>
                     }
                     <input id="companyName" name="companyName" type="text" className="form-control" value={form.companyName.value} onChange={e => handleInputChange(e)}></input>        
             </div>
@@ -162,7 +162,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
             <div className="form-group">
                     {
                         (form.email.isValid === false)?
-                        <label htmlFor="email" style={{color: 'red'}}>E-mail : {form.email.error}</label>: <label htmlFor="email" style={{color: 'blue'}}>E-mail</label>
+                        <label htmlFor="email" style={{color: 'red'}}>E-mail : {form.email.error}</label>: <label htmlFor="email">E-mail</label>
                     }
                     <input id="email" name="email" type="text" className="form-control" value={form.email.value} onChange={e => handleInputChange(e)}></input>        
                    
