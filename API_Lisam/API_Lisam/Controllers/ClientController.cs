@@ -21,10 +21,17 @@ namespace API_Lisam.Controllers
             return Clients;
         }
        
-        public Client Get(int id)
+        public IHttpActionResult Get(int id)
         {
             Client C = Context.Clients.Find(id);
-            return C;
+            if (C != null)
+            {
+                return Ok(C);
+            }
+            else{
+                return NotFound();
+            }
+            
         }
 
         public HttpResponseMessage Post([FromBody]Client C)
