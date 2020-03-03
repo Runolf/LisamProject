@@ -71,13 +71,18 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
     }
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
-        project.ProjectLeader = form.projectLeader.value;
-        project.ProjectNumber = form.projectNumber.value;
-        project.SignatureDate = form.signatureDate.value;
-        project.Statut = form.statut.value;
-        project.ClientId = form.clientId.value;
+        const isFormIsValid = validateForm();
+        if(isFormIsValid=== true){
 
-        isEditForm?updateProject():addProject();
+            project.ProjectLeader = form.projectLeader.value;
+            project.ProjectNumber = form.projectNumber.value;
+            project.SignatureDate = form.signatureDate.value;
+            project.Statut = form.statut.value;
+            project.ClientId = form.clientId.value;
+
+            isEditForm?updateProject():addProject();
+        }
+        
     }
 
     const handleInputChange = (e : React.ChangeEvent<HTMLInputElement>) => {
@@ -97,7 +102,26 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
     //      setForm({...form, ...newField});
     // }
 
-
+    const validateForm = () => {
+      
+        let newForm: Form = form;
+         const validStatut:RegExp = /^[1-5]$/;
+        //MAIL VALIDATOR
+        if(!validStatut.test(form.statut.value)){
+            const errorMsg:string = "enter a valid statut, between 1 and 5";
+            const newField: Field = {value: form.statut.value, error: errorMsg, isValid: false};
+            newForm = {...newForm, ...{statut: newField}};
+        }else{
+         const newField: Field = {value: form.statut.value, isValid: true};
+         newForm = {...newForm, ...{statut: newField}};
+        }
+ 
+        
+ 
+        setForm(newForm);
+ 
+        return (newForm.statut.isValid === true)?true:false;
+     }
 
     return(
         <form className="container" onSubmit={e => handleSubmit(e)}>
@@ -106,7 +130,11 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
                 <div> 
                         {isEditForm? (
                             <div>
-                                <h3 className="center" style={{color: 'black'}}>Edit {project.ProjectNumber}</h3>
+                                <h3 className="center" style={{color: 'black'}}>Edit {project.ProjectNumber}
+                                <span className="btn-floating right waves-effect waves-light">
+                                    <i className="material-icons" onClick={deleteProject}>delete</i>
+                                </span>
+                                </h3>
 
                             </div>
                         ):(
@@ -126,6 +154,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
             </div> */
             }
 
+        {/*Test of select tag for statuts*/}
         <div className="form-group" >
             <div className="input-field col s12">
                 <label htmlFor="select">StatutSelect</label>
@@ -137,43 +166,46 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
                 </select>
             </div>
          </div>
+           
             <br/><br/>
+
+            {/*Project number*/}
             <div className="form-group">
               <label htmlFor="projectNumber">project Number</label>
                <input id="projectNumber" name="projectNumber" type="text" className="form-control" value={form.projectNumber.value} onChange={e => handleInputChange(e)}></input>
             </div>
 
+            {/*Project leader*/}
             <div className="form-group">
               <label htmlFor="projectLeader">project Leader</label>
                <input id="projectLeader" name="projectLeader" type="text" className="form-control" value={form.projectLeader.value} onChange={e => handleInputChange(e)}></input>
             </div>
 
-
+            {/*status*/}
             <div className="form-group">
               <label htmlFor="statut">statut: 1 open | 2 signed | 3 factured | 4 work in progress | 5 closed</label>
                <input id="statut" name="statut" type="text" className="form-control" value={form.statut.value} onChange={e => handleInputChange(e)}></input>
+        {form.statut.isValid === false? <h4 style={{color: 'red'}}>{form.statut.error}</h4>: <h4 style={{color: 'blue'}}>OK</h4> }
             </div>
 
             
-
+            {/*Signature date*/}
             <div className="form-group">
               <label htmlFor="signatureDate">signature Date</label>
                <input id="signatureDate" name="signatureDate" type="date" className="form-control" value={form.signatureDate.value} onChange={e => handleInputChange(e)}></input>
             </div>
 
-
-              <div className="form-group">
-                 <label htmlFor="Client">Client</label> <br/>
-                 <Link to="/client" target="_blank">List of clients by identifiant</Link>
-                  <input id="Client" name="clientId" value={form.clientId.value } type="number" className="form-control" onChange={e => handleInputChange(e)}></input>
-               </div>
+            {/*ClientId*/}
+            <div className="form-group">
+                <label htmlFor="Client">Client</label> <br/>
+                <Link to="/client" target="_blank">List of clients by identifiant</Link>
+                <input id="Client" name="clientId" value={form.clientId.value } type="number" className="form-control" onChange={e => handleInputChange(e)}></input>
+            </div>
 
              
 
             <button type="submit" className="btn grey darken-3 waves-effect waves-black">Submit</button>
-            <span className="btn-floating right waves-effect waves-light">
-               <i className="material-icons" onClick={deleteProject}>delete</i>
-            </span>
+            
         </form>
     )
 }

@@ -51,23 +51,24 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
         ClientService.deleteClient(client)
         .then(() => history.push(`/client`));
       }
-
-    // const isAddForm = () => {
-    //     return !isEditForm;
-    // }
-    
+   
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
 
-        client.Company_Name = form.companyName.value;
-        client.Email = form.email.value;
-        client.Language = form.language.value;
-        client.Number = form.number.value;
-        client.City = form.city.value;
-        client.ZipCode = form.zipCode.value;
-        client.Street = form.street.value;
+        const isFormValid = validateForm();
 
-        isEditForm?updateClient():addClient();
+        if(isFormValid === true){
+            client.Company_Name = form.companyName.value;
+            client.Email = form.email.value;
+            client.Language = form.language.value;
+            client.Number = form.number.value;
+            client.City = form.city.value;
+            client.ZipCode = form.zipCode.value;
+            client.Street = form.street.value;
+
+           isEditForm?updateClient():addClient();
+        }
+        
         
     }
 
@@ -80,6 +81,27 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
         setForm({...form, ...newField});
     }
 
+    const validateForm = () => {
+      
+       let newForm: Form = form;
+       const validEmail: RegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/ ;
+        const noValueEmail: RegExp = /^[x]{1,}@[x]{1,}.[x]{1,}$/ ;
+       //MAIL VALIDATOR
+       if(!validEmail.test(form.email.value) || noValueEmail.test(form.email.value)){
+           const errorMsg:string = "enter a valid mail";
+           const newField: Field = {value: form.email.value, error: errorMsg, isValid: false};
+           newForm = {...newForm, ...{email: newField}};
+       }else{
+        const newField: Field = {value: form.email.value, isValid: true};
+        newForm = {...newForm, ...{email: newField}};
+       }
+
+
+
+       setForm(newForm);
+
+       return (newForm.email.isValid === true)?true:false;
+    }
 
     return(
         <form className="container" onSubmit={e => handleSubmit(e)}>
@@ -87,12 +109,16 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
                 <div>
                         {isEditForm? (
                             <div>
-                                <h3>Edit</h3>
+                                <h3 className="center" style={{color: 'black'}}>Edit {client.Company_Name}
+                                    <span className="btn-floating right waves-effect waves-light">
+                                        <i className="material-icons" onClick={deleteClient}>delete</i>
+                                    </span>
+                                </h3>
                                 
                             </div>
                         ):(
                             <div>
-                                <h3>Adding</h3>
+                                <h3 className="center" style={{color: 'black'}}>Add client</h3>
                             </div>
                         )}
                 </div>
@@ -104,10 +130,12 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
                     <label htmlFor="companyName">Company name</label>
                     <input id="companyName" name="companyName" type="text" className="form-control" value={form.companyName.value} onChange={e => handleInputChange(e)}></input>        
             </div>
+            
 
             <div className="form-group">
                     <label htmlFor="email">E-mail</label>
                     <input id="email" name="email" type="text" className="form-control" value={form.email.value} onChange={e => handleInputChange(e)}></input>        
+                    {form.email.isValid === false? <h4 style={{color: 'red'}}>bad mail</h4>: <h4 style={{color: 'blue'}}>OK</h4> }
             </div>
 
             <div className="form-group">
@@ -131,9 +159,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
             </div>
                             
             <button type="submit" className="btn grey darken-3 waves-effect waves-black">Valider</button>
-            <span className="btn-floating right waves-effect waves-light">
-               <i className="material-icons" onClick={deleteClient}>delete</i>
-            </span>
+            
         </form>
 
     )

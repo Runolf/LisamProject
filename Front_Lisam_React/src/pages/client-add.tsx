@@ -8,7 +8,6 @@ const ClientAdd:FunctionComponent = () => {
 
     return ( 
         <div className="row">
-            <h2 className="header center">Ajouter un client </h2>
                 <ClientForm client={client} isEditForm={false}></ClientForm>
         </div>
     );

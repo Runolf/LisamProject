@@ -20,7 +20,6 @@ const ClientEdit: FunctionComponent<RouteComponentProps<Params>> = ({match}) => 
         <div className="detail">
             {client? (
                     <div className="row">
-                     <h2 className="header center">Éditer { client.Company_Name }</h2>
                      <ClientForm client={client} isEditForm={true}></ClientForm>
                 </div>
             ) : (
