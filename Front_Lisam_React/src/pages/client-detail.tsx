@@ -36,7 +36,7 @@ const ClientDetail: FunctionComponent<RouteComponentProps<Params>> = ({match}) =
                             <td className="grey darken-2 m2 center border">E-mail: <br/>{client.Email}</td>
                         </tr>
                         <tr>
-                            <td className="grey darken-2 m2 center border">Number: <br/>{client.Number}</td>
+                            <td className="grey darken-2 m2 center border">Phone number: <br/>{client.Number}</td>
                         </tr>
                         <tr>
                             <td className="grey darken-2 m2 center border">Address: <br/>{client.Street + " " + client.ZipCode + " " + client.City}</td>

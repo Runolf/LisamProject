@@ -3,6 +3,7 @@ import Client from '../models/client';
 import{useHistory} from 'react-router-dom';
 import ClientService from '../services/client-services';
 import { useClients } from '../hooks/clients-hook';
+import '../pages/form.css';
 
 type Props = {
     client: Client,
@@ -87,6 +88,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
         const validEmail: RegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/ ;
         const noValueEmail: RegExp = /^[x]{1,}@[x]{1,}.[x]{1,}$/ ;
         const noValue: string = "no value";
+
         //MAIL VALIDATOR
        if(!validEmail.test(form.email.value) || noValueEmail.test(form.email.value)){
            const errorMsg:string = "enter a valid mail";
@@ -98,12 +100,15 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
         newForm = {...newForm, ...{email: newField}};
        }
 
-       // CLIENT_NAME 
+       // CLIENT_NAME VALIDATOR
        
         const CName = Clients.map(C => C.Company_Name);
        
         var name:string  =  form.companyName.value;
         var nameExist:boolean = false;
+        const stringRegex: RegExp = /^[A-Za-z ]+$/;
+        const numberRegex: RegExp = /^[0-9]+$/;
+
         for(let test of CName){
                 if((name.toUpperCase() === test.toUpperCase())){
                     nameExist = true;
@@ -121,10 +126,72 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
                 newForm = {...newForm, ...{companyName: newField}};
             }
 
+        // PHONE NUMBER VALIDATOR
+        const phoneNumber: string = form.number.value;
+        const validPhone: RegExp = /^[0-9]+$/;
+        if(!validPhone.test(form.number.value) || phoneNumber === noValue || phoneNumber === ""){
+            const errorMsg:string = "enter valid phone number";
+            const newField: Field = {value: form.number.value, error: errorMsg, isValid: false};
+            newForm = {...newForm, ...{number: newField}};
+        }else{
+            const newField: Field = {value: form.number.value, isValid: true};
+            newForm = {...newForm, ...{number: newField}};
+        }
+
+        // LANGUAGE VALIDATOR
+        const language: string = form.language.value;
+        if(!stringRegex.test(language) ||language === noValue || language === ""){
+            const errorMsg:string = "enter valid language";
+            const newField: Field = {value: form.language.value, error: errorMsg, isValid: false};
+            newForm = {...newForm, ...{language: newField}};
+        }else{
+            const newField: Field = {value: form.language.value, isValid: true};
+            newForm = {...newForm, ...{language: newField}};
+        }
+
+        // CITY VALIDATOR
+        const city: string = form.city.value;
+        if(!stringRegex.test(city) || city === noValue || city === ""){
+            const errorMsg:string = "enter valid city";
+            const newField: Field = {value: form.city.value, error: errorMsg, isValid: false};
+            newForm = {...newForm, ...{city: newField}};
+        }else{
+            const newField: Field = {value: form.city.value, isValid: true};
+            newForm = {...newForm, ...{city: newField}};
+        }
+
+        // ZIP CODE VALIDATOR
+        const zipCode: string = form.zipCode.value;
+        if(!numberRegex .test(zipCode) || zipCode === noValue || zipCode === ""){
+            const errorMsg:string = "enter valid zip code";
+            const newField: Field = {value: form.zipCode.value, error: errorMsg, isValid: false};
+            newForm = {...newForm, ...{zipCode: newField}};
+        }else{
+            const newField: Field = {value: form.zipCode.value, isValid: true};
+            newForm = {...newForm, ...{zipCode: newField}};
+        }
+
+        // STREET VALIDATOR
+        const street: string = form.street.value;
+        if(!stringRegex.test(street) || street === noValue || street === ""){
+            const errorMsg:string = "enter valid street";
+            const newField: Field = {value: form.street.value, error: errorMsg, isValid: false};
+            newForm = {...newForm, ...{street: newField}};
+        }else{
+            const newField: Field = {value: form.street.value, isValid: true};
+            newForm = {...newForm, ...{street: newField}};
+        }
 
        setForm(newForm);
 
-       return (newForm.email.isValid && newForm.companyName.isValid === true)?true:false;
+       return (
+            newForm.email.isValid &&
+            newForm.companyName.isValid && 
+            newForm.language.isValid &&
+            newForm.number.isValid && 
+            newForm.city.isValid &&
+            newForm.zipCode.isValid &&
+            newForm.street.isValid === true)?true:false;
     }
 
     return(
@@ -149,7 +216,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
 
             </div>
             
-           
+           {/*Company Name*/}
             <div className="form-group">
                     {
                         (form.companyName.isValid === false)?
@@ -158,7 +225,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
                     <input id="companyName" name="companyName" type="text" className="form-control" value={form.companyName.value} onChange={e => handleInputChange(e)}></input>        
             </div>
             
-
+            {/*Email*/}
             <div className="form-group">
                     {
                         (form.email.isValid === false)?
@@ -167,24 +234,31 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
                     <input id="email" name="email" type="text" className="form-control" value={form.email.value} onChange={e => handleInputChange(e)}></input>        
                    
             </div>
-
-            <div className="form-group">
-                    <label htmlFor="number">number</label>
-                    <input id="number" name="number" type="text" className="form-control" value={form.number.value} onChange={e => handleInputChange(e)}></input>        
-            </div>
             
+            {/*Phone Number*/}
             <div className="form-group">
-                    <label htmlFor="language">language</label>
+                {form.number.isValid === false?<label htmlFor="number" style={{color: 'red'}}>Phone number: {form.number.error}</label>:<label htmlFor="number">Phone number</label> }                   
+                    
+                    <input id="number" name="number" type="text" className="form-control validate" value={form.number.value} onChange={e => handleInputChange(e)}></input>        
+            </div>
+
+            {/*Language*/}
+            <div className="form-group">
+                {form.language.isValid === false? <label htmlFor="language" style={{color: 'red'}}>language: {form.language.error}</label> : <label htmlFor="language">language</label> }
+                    
                     <input id="language" name="language" type="text" className="form-control" value={form.language.value} onChange={e => handleInputChange(e)}></input>        
             </div>
             
+            {/*Address*/}
             <div className="form-group">
                 <h6>Adress</h6>
-                    <label htmlFor="city">city</label>
+                {form.city.isValid === false? <label htmlFor="city" style={{color: 'red'}}>city: {form.city.error}</label> : <label htmlFor="city">city</label>}     
                     <input id="city" name="city" type="text" className="form-control" value={form.city.value} onChange={e => handleInputChange(e)}></input> 
-                    <label htmlFor="zipCode">zip code</label>
+              
+                {form.zipCode.isValid === false? <label htmlFor="zipCode" style={{color: 'red'}}>zip code: {form.zipCode.error}</label> : <label htmlFor="zipCode">zip code</label>}    
                     <input id="zipCode" name="zipCode" type="text" className="form-control" value={form.zipCode.value} onChange={e => handleInputChange(e)}></input>       
-                    <label htmlFor="street">street</label>
+                    
+                {form.street.isValid === false? <label htmlFor="street"  style={{color: 'red'}}>street: {form.street.error}</label> :  <label htmlFor="street">street</label>}      
                     <input id="street" name="street" type="text" className="form-control" value={form.street.value} onChange={e => handleInputChange(e)}></input>
             </div>
                             
