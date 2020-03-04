@@ -157,8 +157,8 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
         }
         
         // ID CLIENT VALIDATOR
-        const validClient: RegExp = /^[1-9]+$/;
-        if(!validClient.test(form.clientId.value)){
+        const validClient: RegExp = /^[0-9]+$/;
+        if(!validClient.test(form.clientId.value) || form.clientId.value == 0){
             const errorMsg:string = "Id Client is equal or below to 0 or must be a number";
             const newField: Field = {value: form.clientId.value, error: errorMsg, isValid: false};
             newForm = {...newForm, ...{clientId: newField}};
