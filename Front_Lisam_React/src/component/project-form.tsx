@@ -136,12 +136,17 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
         const PNumber = Projects.map(P => P.ProjectNumber);
         var ProjectExist: boolean = false;
         const number: string = form.projectNumber.value;
-        for(let test of PNumber){
-            if(number.toUpperCase() === test.toUpperCase()){
-                ProjectExist = true;
-                break;
-            }
-        }       
+
+        if(!isEditForm){
+            for(let test of PNumber){
+                if(number.toUpperCase() === test.toUpperCase()){
+                    ProjectExist = true;
+                    break;
+                }
+            }   
+        }
+            
+    
         if(ProjectExist === true || number === noValue || number === ""){
             const errorMsg:string = "Project number exist or is invalid";
             const newField: Field = {value: form.projectNumber.value, error: errorMsg, isValid: false};
@@ -201,7 +206,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
                             <div>
                                 <h3 className="center" style={{color: 'black'}}>Edit {project.ProjectNumber}
                                 <span className="btn-floating right waves-effect waves-light">
-                                    <i className="material-icons" onClick={deleteProject}>delete</i>
+                                    <i className="material-icons grey" onClick={deleteProject}>delete</i>
                                 </span>
                                 </h3>
 
@@ -240,7 +245,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
 
             {/*Project number*/}
             <div className="form-group">
-                {
+                { 
                     form.projectNumber.isValid===false?<label htmlFor="projectNumber" style={{color: 'red'}}>project Number: {form.projectNumber.error}</label>
                     : <label htmlFor="projectNumber">project Number</label>
                 }

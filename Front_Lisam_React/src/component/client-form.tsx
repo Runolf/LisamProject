@@ -106,16 +106,19 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
        
         var name:string  =  form.companyName.value;
         var nameExist:boolean = false;
-        const stringRegex: RegExp = /^[A-Za-z ]+$/;
-        const numberRegex: RegExp = /^[0-9]+$/;
+        const stringRegex: RegExp = /^[A-Za-zéèàù ]+$/;
+        const numberRegex: RegExp = /^[0-9 ]+$/;
 
-        for(let test of CName){
+        if(!isEditForm){
+            for(let test of CName){
                 if((name.toUpperCase() === test.toUpperCase())){
                     nameExist = true;
                     break;
                 }
             }
 
+        }
+        
             if(nameExist === true || name === "" || name === noValue){
                 const errorMsg:string = "that name exists or is not valid";
                 const newField: Field = {value: form.companyName.value, error: errorMsg, isValid: false};
@@ -128,7 +131,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
 
         // PHONE NUMBER VALIDATOR
         const phoneNumber: string = form.number.value;
-        const validPhone: RegExp = /^[0-9]+$/;
+        const validPhone: RegExp = /^[0-9 ]+$/;
         if(!validPhone.test(form.number.value) || phoneNumber === noValue || phoneNumber === ""){
             const errorMsg:string = "enter valid phone number";
             const newField: Field = {value: form.number.value, error: errorMsg, isValid: false};
@@ -194,6 +197,8 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
             newForm.street.isValid === true)?true:false;
     }
 
+   
+
     return(
         <form className="container" onSubmit={e => handleSubmit(e)}>
             <div>
@@ -202,7 +207,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
                             <div>
                                 <h3 className="center" style={{color: 'black'}}>Edit {client.Company_Name}
                                     <span className="btn-floating right waves-effect waves-light">
-                                        <i className="material-icons" onClick={deleteClient}>delete</i>
+                                        <i className="material-icons grey" onClick={deleteClient}>delete</i>
                                     </span>
                                 </h3>
                                 
@@ -239,7 +244,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
             <div className="form-group">
                 {form.number.isValid === false?<label htmlFor="number" style={{color: 'red'}}>Phone number: {form.number.error}</label>:<label htmlFor="number">Phone number</label> }                   
                     
-                    <input id="number" name="number" type="text" className="form-control validate" value={form.number.value} onChange={e => handleInputChange(e)}></input>        
+                <input id="number" name="number" type="text" className="form-control" value={form.number.value} onChange={e => handleInputChange(e)}></input>        
             </div>
 
             {/*Language*/}
@@ -250,8 +255,10 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
             </div>
             
             {/*Address*/}
+            <br/>
             <div className="form-group">
-                <h6>Adress</h6>
+
+                <h6>Address</h6>
                 {form.city.isValid === false? <label htmlFor="city" style={{color: 'red'}}>city: {form.city.error}</label> : <label htmlFor="city">city</label>}     
                     <input id="city" name="city" type="text" className="form-control" value={form.city.value} onChange={e => handleInputChange(e)}></input> 
               
