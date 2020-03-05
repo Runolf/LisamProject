@@ -95,7 +95,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
       
         let newForm: Form = form;
         const noValue: string = "no value";
-        const stringRegex: RegExp = /^[A-Za-zéèàù\- ]+$/;
+        const stringRegex: RegExp = /^[A-Za-zéèàùç\- ]+$/;
         const numberRegex: RegExp = /^[0-9 ]+$/;
 
         // PROJECT LEADER VALIDATOR
@@ -286,7 +286,6 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
                     <input id="signatureDate" name="signatureDate" type="date" className="form-control" value={form.signatureDate.value} onChange={e => handleInputChange(e)}></input>
                 </div>
             }
-            
 
             {/*ClientId*/}
             <div className="form-group">
