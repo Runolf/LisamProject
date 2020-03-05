@@ -85,7 +85,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
     const validateForm = () => {
       
         let newForm: Form = form;
-        const validEmail: RegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/ ;
+        const validEmail: RegExp = /^[a-zA-Z-]+@[a-zA-Z-]+\.[a-zA-Z]{2,6}$/ ;
         const noValueEmail: RegExp = /^[x]{1,}@[x]{1,}.[x]{1,}$/ ;
         const noValue: string = "no value";
 
@@ -165,7 +165,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
 
         // ZIP CODE VALIDATOR
         const zipCode: string = form.zipCode.value;
-        if(!numberRegex .test(zipCode) || zipCode === noValue || zipCode === ""){
+        if(!numberRegex.test(zipCode) || zipCode === noValue || zipCode === ""){
             const errorMsg:string = "enter valid zip code";
             const newField: Field = {value: form.zipCode.value, error: errorMsg, isValid: false};
             newForm = {...newForm, ...{zipCode: newField}};

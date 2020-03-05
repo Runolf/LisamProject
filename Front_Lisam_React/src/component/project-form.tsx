@@ -62,12 +62,10 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
         ProjectService.updateProject(project)
         .then(() => history.push(`/project/${project.ProjectId}`) /*window.location.reload()*/);
     }
-
     const addProject = () => {
         ProjectService.addProject(project)
         .then(() => history.push(`/project`));
     }
-
     const deleteProject = () => {
         ProjectService.deleteProject(project)
         .then(() => history.push(`/project`));
@@ -87,7 +85,6 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
         }
         
     }
-
     const handleInputChange = (e : React.ChangeEvent<HTMLInputElement>) => {
 
         const fieldName: string = e.target.name;
@@ -96,7 +93,6 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
         const newField: Field = {[fieldName] : {value: fieldValue}};
         setForm({...form, ...newField});
     }
-
     // const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     //      const fieldName: string = e.target.name;
     //      const fieldValue: string = e.target.value;
@@ -104,14 +100,13 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
     //      const newField: Field = {[fieldName] : {value: fieldValue}};
     //      setForm({...form, ...newField});
     // }
-
     const validateForm = () => {
       
         let newForm: Form = form;
         const noValue: string = "no value";
 
         // PROJECT LEADER VALIDATOR
-        const ProjectLeader: String = form.projectLeader.value;
+        const ProjectLeader: string = form.projectLeader.value;
         if(ProjectLeader === noValue || ProjectLeader === ""){
             const errorMsg:string = "enter valid name";
             const newField: Field = {value: form.projectLeader.value, error: errorMsg, isValid: false};
@@ -213,7 +208,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
                             </div>
                         ):(
                             <div>
-                                <h3 className="center" style={{color: 'black'}}>Add product</h3>
+                                <h3 className="center" style={{color: 'black'}}>Add project</h3>
                             </div>
                         )}
                 </div>

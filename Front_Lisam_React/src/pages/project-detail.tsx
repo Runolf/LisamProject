@@ -20,7 +20,7 @@ const ProjectDetail: FunctionComponent<RouteComponentProps<Params>> = ({match}) 
 
 
 
-        {/* why those test below?
+        /* why those test below? 
             Obligation de passer par ces test sinon il y a un message d'erreur qui
             plante l'application disant que project est possiblement null. 
 
@@ -33,7 +33,7 @@ const ProjectDetail: FunctionComponent<RouteComponentProps<Params>> = ({match}) 
                 Obligation de passe par un test s'il est undefined, sinon il y a 
                 un message d'erreur faisant planter l'application
                 
-        */}
+        */
         var date:Date = new Date();
         var st: string|null = null;
         
