@@ -27,10 +27,6 @@ type Form = {
     statut: Field,
     signatureDate: Field,
     clientId: Field
-    /*
-     Champ pour ajouter le client -> faire une methode pour l'assigner.
-     Idée: faire aussi un bouton pour accéder au formulaire de création de client
-     */
 }
 
 const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
@@ -46,6 +42,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
     const Projects = useProjects();
     const Clients = useClients();
 
+   
     const transformDateToFormDate = (date: string): string => {
         return date.slice(0,10);
     }
@@ -202,7 +199,6 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
             )?true:false;
      }
 
-
     return(
         <form className="container" onSubmit={e => handleSubmit(e)}>
 
@@ -226,14 +222,6 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
 
             </div>
 
-            {
-            /* <div className="form-group">
-              <label> choisissez le statut
-                  <Select options = {options} onChange={e => handleSelectChange(e)}/>
-              </label>
-            </div> */
-            }
-
             <br/><br/>
 
             {/*Project number*/}
@@ -242,7 +230,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
                     form.projectNumber.isValid===false?<label htmlFor="projectNumber" style={{color: 'red'}}>project Number: {form.projectNumber.error}</label>
                     : <label htmlFor="projectNumber">project Number</label>
                 }
-               <input id="projectNumber" name="projectNumber" type="text" className="form-control" value={form.projectNumber.value} onChange={e => handleInputChange(e)}></input>
+               <input id="projectNumber" name="projectNumber" type="text" className="form-control" placeholder="no-value" value={form.projectNumber.value} onChange={e => handleInputChange(e)}></input>
             </div>
 
             {/*Project leader*/}
@@ -295,6 +283,14 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
                 <input id="Client" name="clientId" value={form.clientId.value } type="number" className="form-control" onChange={e => handleInputChange(e)}></input>
             </div>
 
+            {/* <select name="clientId" id="Client">
+                {
+                     Clients.forEach(function(c){
+                       return <option value={c.ClientId}>{c.Company_Name}</option>
+                     })
+                };
+                
+            </select> */}
             <button type="submit" className="btn grey darken-3 waves-effect waves-black">Submit</button>
             
         </form>
