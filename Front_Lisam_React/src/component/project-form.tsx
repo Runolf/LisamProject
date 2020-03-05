@@ -5,6 +5,7 @@ import ProjectService from '../services/project-service';
 import Client from '../models/client';
 import { useProjects } from '../hooks/projects-hook';
 import '../pages/form.css'; 
+import { useClients } from '../hooks/clients-hook';
 // import Select from 'react-select';
 // import { statut } from '../models/statut';
 
@@ -42,12 +43,6 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
     //     { value: statut.Work_in_progress ,label: 'Work in progress' }
     //   ];
 
-
-    
-
-
-    
-
     const [form, setForm] = useState<Form>({
         projectLeader: {value: project.ProjectLeader},
         projectNumber: {value: project.ProjectNumber},
@@ -57,7 +52,11 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
     });
     const history = useHistory();
     const Projects = useProjects();
+    const Clients = useClients();
 
+    const transformDateToFormDate = (date: string): string => {
+        return date.slice(0,10);
+    }
     const updateProject = () => {
         ProjectService.updateProject(project)
         .then(() => history.push(`/project/${project.ProjectId}`) /*window.location.reload()*/);
@@ -104,10 +103,12 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
       
         let newForm: Form = form;
         const noValue: string = "no value";
+        const stringRegex: RegExp = /^[A-Za-zéèàù\- ]+$/;
+        const numberRegex: RegExp = /^[0-9 ]+$/;
 
         // PROJECT LEADER VALIDATOR
         const ProjectLeader: string = form.projectLeader.value;
-        if(ProjectLeader === noValue || ProjectLeader === ""){
+        if(!stringRegex.test(ProjectLeader) || ProjectLeader === noValue || ProjectLeader === ""){
             const errorMsg:string = "enter valid name";
             const newField: Field = {value: form.projectLeader.value, error: errorMsg, isValid: false};
             newForm = {...newForm, ...{projectLeader: newField}};
@@ -140,9 +141,17 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
                 }
             }   
         }
-            
+
+        if(isEditForm && number.toUpperCase() !==  project.ProjectNumber.toUpperCase()){
+            for(let test of PNumber){
+                if(number.toUpperCase() === test.toUpperCase()){
+                    ProjectExist = true;
+                    break;
+                }
+            }   
+        }
     
-        if(ProjectExist === true || number === noValue || number === ""){
+        if(!numberRegex.test(number) || ProjectExist === true || number === noValue || number === ""){
             const errorMsg:string = "Project number exist or is invalid";
             const newField: Field = {value: form.projectNumber.value, error: errorMsg, isValid: false};
             newForm = {...newForm, ...{projectNumber: newField}};
@@ -153,7 +162,16 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
         
         // ID CLIENT VALIDATOR
         const validClient: RegExp = /^[0-9]+$/;
-        if(!validClient.test(form.clientId.value) || form.clientId.value == 0){
+        var idExist: boolean = false; 
+        var idS = Clients.map(C => C.ClientId);
+        for(let test of idS){
+            if(form.clientId.value === test.toString()){
+                idExist = true;
+                break;
+            }
+        }
+
+        if(!validClient.test(form.clientId.value) || form.clientId.value === "0" || !idExist){
             const errorMsg:string = "Id Client is equal or below to 0 or must be a number";
             const newField: Field = {value: form.clientId.value, error: errorMsg, isValid: false};
             newForm = {...newForm, ...{clientId: newField}};
@@ -264,10 +282,18 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
 
             
             {/*Signature date*/}
-            <div className="form-group">
-            {form.signatureDate.isValid === false?<label htmlFor="signatureDate" style={{color: 'red'}}>signature Date : {form.signatureDate.error}</label>:<label htmlFor="signatureDate">signature Date</label>}             
-               <input id="signatureDate" name="signatureDate" type="date" className="form-control" value={form.signatureDate.value} onChange={e => handleInputChange(e)}></input>
-            </div>
+            {isEditForm? 
+                <div className="form-group">
+                    {form.signatureDate.isValid === false?<label htmlFor="signatureDate" style={{color: 'red'}}>signature Date : {form.signatureDate.error}</label>:<label htmlFor="signatureDate">signature Date</label>}             
+                    <input id="signatureDate" name="signatureDate" type="date" className="form-control" value={transformDateToFormDate(form.signatureDate.value)} onChange={e => handleInputChange(e)}></input>
+                </div>
+                :
+                <div className="form-group">
+                    {form.signatureDate.isValid === false?<label htmlFor="signatureDate" style={{color: 'red'}}>signature Date : {form.signatureDate.error}</label>:<label htmlFor="signatureDate">signature Date</label>}             
+                    <input id="signatureDate" name="signatureDate" type="date" className="form-control" value={form.signatureDate.value} onChange={e => handleInputChange(e)}></input>
+                </div>
+            }
+            
 
             {/*ClientId*/}
             <div className="form-group">

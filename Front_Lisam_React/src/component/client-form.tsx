@@ -109,6 +109,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
         const stringRegex: RegExp = /^[A-Za-zéèàù ]+$/;
         const numberRegex: RegExp = /^[0-9 ]+$/;
 
+        //si dans le formulaire d'ajout
         if(!isEditForm){
             for(let test of CName){
                 if((name.toUpperCase() === test.toUpperCase())){
@@ -116,7 +117,15 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
                     break;
                 }
             }
-
+        }
+        // si dans le formulaire d edition et que la valeur du champ est différente du nom actuel du client
+        if(isEditForm && name.toUpperCase() !== client.Company_Name.toUpperCase()){
+            for(let test of CName){
+                if((name.toUpperCase() === test.toUpperCase())){
+                    nameExist = true;
+                    break;
+                }
+            }
         }
         
             if(nameExist === true || name === "" || name === noValue){
