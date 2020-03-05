@@ -7,7 +7,7 @@ import { useProjects } from '../hooks/projects-hook';
 import '../pages/form.css'; 
 import { useClients } from '../hooks/clients-hook';
 // import Select from 'react-select';
-// import { statut } from '../models/statut';
+import { statut } from '../models/statut';
 
 type Props = {
     project: Project,
@@ -34,14 +34,6 @@ type Form = {
 }
 
 const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
-
-    // const options = [
-    //     { value: statut.Closed, label: 'Closed' },
-    //     { value: statut.Factured, label: 'Factured' },
-    //     { value: statut.Open, label: 'Open' },
-    //     { value: statut.Signed ,label: 'Signed' } ,
-    //     { value: statut.Work_in_progress ,label: 'Work in progress' }
-    //   ];
 
     const [form, setForm] = useState<Form>({
         projectLeader: {value: project.ProjectLeader},
@@ -92,13 +84,13 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
         const newField: Field = {[fieldName] : {value: fieldValue}};
         setForm({...form, ...newField});
     }
-    // const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    //      const fieldName: string = e.target.name;
-    //      const fieldValue: string = e.target.value;
+    const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+         const fieldName: string = e.target.name;
+         const fieldValue: string = e.target.value;
 
-    //      const newField: Field = {[fieldName] : {value: fieldValue}};
-    //      setForm({...form, ...newField});
-    // }
+         const newField: Field = {[fieldName] : {value: fieldValue}};
+         setForm({...form, ...newField});
+    }
     const validateForm = () => {
       
         let newForm: Form = form;
@@ -120,7 +112,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
         //STATUT VALIDATOR
         const validStatut:RegExp = /^[1-5]$/;
         if(!validStatut.test(form.statut.value)){
-            const errorMsg:string = "enter a valid statut for : ";
+            const errorMsg:string = "choose a statut";
             const newField: Field = {value: form.statut.value, error: errorMsg, isValid: false};
             newForm = {...newForm, ...{statut: newField}};
         }else{
@@ -210,6 +202,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
             )?true:false;
      }
 
+
     return(
         <form className="container" onSubmit={e => handleSubmit(e)}>
 
@@ -241,19 +234,6 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
             </div> */
             }
 
-        {/*Test of select tag for statuts*/}
-        <div className="form-group" >
-            <div className="input-field col s12">
-                <label htmlFor="select">StatutSelect</label>
-                <select id="select" className="form-control">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
-            </div>
-         </div>
-           
             <br/><br/>
 
             {/*Project number*/}
@@ -273,12 +253,25 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
             </div>
 
             {/*status*/}
-            <div className="form-group">
+            {/* <div className="form-group">
             {form.statut.isValid === false?<label htmlFor="statut"  style={{color: 'red'}}>{form.statut.error}1 open | 2 signed | 3 factured | 4 work in progress | 5 closed</label> : <label htmlFor="statut">statut: 1 open | 2 signed | 3 factured | 4 work in progress | 5 closed</label> }
               
                <input id="statut" name="statut" type="text" className="form-control" value={form.statut.value} onChange={e => handleInputChange(e)}></input>
         
+            </div> */}
+            <br/>
+             <div>
+             {form.statut.isValid === false?<label htmlFor="statut"  style={{color: 'red'}}>{form.statut.error}</label> : <label htmlFor="statut">statut</label> }
+                <select name="statut" id="statut" className="browser-default" value={form.statut.value} onChange={e => handleSelectChange(e)}>
+                    <option value="">--choose a value--</option>
+                    <option value={statut.Closed}>Closed</option>
+                    <option value={statut.Factured}>Factured</option>
+                    <option value={statut.Open}>Open</option>
+                    <option value={statut.Signed}>Signed</option>
+                    <option value={statut.Work_in_progress}>Work in progress</option>
+                </select>
             </div>
+         <br/>
 
             
             {/*Signature date*/}
@@ -302,8 +295,6 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
                 <Link to="/client" target="_blank">List of clients by identifiant</Link>
                 <input id="Client" name="clientId" value={form.clientId.value } type="number" className="form-control" onChange={e => handleInputChange(e)}></input>
             </div>
-
-             
 
             <button type="submit" className="btn grey darken-3 waves-effect waves-black">Submit</button>
             

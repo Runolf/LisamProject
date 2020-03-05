@@ -16,6 +16,11 @@
   }
 
   select{
-    border-bottom: 1px solid grey !important;
-    box-shadow: 0 1px 0 0 grey !important;
+    border: grey 1px solid;
+    box-shadow: 0 1px 0 0 grey;
+  }
+
+  select:hover{
+    border: 1px solid #212121 !important;
+    box-shadow: 0 1px 0 0 #212121 !important;
   }
