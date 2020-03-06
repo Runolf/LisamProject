@@ -11,7 +11,7 @@ const List: FunctionComponent = () => {
 
     return (
             <div>
-                <table className="container responsive-table centered ">
+                <table className="container centered ">
                     <thead>
                         <tr style={{color: "black"}}>
                             <th>Project number</th>

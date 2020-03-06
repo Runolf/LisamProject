@@ -15,7 +15,7 @@ const List: FunctionComponent = () => {
     return (
         <div>
             <div  className="button-both btn blue-grey darken-1 waves-effect waves-teal z-depth-3" onClick={() => goToAddProject()}>Add project</div>
-            <table className="container responsive-table centered ">
+            <table className="container centered ">
                     <thead>
                         <tr style={{color: "black"}}>
                             <th>Identifiant</th> 

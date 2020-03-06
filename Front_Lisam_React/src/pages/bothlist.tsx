@@ -20,14 +20,14 @@ const goToAddClient = () => {
 
     return (
         <div>
-            <table className="container responsive-table centered ">
+            <table className="container centered ">
                     <thead>
                         <tr style={{color: "black"}}>
-                            <th>Client Name
-                             <td  className="button-both btn blue-grey darken-1 waves-effect waves-teal z-depth-3" onClick={() => goToAddClient()}>Add client</td>
+                            <th>Client Name <br/>
+                             <div  className="button-both btn blue-grey darken-1 waves-effect waves-teal z-depth-3" onClick={() => goToAddClient()}>Add client</div>
                             </th>
-                            <th>Project number
-                              <td  className="button-both btn blue-grey darken-1 waves-effect waves-teal z-depth-3" onClick={() => goToAddProject()}>Add project</td>
+                            <th>Project number <br/>
+                              <div  className="button-both btn blue-grey darken-1 waves-effect waves-teal z-depth-3" onClick={() => goToAddProject()}>Add project</div>
                             </th>
                             <th>Date signature</th>
                             <th>Project leader</th>

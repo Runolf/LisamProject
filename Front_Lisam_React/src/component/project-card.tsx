@@ -26,7 +26,7 @@ const ProjectCard: FunctionComponent<Props> = ({project, client}) => {
     return (
         <tr className="" style={{color: "white"}}>
             <td className="grey darken-2 m2 center border">{project.ProjectNumber}
-            <tr  className="button-list btn blue-grey darken-2 waves-effect waves-teal z-depth-3 left" onClick={() => goToModifyProject(project.ProjectId)}>Modif</tr>
+             <div  className="button-list btn blue-grey darken-2 waves-effect waves-teal z-depth-3 left" onClick={() => goToModifyProject(project.ProjectId)}>Modif</div>
             </td>
             <td className="grey darken-2 m2 center border">{project.ProjectLeader} </td>
             {/* {client? 

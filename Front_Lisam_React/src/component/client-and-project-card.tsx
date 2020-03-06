@@ -54,18 +54,18 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
         <tr className="" style={{color: "white"}}>
             {client?
             <td className="grey darken-2 m2 center border">{client.Company_Name} <br/>
-             <tr  className="button-list btn blue-grey darken-3 waves-effect waves-teal z-depth-3" onClick={() => goToClient(client.ClientId)}>Detail</tr>
-             <tr  className="button-list btn blue-grey darken-2 waves-effect waves-teal z-depth-3" onClick={() => goToModifyClient(client.ClientId)}>Modif</tr>
-             <tr  className="button-list btn blue-grey darken-1 waves-effect waves-teal z-depth-3" onClick={() => deleteClient()}>Delete</tr>
+             <div  className="button-list btn blue-grey darken-3 waves-effect waves-teal z-depth-3" onClick={() => goToClient(client.ClientId)}>Detail</div>
+             <div  className="button-list btn blue-grey darken-2 waves-effect waves-teal z-depth-3" onClick={() => goToModifyClient(client.ClientId)}>Modif</div>
+             <div  className="button-list btn blue-grey darken-1 waves-effect waves-teal z-depth-3" onClick={() => deleteClient()}>Delete</div>
             </td>
             :
             <td className="grey darken-2 m2 center border">No client assigned to this project</td>
             }
 
             <td className="grey darken-2 m2 center border">{project.ProjectNumber}<br/>
-            <tr  className="button-list btn blue-grey darken-3 waves-effect waves-teal z-depth-3" onClick={() => goToProject(project.ProjectId)}>Detail</tr>
-            <tr  className="button-list btn blue-grey darken-2 waves-effect waves-teal z-depth-3" onClick={() => goToModifyProject(project.ProjectId)}>Modif</tr>
-            <tr  className="button-list btn blue-grey darken-1 waves-effect waves-teal z-depth-3" onClick={() => deleteProject()}>Delete</tr>
+            <div  className="button-list btn blue-grey darken-3 waves-effect waves-teal z-depth-3" onClick={() => goToProject(project.ProjectId)}>Detail</div>
+            <div  className="button-list btn blue-grey darken-2 waves-effect waves-teal z-depth-3" onClick={() => goToModifyProject(project.ProjectId)}>Modif</div>
+            <div  className="button-list btn blue-grey darken-1 waves-effect waves-teal z-depth-3" onClick={() => deleteProject()}>Delete</div>
 
             </td>
             <td className="grey darken-2 m2 center border">{formatDate(date)}</td>
