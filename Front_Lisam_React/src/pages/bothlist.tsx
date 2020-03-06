@@ -24,10 +24,10 @@ const goToAddClient = () => {
                     <thead>
                         <tr style={{color: "black"}}>
                             <th>Client Name
-                            <td  className="button-both btn blue-grey darken-1 waves-effect waves-teal z-depth-3" onClick={() => goToAddClient()}>Add client</td>
+                             <td  className="button-both btn blue-grey darken-1 waves-effect waves-teal z-depth-3" onClick={() => goToAddClient()}>Add client</td>
                             </th>
                             <th>Project number
-                            <td  className="button-both btn blue-grey darken-1 waves-effect waves-teal z-depth-3" onClick={() => goToAddProject()}>Add project</td>
+                              <td  className="button-both btn blue-grey darken-1 waves-effect waves-teal z-depth-3" onClick={() => goToAddProject()}>Add project</td>
                             </th>
                             <th>Date signature</th>
                             <th>Project leader</th>

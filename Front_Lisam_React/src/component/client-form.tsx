@@ -46,7 +46,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
     }
     const addClient = () => {
         ClientService.addClient(client)
-        .then(() => history.push(`/client`));
+        .then(() => history.push(`/both`));
     }
 
     const deleteClient = () =>  {

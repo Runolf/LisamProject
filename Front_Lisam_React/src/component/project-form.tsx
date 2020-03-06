@@ -52,7 +52,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
     }
     const addProject = () => {
         ProjectService.addProject(project)
-        .then(() => history.push(`/project`));
+        .then(() => history.push(`/both`));
     }
     const deleteProject = () => {
         ProjectService.deleteProject(project)
