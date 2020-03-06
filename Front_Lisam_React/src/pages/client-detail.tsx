@@ -18,7 +18,7 @@ const ClientDetail: FunctionComponent<RouteComponentProps<Params>> = ({match}) =
     return (
         <div> 
             {client? (
-                <table className="container responsive-table centered table-detail">
+                <table className="container centered table-detail">
                     <thead>
                         <tr style={{color: "black"}}> 
                             <th>{client.Company_Name}

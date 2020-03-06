@@ -52,7 +52,7 @@ const ProjectDetail: FunctionComponent<RouteComponentProps<Params>> = ({match}) 
             return (
                 <div>
                     {project? ( 
-                    <table className="container responsive-table centered table-detail">
+                    <table className="container centered table-detail">
                         <thead>
                             <tr style={{color: "black"}}>
                             <th>Project: {project.ProjectNumber}

@@ -1,6 +1,7 @@
 ﻿using API_Lisam.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -17,7 +18,8 @@ namespace API_Lisam.Controllers
         
         public IList<Client> Get()
         {
-            IList<Client> Clients = Context.Clients.Where(C => C.ClientId > 0).ToList();
+            IList<Client> Clients = Context.Clients
+                .Where(C => C.ClientId > 0).ToList();
             return Clients;
         }
        
@@ -25,10 +27,14 @@ namespace API_Lisam.Controllers
         {
             Client C = Context.Clients.Find(id);
             
-
+           
 
             if (C != null)
             {
+                C = Context.Clients
+                    .Include(E => E.Projects)
+                    .Where(D => D.ClientId == id)
+                    .First();
                 return Ok(C);
             }
             else{
