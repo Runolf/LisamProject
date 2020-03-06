@@ -26,16 +26,17 @@ export default class Client{
         email: string = "xxx@xxx.xxx",
         language: string = "no value",
         number: string = "no value",
-       Projects: Project[] = []
+        
+       projects: Project[] = []
     ) {
         this.ClientId = clientId;
         this.Company_Name = companyName;
         this.Street = street;
         this.ZipCode = zipCode;
         this.City = City;
-        this.Email = email;
+        this.Email = email; 
         this.Language = language;
         this.Number = number;
-        this.Projects = Projects;
+        this.Projects = projects;
     }
 }

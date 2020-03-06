@@ -1,7 +1,6 @@
 import {useEffect, useState} from 'react';
 import Project from '../models/project';
 import ProjectService from '../services/project-service';
-import { useClient } from './client-hook';
 
 export const useProject = (id : number | null) => {
     const [project, setProject] = useState<Project | null>();
