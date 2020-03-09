@@ -6,7 +6,6 @@ import Client from '../models/client';
 import { useProjects } from '../hooks/projects-hook';
 import '../pages/form.css'; 
 import { useClients } from '../hooks/clients-hook';
-// import Select from 'react-select';
 import { statut } from '../models/statut';
 
 type Props = {
@@ -161,7 +160,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
         }
 
         if(!validClient.test(form.clientId.value) || form.clientId.value === "0" || !idExist){
-            const errorMsg:string = "Id Client is equal or below to 0 or must be a number";
+            const errorMsg:string = "Choose a value";
             const newField: Field = {value: form.clientId.value, error: errorMsg, isValid: false};
             newForm = {...newForm, ...{clientId: newField}};
         }else{
@@ -285,12 +284,13 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
                 <input id="Client" name="clientId" value={form.clientId.value } type="number" className="form-control" onChange={e => handleInputChange(e)}></input>
             </div> */}
 
-            <label htmlFor="SelectClient">Client SELECT</label>
+            {form.clientId.isValid === false?<label htmlFor="SelectClient"  style={{color: 'red'}}>{form.clientId.error}</label> : <label htmlFor="SelectClient">statut</label> }
             <select name="clientId" id="SelectClient" className="browser-default" onChange={e => handleSelectChange(e)}>
+                <option value="">--choose a value--</option>
                 { 
                     Clients.map((Client) => 
-                        <option key={Client.ClientId} value={Client.ClientId} >{Client.Company_Name}</option>
-                    )
+                        <option key={Client.Company_Name} value={Client.ClientId} >{Client.Company_Name}</option>
+                    ).sort()
                 }
                 
             </select>
