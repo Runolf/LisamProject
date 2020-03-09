@@ -53,6 +53,13 @@ export default class ProjectService{
     .catch(error => this.handleError(error));
 }
 
+  // Sert pour la barre de recherche. Non fonctionnel pour le moment.
+  // static searchProject(term: string): Promise<Project[]>{
+  //   return fetch(`http://localhost:44331/api/Projects/q=${term}`)
+  //   .then(response => response.json())
+  //   .catch(error => this.handleError(error));
+  // }
+
       static isEmpty(data: Object): boolean {
         return Object.keys(data).length === 0;
       }

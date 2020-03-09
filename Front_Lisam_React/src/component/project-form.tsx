@@ -40,8 +40,8 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
     });
     const history = useHistory();
     const Projects = useProjects();
-    const Clients = useClients();
-
+    const Clients = useClients(); 
+    
    
     const transformDateToFormDate = (date: string): string => {
         return date.slice(0,10);
@@ -247,7 +247,9 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
                <input id="statut" name="statut" type="text" className="form-control" value={form.statut.value} onChange={e => handleInputChange(e)}></input>
         
             </div> */}
-            <br/>
+            <br/> 
+            
+            {/*Select Statuts*/}
              <div>
              {form.statut.isValid === false?<label htmlFor="statut"  style={{color: 'red'}}>{form.statut.error}</label> : <label htmlFor="statut">statut</label> }
                 <select name="statut" id="statut" className="browser-default" value={form.statut.value} onChange={e => handleSelectChange(e)}>
@@ -276,21 +278,22 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
             }
 
             {/*ClientId*/}
-            <div className="form-group">
+            {/* <div className="form-group">
             { form.clientId.isValid === false?<label htmlFor="Client" style={{color: 'red'}}>Client: {form.clientId.error}</label>:<label htmlFor="Client">Client</label>}
                  <br/>
                 <Link to="/client" target="_blank">List of clients by identifiant</Link>
                 <input id="Client" name="clientId" value={form.clientId.value } type="number" className="form-control" onChange={e => handleInputChange(e)}></input>
-            </div>
+            </div> */}
 
-            {/* <select name="clientId" id="Client">
-                {
-                     Clients.forEach(function(c){
-                       return <option value={c.ClientId}>{c.Company_Name}</option>
-                     })
-                };
+            <label htmlFor="SelectClient">Client SELECT</label>
+            <select name="clientId" id="SelectClient" className="browser-default" onChange={e => handleSelectChange(e)}>
+                { 
+                    Clients.map((Client) => 
+                        <option key={Client.ClientId} value={Client.ClientId} >{Client.Company_Name}</option>
+                    )
+                }
                 
-            </select> */}
+            </select>
             <button type="submit" className="btn grey darken-3 waves-effect waves-black">Submit</button>
             
         </form>

@@ -4,14 +4,16 @@ import ProjectCard from '../component/project-card';
 import './list.css';
 //import { useClient } from '../hooks/client-hook';
 
+
 const List: FunctionComponent = () => {
 
     const projects = useProjects();
     //const client = useClient();
+   
 
     return (
             <div>
-                <table className="container centered ">
+              <table className="container centered ">
                     <thead>
                         <tr style={{color: "black"}}>
                             <th>Project number</th>

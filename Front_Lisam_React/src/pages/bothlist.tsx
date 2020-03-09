@@ -5,10 +5,10 @@ import { useProjects } from '../hooks/projects-hook';
 import { useHistory } from 'react-router-dom';
 
 
-
 export const BothList: FunctionComponent = () =>{
    const projects = useProjects();
    const history = useHistory();
+   
 
    const goToAddProject = () => {
     history.push(`/project-add`);
