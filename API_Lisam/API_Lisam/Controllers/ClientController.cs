@@ -31,11 +31,11 @@ namespace API_Lisam.Controllers
             
            
 
-            if (C != null)
+            if (C != null && C.IsActive != false)
             {
                 C = Context.Clients
                     .Include(E => E.Projects)
-                    .Where(D => D.ClientId == id).Where(P => P.IsActive != false)
+                    .Where(D => D.ClientId == id)
                     .First();
                 return Ok(C);
             }
@@ -53,6 +53,7 @@ namespace API_Lisam.Controllers
                 //C.ProjectId =  PController.GetidByProjectNumber(P.ProjectNumber);
 
                 C.Address = C.ZipCode + ", " + C.City + ", " + C.Street;
+                C.IsActive = true;
                 Context.Clients.Add(C);
                 Context.SaveChanges();
 

@@ -59,6 +59,7 @@ namespace API_Lisam.Controllers
         {
             try
             {
+                P.IsActive = true;
                 //P.SignatureDate = new DateTime();
                 Context.Projects.Add(P);
 
