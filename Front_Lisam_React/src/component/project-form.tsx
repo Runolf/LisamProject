@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import Project from '../models/project';
-import{useHistory, Link} from 'react-router-dom';
+import{useHistory} from 'react-router-dom';
 import ProjectService from '../services/project-service';
 import Client from '../models/client';
 import { useProjects } from '../hooks/projects-hook';
@@ -186,7 +186,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
             const newField: Field = {value: form.signatureDate.value, isValid: true};
             newForm = {...newForm, ...{signatureDate: newField}};
         }
-
+        
         setForm(newForm);
  
         return (
@@ -284,8 +284,8 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
                 <input id="Client" name="clientId" value={form.clientId.value } type="number" className="form-control" onChange={e => handleInputChange(e)}></input>
             </div> */}
 
-            {form.clientId.isValid === false?<label htmlFor="SelectClient"  style={{color: 'red'}}>{form.clientId.error}</label> : <label htmlFor="SelectClient">statut</label> }
-            <select name="clientId" id="SelectClient" className="browser-default" onChange={e => handleSelectChange(e)}>
+            {form.clientId.isValid === false?<label htmlFor="SelectClient"  style={{color: 'red'}}>{form.clientId.error}</label> : <label htmlFor="SelectClient">Clients</label> }
+            <select name="clientId" id="SelectClient" className="browser-default" value={form.clientId.value} onChange={e => handleSelectChange(e)}>
                 <option value="">--choose a value--</option>
                 { 
                     Clients.map((Client) => 
@@ -293,7 +293,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
                     ).sort()
                 }
                 
-            </select>
+            </select><br/>
             <button type="submit" className="btn grey darken-3 waves-effect waves-black">Submit</button>
             
         </form>
