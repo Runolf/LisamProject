@@ -29,7 +29,8 @@ namespace API_Lisam.Controllers
             IList<Project> Projects = Context.Projects
                 .Include(p => p.Client)
                 .Where(P => P.ProjectId > 0)
-                .Where(P => P.IsActive != false).ToList();
+                //.Where(P => P.IsActive != false)
+                .ToList();
             return Projects;
         }   
         public IHttpActionResult Get(int id){
@@ -41,7 +42,8 @@ namespace API_Lisam.Controllers
             {
                 P = Context.Projects
                   .Include(p => p.Client)
-                  .Where(p => p.ProjectId == id).Where(Pr => Pr.IsActive != false)
+                  .Where(p => p.ProjectId == id)
+                  //.Where(Pr => Pr.IsActive != false)
                   .First();
 
                 return Ok(P);
@@ -60,11 +62,8 @@ namespace API_Lisam.Controllers
             try
             {
                 P.IsActive = true;
-                //P.SignatureDate = new DateTime();
-                Context.Projects.Add(P);
 
-                //P.Client = ClientControl.Get(C.ClientId);
-                
+                Context.Projects.Add(P);
                
                 Context.SaveChanges();
 
@@ -123,6 +122,7 @@ namespace API_Lisam.Controllers
                 return NotFound();
             }
             project.IsActive = false;
+           
             //Context.Projects.Remove(project);
             Context.SaveChanges();
             return Ok();

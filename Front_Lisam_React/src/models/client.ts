@@ -14,6 +14,7 @@ export default class Client{
     Email: string;
     Language: string;
     Number: string;
+    IsActive: boolean;
 
     Projects: Project[] = [];
 
@@ -26,8 +27,9 @@ export default class Client{
         email: string = "xxx@xxx.xxx",
         language: string = "no value",
         number: string = "no value",
-        
+        isActive: boolean = true,
        projects: Project[] = []
+       
     ) {
         this.ClientId = clientId;
         this.Company_Name = companyName;
@@ -38,5 +40,6 @@ export default class Client{
         this.Language = language;
         this.Number = number;
         this.Projects = projects;
+        this.IsActive = isActive;
     }
 }

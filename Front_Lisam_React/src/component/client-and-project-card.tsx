@@ -26,7 +26,8 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
      }
 
     const deleteClient = () =>  {
-        
+         
+        ProjectService.deleteProject(project);
         ClientService.deleteClient(client)
         .then(() => window.location.reload());
       }

@@ -9,8 +9,9 @@ export default class Project{
     ProjectNumber: string;
     ProjectLeader: string;
     Statut: statut;
-    ClientId: number;
-    Client: Client
+    IsActive: boolean;
+    ClientId: number |null;
+    Client: Client;
 
     constructor(
         projectId: number = 0,
@@ -18,6 +19,7 @@ export default class Project{
         projectNumber: string = "no value",
         projectLeader: string = "no value",
         statut: statut = 0,
+        isActive: boolean = true,
         clientId: number = 0,
         client: Client = new Client()
     ) {
@@ -26,6 +28,7 @@ export default class Project{
         this.ProjectNumber = projectNumber;
         this.SignatureDate = signatureDate;
         this.Statut = statut;
+        this.IsActive = isActive;
         this.ClientId = clientId; 
         this.Client = client;
     }

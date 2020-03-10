@@ -7,7 +7,7 @@
     {
         public override void Up()
         {
-            AddColumn("dbo.Clients", "IsActive", c => c.Boolean(nullable: false, defaultValue: true));
+            AddColumn("dbo.Clients", "IsActive", c => c.Boolean(nullable: false, defaultValue: true ));
             AddColumn("dbo.Projects", "IsActive", c => c.Boolean(nullable: false, defaultValue: true));
         }
         

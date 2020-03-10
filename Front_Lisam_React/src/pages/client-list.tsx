@@ -23,9 +23,11 @@ const List: FunctionComponent = () => {
                         </tr>
                      </thead>
                      <tbody className="row grid">
-                     { 
+                     {
                         client.map((C) => 
+                        C.IsActive === true?
                          <ClientCard key={C.ClientId} borderColor="green" client={C}/>
+                         : ""
                         )}  
                      </tbody>
                 

@@ -20,7 +20,7 @@ namespace API_Lisam.Controllers
         {
             IList<Client> Clients = Context.Clients
                 .Where(C => C.ClientId > 0)
-                .Where(C => C.IsActive != false)
+                //.Where(C => C.IsActive != false)
                 .ToList();
             return Clients;
         }
@@ -29,9 +29,7 @@ namespace API_Lisam.Controllers
         {
             Client C = Context.Clients.Find(id);
             
-           
-
-            if (C != null && C.IsActive != false)
+            if (C != null)
             {
                 C = Context.Clients
                     .Include(E => E.Projects)
@@ -50,10 +48,11 @@ namespace API_Lisam.Controllers
             
             try
             {
-                //C.ProjectId =  PController.GetidByProjectNumber(P.ProjectNumber);
-
+                
                 C.Address = C.ZipCode + ", " + C.City + ", " + C.Street;
+                
                 C.IsActive = true;
+             
                 Context.Clients.Add(C);
                 Context.SaveChanges();
 

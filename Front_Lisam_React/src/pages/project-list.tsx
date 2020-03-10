@@ -22,7 +22,9 @@ const List: FunctionComponent = () => {
                      </thead>
                      <tbody className="row grid">
                     {projects.map((P) =>
+                    P.IsActive === true?
                         <ProjectCard key={P.ProjectId} client={P.Client} project={P}/> 
+                        : ""
                     )} 
                     </tbody>
                 </table>

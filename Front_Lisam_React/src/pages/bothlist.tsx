@@ -8,6 +8,12 @@ import { useHistory } from 'react-router-dom';
 export const BothList: FunctionComponent = () =>{
    const projects = useProjects();
    const history = useHistory();
+
+   const findByName = (word: string) => {
+    var pS = projects.find((N) => N.ProjectNumber);
+    return pS;
+   }
+  
    
 
    const goToAddProject = () => {
@@ -36,7 +42,11 @@ const goToAddClient = () => {
                      </thead>
                      <tbody className="row grid">
                         {
-                            projects.map((P) => <CandP key={P.ProjectId} project={P} client={P.Client}/>)
+                            projects.map((P) => 
+                            P.IsActive === true?
+                            <CandP key={P.ProjectId} project={P} client={P.Client}/>
+                            : ""
+                            )
                         }
                     </tbody>
             </table>
