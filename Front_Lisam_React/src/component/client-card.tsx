@@ -22,12 +22,12 @@ const ClientCard: FunctionComponent<Props> = ({client}) => {
 
     return (
         <tr className="" style={{color: "white"}}>
-            <td className="grey darken-2 m2 center border">{client.Company_Name}
-                <div  className="button-list btn blue-grey darken-2 waves-effect waves-teal z-depth-3 left" onClick={() => goToModifyClient(client.ClientId)}>Modif</div>
+            <td className="grey darken-2 m2 center border">
+                <div  className="left button-list btn blue-grey darken-2 waves-effect waves-teal z-depth-3" onClick={() => goToModifyClient(client.ClientId)}>Modif</div>
+                {client.Company_Name}
             </td>
             <td className="grey darken-2 m2 center border">{client.Language}</td>
         </tr>
-   
     )
 };
 

@@ -20,6 +20,7 @@
                         Email = c.String(),
                         Number = c.String(),
                         Language = c.String(),
+                        
                     })
                 .PrimaryKey(t => t.ClientId);
             

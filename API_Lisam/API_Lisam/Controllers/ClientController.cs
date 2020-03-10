@@ -19,7 +19,9 @@ namespace API_Lisam.Controllers
         public IList<Client> Get()
         {
             IList<Client> Clients = Context.Clients
-                .Where(C => C.ClientId > 0).ToList();
+                .Where(C => C.ClientId > 0)
+                .Where(C => C.IsActive != false)
+                .ToList();
             return Clients;
         }
        
@@ -33,7 +35,7 @@ namespace API_Lisam.Controllers
             {
                 C = Context.Clients
                     .Include(E => E.Projects)
-                    .Where(D => D.ClientId == id)
+                    .Where(D => D.ClientId == id).Where(P => P.IsActive != false)
                     .First();
                 return Ok(C);
             }
@@ -102,7 +104,8 @@ namespace API_Lisam.Controllers
             {
                 return NotFound();
             }
-            Context.Clients.Remove(client);
+            client.IsActive = false;
+            //Context.Clients.Remove(client);
             Context.SaveChanges();
             return Ok();
         }

@@ -131,6 +131,10 @@
     <Compile Include="Migrations\202002251515177_ModifyForeignKey.designer.cs">
       <DependentUpon>202002251515177_ModifyForeignKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003101035109_addIsActiveToBothModels.cs" />
+    <Compile Include="Migrations\202003101035109_addIsActiveToBothModels.designer.cs">
+      <DependentUpon>202003101035109_addIsActiveToBothModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\LisamContext.cs" />
@@ -170,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002251515177_ModifyForeignKey.resx">
       <DependentUpon>202002251515177_ModifyForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003101035109_addIsActiveToBothModels.resx">
+      <DependentUpon>202003101035109_addIsActiveToBothModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -25,6 +25,7 @@ namespace API_Lisam.Models
         public string Email { get; set; }
         public string Number { get; set; }
         public string Language { get; set; }
+        public bool IsActive { get; set; }
 
         // test foreign key
         public IList<Project> Projects

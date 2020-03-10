@@ -15,8 +15,8 @@
                         SignatureDate = c.DateTime(nullable: false),
                         ProjectNumber = c.String(),
                         ProjectLeader = c.String(),
-                        Statut = c.Int(nullable: false),
-                    })
+                        Statut = c.Int(nullable: false)
+                })
                 .PrimaryKey(t => t.ProjectId);
             
             AddColumn("dbo.Clients", "Project_ProjectId", c => c.Int());
