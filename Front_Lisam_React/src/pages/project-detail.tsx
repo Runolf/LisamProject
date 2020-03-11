@@ -1,17 +1,24 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
-import { RouteComponentProps, Link} from 'react-router-dom';
+import { RouteComponentProps, Link, useHistory} from 'react-router-dom';
 import Project from '../models/project';
 import ProjectService from '../services/project-service';
 import "./detail.css";
 import { statut } from '../models/statut';
 import formatDate from '../helpers/format-date';
+import { classNames } from 'react-select/src/utils';
+import { borderRadius } from 'react-select/src/theme';
 
 type Params = {id: string};
 const ProjectDetail: FunctionComponent<RouteComponentProps<Params>> = ({match}) => {
     
     const [project, SetProject] = useState<Project|null>(null);
     
-    //const history = useHistory();
+    const history = useHistory();
+
+    const goToClient = (id:number) => {
+        history.push(`/Client/${id}`);
+     }
+
     
     useEffect(() => {
         ProjectService.getProject(+match.params.id)
@@ -81,7 +88,10 @@ const ProjectDetail: FunctionComponent<RouteComponentProps<Params>> = ({match}) 
 
                             { project.Client?
                                 <tr>
-                                    <td className="grey darken-2 m2 center border">Client:<br/> {project.Client.Company_Name}</td>
+                                    <td className="grey darken-2 m2 center border"
+                                    >Client:<br/> 
+                                    <div  onClick={() => goToClient(project.Client.ClientId)} className="btn grey waves-effect waves-light borderProject" >{project.Client.Company_Name}</div>
+                                    </td>
                                 </tr>
                                 :
                                 <tr>
