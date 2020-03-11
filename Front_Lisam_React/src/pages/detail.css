@@ -21,5 +21,11 @@ td{
     top: 70px;
 }
 
+.borderProject{
+    border: black 1px solid;
+    width: 200px;
+    margin: 10px;
+}
+
 
 

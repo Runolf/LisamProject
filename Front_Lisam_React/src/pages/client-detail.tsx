@@ -42,9 +42,11 @@ const ClientDetail: FunctionComponent<RouteComponentProps<Params>> = ({match}) =
                             <td className="grey darken-2 m2 center border">Address: <br/>{client.Street + " " + client.ZipCode + " " + client.City}</td>
                         </tr>
                         
-                        {/* <tr>
-                            <td className="grey darken-2 m2 center border">{client.Projects.map((P) => P.ProjectId) Is considered as null }</td>
-                        </tr> */}
+                        <tr>
+                            <td className="grey darken-2 m2 center border">{client.Projects.map((P) => 
+                            <div className="borderProject">{P.ProjectNumber}</div>
+                            ) }</td>
+                        </tr>
                     </tbody>
                 </table>
 
