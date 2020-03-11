@@ -21,11 +21,21 @@ td{
     top: 70px;
 }
 
-.borderProject{
-    border: black 1px solid;
-    width: 200px;
-    margin: 10px;
+@media only screen and (min-width: 200px){
+    .borderProject{
+        border: black 1px solid;
+        width: 100px;
+        margin: 1% 60% 1% 40%;
+    }
 }
+
+@media only screen and (min-width: 993px) {
+    .borderProject{
+        border: black 1px solid;
+        width: 100px;
+        margin: 1% 46% 1% 46%;
+    }
+  }
 
 
 

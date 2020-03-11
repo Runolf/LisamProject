@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
-import { RouteComponentProps, Link} from 'react-router-dom';
+import { RouteComponentProps, Link, useHistory} from 'react-router-dom';
 import Client from '../models/client';
 import ClientService from '../services/client-services';
 import "./detail.css";
@@ -9,11 +9,15 @@ type Params = {id: string};
 const ClientDetail: FunctionComponent<RouteComponentProps<Params>> = ({match}) => {
 
     const [client, setClient] = useState<Client|null>(null);
-
+    const history = useHistory();
     useEffect(() => {
             ClientService.getClient(+match.params.id)
             .then(client => setClient(client));
     }, [match.params.id]);
+
+    const goToProject = (id:number) => {
+        history.push(`/Project/${id}`);
+    }
 
     return (
         <div> 
@@ -43,8 +47,10 @@ const ClientDetail: FunctionComponent<RouteComponentProps<Params>> = ({match}) =
                         </tr>
                         
                         <tr>
-                            <td className="grey darken-2 m2 center border">{client.Projects.map((P) => 
-                            <div className="borderProject">{P.ProjectNumber}</div>
+                            <td className="grey darken-2 m2 center border"> 
+                                 <h6 className="">Projects</h6>
+                            {client.Projects.map((P) => 
+                                 <div key={P.ProjectId} className="btn grey waves-effect waves-light borderProject" onClick={() => goToProject(P.ProjectId)}>{P.ProjectNumber}</div>
                             ) }</td>
                         </tr>
                     </tbody>
