@@ -20,6 +20,7 @@ namespace API_Lisam.Controllers
         {
             IList<Client> Clients = Context.Clients
                 .Where(C => C.ClientId > 0)
+                .Include(P => P.Projects)
                 //.Where(C => C.IsActive != false)
                 .ToList();
             return Clients;

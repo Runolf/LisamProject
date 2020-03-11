@@ -40,7 +40,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
     const history = useHistory();
     const Projects = useProjects();
     const Clients = useClients(); 
-    
+
    
     const transformDateToFormDate = (date: string): string => {
         return date.slice(0,10);
@@ -72,7 +72,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
         }
         
     }
-    const handleInputChange = (e : React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (e : React.ChangeEvent<HTMLInputElement|HTMLSelectElement>) => {
 
         const fieldName: string = e.target.name;
         const fieldValue: string|number = e.target.value;
@@ -80,13 +80,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
         const newField: Field = {[fieldName] : {value: fieldValue}};
         setForm({...form, ...newField});
     }
-    const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-         const fieldName: string = e.target.name;
-         const fieldValue: string = e.target.value;
 
-         const newField: Field = {[fieldName] : {value: fieldValue}};
-         setForm({...form, ...newField});
-    }
     const validateForm = () => {
       
         let newForm: Form = form;
@@ -250,8 +244,9 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
             
             {/*Select Statuts*/}
              <div>
+                {console.log("L'erreur 'index.js:1 Warning: `value` prop on `select` should not be null.' n'est pas grave")}
              {form.statut.isValid === false?<label htmlFor="statut"  style={{color: 'red'}}>{form.statut.error}</label> : <label htmlFor="statut">statut</label> }
-                <select name="statut" id="statut" className="browser-default" value={form.statut.value} onChange={e => handleSelectChange(e)}>
+                <select name="statut" id="statut" className="browser-default" value={form.statut.value} onChange={e => handleInputChange(e)}>
                     <option value="">--choose a value--</option>
                     <option value={statut.Closed}>Closed</option>
                     <option value={statut.Factured}>Factured</option>
@@ -285,7 +280,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
             </div> */}
 
             {form.clientId.isValid === false?<label htmlFor="SelectClient"  style={{color: 'red'}}>{form.clientId.error}</label> : <label htmlFor="SelectClient">Clients</label> }
-            <select name="clientId" id="SelectClient" className="browser-default" value={form.clientId.value} onChange={e => handleSelectChange(e)}>
+            <select name="clientId" id="SelectClient" className="browser-default" value={form.clientId.value} onChange={e => handleInputChange(e)}>
                 <option value="">--choose a value--</option>
                 { 
                     Clients.map((Client) => 

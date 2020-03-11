@@ -4,17 +4,10 @@ import './list.css';
 import { useProjects } from '../hooks/projects-hook';
 import { useHistory } from 'react-router-dom';
 
-
 export const BothList: FunctionComponent = () =>{
    const projects = useProjects();
    const history = useHistory();
-
-   const findByName = (word: string) => {
-    var pS = projects.find((N) => N.ProjectNumber);
-    return pS;
-   }
-  
-   
+    
 
    const goToAddProject = () => {
     history.push(`/project-add`);
@@ -22,7 +15,7 @@ export const BothList: FunctionComponent = () =>{
 
 const goToAddClient = () => {
    history.push(`/client-add`);
-}
+}   
 
     return (
         <div>
