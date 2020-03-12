@@ -5,8 +5,6 @@ import ProjectService from '../services/project-service';
 import "./detail.css";
 import { statut } from '../models/statut';
 import formatDate from '../helpers/format-date';
-import { classNames } from 'react-select/src/utils';
-import { borderRadius } from 'react-select/src/theme';
 
 type Params = {id: string};
 const ProjectDetail: FunctionComponent<RouteComponentProps<Params>> = ({match}) => {
