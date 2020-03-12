@@ -159,9 +159,9 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
         var dd = today.getDate().toString().padStart(2, '0');
         var mm = (today.getMonth() + 1).toString().padStart(2, '0');
         var yyyy = today.getFullYear().toString();
-        var currentDate:String = yyyy + "-" + mm + "-" + dd;
+        var currentDate:String = yyyy + "-" + mm + "-" + dd+"T:00:00:00";
         today.setHours(0,0,0,0);
-
+        
         const formDate:Date = form.signatureDate.value;
        
         if(formDate.toString() > currentDate){
@@ -172,7 +172,9 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
             const newField: Field = {value: form.signatureDate.value, isValid: true};
             newForm = {...newForm, ...{signatureDate: newField}};
         }
-        
+
+
+        debugger;
         setForm(newForm);
  
         return (
@@ -226,12 +228,6 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
             </div>
 
             {/*status*/}
-            {/* <div className="form-group">
-            {form.statut.isValid === false?<label htmlFor="statut"  style={{color: 'red'}}>{form.statut.error}1 open | 2 signed | 3 factured | 4 work in progress | 5 closed</label> : <label htmlFor="statut">statut: 1 open | 2 signed | 3 factured | 4 work in progress | 5 closed</label> }
-              
-               <input id="statut" name="statut" type="text" className="form-control" value={form.statut.value} onChange={e => handleInputChange(e)}></input>
-        
-            </div> */}
             <br/> 
             
             {/*Select Statuts*/}
@@ -254,6 +250,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
             {isEditForm? 
                 <div className="form-group">
                     {form.signatureDate.isValid === false?<label htmlFor="signatureDate" style={{color: 'red'}}>signature Date : {form.signatureDate.error}</label>:<label htmlFor="signatureDate">signature Date</label>}             
+                   
                     <input id="signatureDate" name="signatureDate" type="date" className="form-control" value={transformDateToFormDate(form.signatureDate.value)} onChange={e => handleInputChange(e)}></input>
                 </div>
                 :
@@ -263,14 +260,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
                 </div>
             }
 
-            {/*ClientId*/}
-            {/* <div className="form-group">
-            { form.clientId.isValid === false?<label htmlFor="Client" style={{color: 'red'}}>Client: {form.clientId.error}</label>:<label htmlFor="Client">Client</label>}
-                 <br/>
-                <Link to="/client" target="_blank">List of clients by identifiant</Link>
-                <input id="Client" name="clientId" value={form.clientId.value } type="number" className="form-control" onChange={e => handleInputChange(e)}></input>
-            </div> */}
-
+            {/*ClientId*/}     
             {form.clientId.isValid === false?<label htmlFor="SelectClient"  style={{color: 'red'}}>{form.clientId.error}</label> : <label htmlFor="SelectClient">Clients</label> }
             <select name="clientId" id="SelectClient" className="browser-default" value={form.clientId.value} onChange={e => handleInputChange(e)}>
                 <option value="">--choose a value--</option>
@@ -281,6 +271,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
                 }
                 
             </select><br/>
+           
             <button type="submit" className="btn grey darken-3 waves-effect waves-black">Submit</button>
             
         </form>
