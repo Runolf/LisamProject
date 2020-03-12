@@ -26,8 +26,12 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
      }
 
     const deleteClient = () =>  {
-         
-        ProjectService.deleteProject(project);
+       
+        ProjectService.deleteProject(project); // without this lign, it doesn't delete the project where we had click on the button delete
+
+        project.Client.Projects.map((P) =>   
+        ProjectService.deleteProject(P));
+
         ClientService.deleteClient(client)
         .then(() => window.location.reload());
       }

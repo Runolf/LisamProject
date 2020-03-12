@@ -144,16 +144,8 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
         
         // ID CLIENT VALIDATOR
         const validClient: RegExp = /^[0-9]+$/;
-        var idExist: boolean = false; 
-        var idS = Clients.map(C => C.ClientId);
-        for(let test of idS){
-            if(form.clientId.value === test.toString()){
-                idExist = true;
-                break;
-            }
-        }
-
-        if(!validClient.test(form.clientId.value) || form.clientId.value === "0" || !idExist){
+      
+        if(!validClient.test(form.clientId.value)){
             const errorMsg:string = "Choose a value";
             const newField: Field = {value: form.clientId.value, error: errorMsg, isValid: false};
             newForm = {...newForm, ...{clientId: newField}};

@@ -83,7 +83,8 @@ namespace API_Lisam.Controllers
                 client.Language = (Modif.Language != null)?Modif.Language:client.Language;
                 client.Email = (Modif.Email != null)?Modif.Email:client.Email;
                 client.Address = client.ZipCode + ", " + client.City + ", " + client.Street;
-                client.Projects = (Modif.Projects != null) ? Modif.Projects : client.Projects;
+                //client.Projects = (Modif.Projects != null) ? Modif.Projects : client.Projects;
+      // do not use this lign of code cause it's double the existant projects bind to this client in the DB
 
                 Context.SaveChanges();
 
