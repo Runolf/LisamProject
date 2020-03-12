@@ -1,14 +1,12 @@
 import Project from '../models/project';
 
 export default class ProjectService{
-    static getProjects(): Promise<Project[]> {
+
+  static getProjects(): Promise<Project[]> {
     return  fetch('http://localhost:44331/api/Projects')
           .then(response => response.json())
           .catch(error => this.handleError(error));
-          //debugger;
-          //return res;
       }
-
 
       static getProject(id: number): Promise<Project|null> {
         return fetch(`http://localhost:44331/api/Projects/${id}`)
@@ -52,13 +50,6 @@ export default class ProjectService{
     .then(response => response.json())
     .catch(error => this.handleError(error));
 }
-
-  // Sert pour la barre de recherche. Non fonctionnel pour le moment.
-  // static searchProject(term: string): Promise<Project[]>{
-  //   return fetch(`http://localhost:44331/api/Projects/q=${term}`)
-  //   .then(response => response.json())
-  //   .catch(error => this.handleError(error));
-  // }
 
       static isEmpty(data: Object): boolean {
         return Object.keys(data).length === 0;

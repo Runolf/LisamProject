@@ -18,7 +18,7 @@ const ClientCard: FunctionComponent<Props> = ({client}) => {
         history.push(`/client-edit/${id}`);
     }
 
- 
+
 
     return (
         <tr className="" style={{color: "white"}}>

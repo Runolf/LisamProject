@@ -5,10 +5,11 @@ import ProjectService from '../services/project-service';
 export const useProject = (id : number | null) => {
     const [project, setProject] = useState<Project | null>();
 
-    useEffect(() => 
-              { if(id !== null)
+    useEffect(() => { 
+                if(id !== null)
                 ProjectService.getProject(id)
-                .then(project => setProject(project)); }
+                .then(project => setProject(project)); 
+              }
             , []);
           
          

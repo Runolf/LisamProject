@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 import ClientService from '../services/client-services';
 import ProjectService from '../services/project-service';
 import formatDate from '../helpers/format-date';
+//import Actions from '../helpers/actions';
 
 type Props = {
     project: Project,
@@ -27,9 +28,9 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
 
     const deleteClient = () =>  {
        
-        ProjectService.deleteProject(project); // without this lign, it doesn't delete the project where we had click on the button delete
+        ProjectService.deleteProject(project); // without this lign, it doesn't delete the project where we have clicked on the button delete
 
-        project.Client.Projects.map((P) =>   
+        project.Client.Projects.map((P) =>      
         ProjectService.deleteProject(P));
 
         ClientService.deleteClient(client)
@@ -49,8 +50,8 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
     const goToModifyClient = (id: number) => {
         history.push(`/client-edit/${id}`);
     }
-
-    var date;
+    
+    var date; // obliged to do this code below, otherwise the formatDate doesn't work
     if (project !== null) {
      date = new Date(project.SignatureDate);
     }
@@ -78,57 +79,6 @@ const BothCard: FunctionComponent<Props> = ({project,client}) => {
             (project.ProjectLeader):(<p>no project</p>)
             }</td>
             <td className="grey darken-2 m2 center border">{st}</td>
-
-
-            {/* <td className="m2 td-button-list">
-
-                {project?
-                <tr  className="button-list btn green darken-4" onClick={() => goToProject(project.ProjectId)}>Detail project</tr>
-                :
-                <tr  className="button-list btn grey darken-4">Detail project</tr>
-                }
-
-                {client?
-                <tr  className="button-list btn green darken-4" onClick={() => goToClient(client.ClientId)}>Detail client</tr>
-                :
-                <tr  className="button-list btn grey darken-4">Detail client</tr>
-                }
-
-            </td> */}
-
-            {/* <td className="m2 td-button-list">
-
-                {project?
-                <tr  className="button-list btn blue darken-4" onClick={() => goToModifyProject(project.ProjectId)}>Modif project</tr>
-                :
-                <tr  className="button-list btn grey darken-4">modif project</tr>
-                }
-
-                {client?
-                <tr  className="button-list btn blue darken-4" onClick={() => goToModifyClient(client.ClientId)}>Modif client</tr>
-                :
-                <tr  className="button-list btn grey darken-4">modifs client</tr>
-                }
-
-            </td> */}
-
-
-
-            {/* <td className="m2 td-button-list">
-
-            {project?
-                <tr  className="button-list btn red darken-4" onClick={() => deleteProject()}>Delete project</tr>
-                :
-                <tr  className="button-list btn grey darken-4">Delete project</tr>
-                }
-
-                {client?
-                <tr  className="button-list btn red darken-4" onClick={() => deleteClient()}>Delete client</tr>
-                :
-                <tr  className="button-list btn grey darken-4">Delete client</tr>
-                }
-
-            </td> */}
         
         </tr>
 

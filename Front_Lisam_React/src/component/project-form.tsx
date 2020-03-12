@@ -57,6 +57,7 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
         ProjectService.deleteProject(project)
         .then(() => history.push(`/project`));
     }
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
         const isFormIsValid = validateForm();
@@ -173,8 +174,6 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
             newForm = {...newForm, ...{signatureDate: newField}};
         }
 
-
-        debugger;
         setForm(newForm);
  
         return (

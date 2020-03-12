@@ -94,7 +94,7 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
     const validateForm = () => {
       
         let newForm: Form = form;
-        const validEmail: RegExp = /^[a-zA-Z-]+@[a-zA-Z-]+\.[a-zA-Z]{2,6}$/ ;
+        const validEmail: RegExp = /^[a-zA-Z0-9]+@[a-zA-Z-]+\.[a-zA-Z]{2,6}$/ ;
         const noValueEmail: RegExp = /^[x]{1,}@[x]{1,}.[x]{1,}$/ ;
         const noValue: string = "no value";
 

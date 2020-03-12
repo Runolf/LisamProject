@@ -29,14 +29,7 @@ const ProjectCard: FunctionComponent<Props> = ({project, client}) => {
              <div  className="button-list btn blue-grey darken-2 waves-effect waves-teal z-depth-3 left" onClick={() => goToModifyProject(project.ProjectId)}>Modif</div>
             </td>
             <td className="grey darken-2 m2 center border">{project.ProjectLeader} </td>
-            {/* {client? 
-            <td className="grey darken-2 m2 center border">{client.Email} </td>
-            :
-            <td className="grey darken-2 m2 center border">pas de client... </td>
-             } */}
-            
-        </tr>
-   
+        </tr>   
     )
 };
 

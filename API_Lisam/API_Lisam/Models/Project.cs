@@ -20,7 +20,7 @@ namespace API_Lisam.Models
         public string ProjectNumber { get; set; }
         public string ProjectLeader { get; set; }
         public Statuts? Statut { get; set; }
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } // refact -> class parente
 
         public int? ClientId { get; set; }
         public Client Client { get; set; }

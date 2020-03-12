@@ -1,11 +1,9 @@
 import Project from "./project";
 
-//import Project from "./project";
-
 export default class Client{
 
-   ClientId: number;
-   Company_Name: string;
+    ClientId: number;
+    Company_Name: string;
 
     Street: string;
     ZipCode: string;
@@ -28,7 +26,7 @@ export default class Client{
         language: string = "no value",
         number: string = "no value",
         isActive: boolean = true,
-       projects: Project[] = []
+        projects: Project[] = []
        
     ) {
         this.ClientId = clientId;
