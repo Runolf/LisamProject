@@ -13,14 +13,14 @@ namespace API_Lisam.Models
         Work_In_Progress = 4,
         Closed = 5
     }
-    public class Project
+    public class Project: isActive
     {
         public int ProjectId { get; set; }
         public DateTime? SignatureDate { get; set; }
         public string ProjectNumber { get; set; }
         public string ProjectLeader { get; set; }
         public Statuts? Statut { get; set; }
-        public bool IsActive { get; set; } // refact -> class parente
+        //public bool IsActive { get; set; } // refact -> class parente
 
         public int? ClientId { get; set; }
         public Client Client { get; set; }
