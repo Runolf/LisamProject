@@ -45,7 +45,7 @@ const goToAddClient = () => {
                             <CandP key={P.ProjectId} project={P} client={P.Client}/>
                             : ""
                             )
-                            : <div><p className="center" style={{color:"black"}}>no projects found</p></div> 
+                            : <div><p className="center" style={{color:"black"}}>API doesn't work</p></div> 
                     
                         }
                     </tbody>

@@ -19,7 +19,11 @@ const List: FunctionComponent = () => {
         <div>
             {client?
             <div>
-                <div  className="button-both btn blue-grey darken-1 waves-effect waves-teal z-depth-3" onClick={() => goToAddProject()}>Add project</div>
+                {client !== undefined?
+                    <div  className="button-both btn blue-grey darken-1 waves-effect waves-teal z-depth-3" onClick={() => goToAddProject()}>Add project</div>
+                    : ""
+                }
+
                 <table className="container centered ">
                         <thead>
                             <tr style={{color: "black"}}>

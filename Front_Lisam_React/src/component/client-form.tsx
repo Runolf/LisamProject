@@ -105,7 +105,9 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
 
        // CLIENT_NAME VALIDATOR
        
-        const CName = Clients.map(C => C.Company_Name);
+        var CName = ['0'];
+        if(Clients !== undefined)
+        CName = Clients.map(C => C.Company_Name);
        
         var name:string  =  form.companyName.value;
         var nameExist:boolean = false;
