@@ -42,7 +42,7 @@ const List: FunctionComponent = () => {
                 </table>
             </div> 
             : <p  style={{margin:"50px 50px 50px 650px"}}>
-                no clients found
+                API doesn't work!
             </p>
                 
             }

@@ -29,7 +29,7 @@ const List: FunctionComponent = () => {
                     </tbody>
                 </table> 
                 : <p style={{margin:"50px 50px 50px 650px"}}>
-                    no projects found
+                    API doesn't work!
                 </p>
             }
               
