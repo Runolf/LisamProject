@@ -216,14 +216,14 @@ const ProjectForm: FunctionComponent<Props> = ({project,isEditForm}) => {
                     form.projectNumber.isValid===false?<label htmlFor="projectNumber" style={{color: 'red'}}>project Number: {form.projectNumber.error}</label>
                     : <label htmlFor="projectNumber">project Number</label>
                 }
-               <input id="projectNumber" name="projectNumber" type="text" className="form-control" placeholder="no-value" value={form.projectNumber.value} onChange={e => handleInputChange(e)}></input>
+               <input id="projectNumber" name="projectNumber" type="text" className="form-control" placeholder={form.projectNumber.value} onChange={e => handleInputChange(e)}></input>
             </div>
 
             {/*Project leader*/}
             <div className="form-group">
             {form.projectLeader.isValid === false?<label htmlFor="projectLeader"  style={{color: 'red'}}>project Leader: {form.projectLeader.error}</label>:<label htmlFor="projectLeader">project Leader</label> }
               
-               <input id="projectLeader" name="projectLeader" type="text" className="form-control" value={form.projectLeader.value} onChange={e => handleInputChange(e)}></input>
+               <input id="projectLeader" name="projectLeader" type="text" className="form-control" placeholder={form.projectLeader.value} onChange={e => handleInputChange(e)}></input>
             </div>
 
             {/*status*/}
