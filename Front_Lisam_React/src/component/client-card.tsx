@@ -9,7 +9,6 @@ type Props = {
 };
 
 
-
 const ClientCard: FunctionComponent<Props> = ({client}) => {
 
     const history = useHistory();

@@ -14,6 +14,7 @@ namespace API_Lisam.Controllers
     public class ClientController : ApiController
     {
         private LisamContext Context = new LisamContext();
+        private ProjectsController PC = new ProjectsController();
 
         
         public IList<Client> Get()
@@ -101,12 +102,28 @@ namespace API_Lisam.Controllers
 
         public IHttpActionResult Delete(int Id)
         {
-            Client client = Context.Clients.Find(Id);
+            //Client client = Context.Clients.Find(Id);
+
+          Client client = Get()
+                .Where(C => C.ClientId == Id)
+                .FirstOrDefault();
+            
+
             if (client == null)
             {
                 return NotFound();
             }
+
+            if (client.Projects.Count > 0)
+            {
+                foreach (Project Pr in client.Projects)
+                {
+                    Pr.IsActive = false;
+                }
+            }
+
             client.IsActive = false;
+            
             //Context.Clients.Remove(client);
             Context.SaveChanges();
             return Ok();

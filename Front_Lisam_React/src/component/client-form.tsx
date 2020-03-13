@@ -4,7 +4,6 @@ import{useHistory} from 'react-router-dom';
 import ClientService from '../services/client-services';
 import { useClients } from '../hooks/clients-hook';
 import '../pages/form.css';
-import ProjectService from '../services/project-service';
 
 type Props = {
     client: Client,
@@ -54,11 +53,6 @@ const ClientForm: FunctionComponent<Props> = ({client, isEditForm}) => {
     }
 
     const deleteClient = () =>  {
-        
-        client.Projects.map((P) => 
-            ProjectService.deleteProject(P)
-        );
-
         ClientService.deleteClient(client)
         .then(() => history.push(`/client`));
       }

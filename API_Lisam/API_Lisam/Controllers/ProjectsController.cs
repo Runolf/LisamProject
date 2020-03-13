@@ -20,6 +20,7 @@ namespace API_Lisam.Controllers
     {
         private LisamContext Context = new LisamContext();
 
+
         /*
           include ici sert à include l'objet client correspondant au projet dans le get
        */
@@ -128,13 +129,5 @@ namespace API_Lisam.Controllers
             return Ok();
         }
  
-        public int GetidByProjectNumber(string ProjectNumber)
-        {
-            Project Project = Get()
-                .Where(P => P.ProjectNumber == ProjectNumber)
-                .ToList()
-                .FirstOrDefault();
-            return Project.ProjectId;
-        }
     }
 }
