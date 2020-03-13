@@ -9,29 +9,40 @@ const List: FunctionComponent = () => {
 
     const client = useClients();
     const history = useHistory();
+
     const goToAddProject = () => {
-        history.push(`/project-add`);
+        if(client !== undefined){
+            history.push(`/project-add`);
+        }
     }
     return (
         <div>
-            <div  className="button-both btn blue-grey darken-1 waves-effect waves-teal z-depth-3" onClick={() => goToAddProject()}>Add project</div>
-            <table className="container centered ">
-                    <thead>
-                        <tr style={{color: "black"}}>
-                            <th>Company name</th> 
-                            <th>Language</th>
-                        </tr>
-                     </thead>
-                     <tbody className="row grid">
-                     {
-                        client.map((C) => 
-                        C.IsActive === true?
-                         <ClientCard key={C.ClientId} borderColor="green" client={C}/>
-                         : ""
-                        )}  
-                     </tbody>
+            {client?
+            <div>
+                <div  className="button-both btn blue-grey darken-1 waves-effect waves-teal z-depth-3" onClick={() => goToAddProject()}>Add project</div>
+                <table className="container centered ">
+                        <thead>
+                            <tr style={{color: "black"}}>
+                                <th>Company name</th> 
+                                <th>Language</th>
+                            </tr>
+                         </thead>
+                         <tbody className="row grid">
+                         {
+                            client.map((C) => 
+                            C.IsActive === true?
+                             <ClientCard key={C.ClientId} borderColor="green" client={C}/>
+                             : ""
+                            )}  
+                         </tbody>
+                </table>
+            </div> 
+            : <p  style={{margin:"50px 50px 50px 650px"}}>
+                no clients found
+            </p>
                 
-            </table>
+            }
+            
         </div>
             
     );

@@ -7,8 +7,17 @@ const ProjectAdd:FunctionComponent = () => {
     const [project] = useState<Project>(new Project());
 
     return ( 
-        <div className="row">
-                <ProjectForm project={project} client={project.Client} isEditForm={false}></ProjectForm>
+        <div>
+            {
+                project !== undefined?
+                <div className="row">
+                    <ProjectForm project={project} client={project.Client} isEditForm={false}></ProjectForm>
+                </div>
+                :
+                <p>
+                    no projects found!
+                </p>
+            }
         </div>
     );
 }

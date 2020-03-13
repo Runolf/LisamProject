@@ -19,15 +19,26 @@ const ProjectEdit: FunctionComponent<RouteComponentProps<Params>> = ({match}) =>
     }, [match.params.id]);
     
     return (
-        <div className="detail">
-            {project? (
-                    <div className="row">
-                     <ProjectForm project={project} client={project.Client} isEditForm={true}></ProjectForm>
+        <div>
+            {
+                project? 
+                <div className="detail">
+                    {project? (
+                            <div className="row">
+                            <ProjectForm project={project} client={project.Client} isEditForm={true}></ProjectForm>
+                        </div>
+                    ) : (
+                        <h4 className="center">Aucun projet à afficher !</h4>
+                    )}
                 </div>
-            ) : (
-                <h4 className="center">Aucun projet à afficher !</h4>
-             )}
+            : 
+            <p>
+                no projects found!
+            </p>
+            }
+              
         </div>
+      
     )
 
 }

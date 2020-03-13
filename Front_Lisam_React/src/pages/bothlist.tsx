@@ -10,11 +10,15 @@ export const BothList: FunctionComponent = () =>{
     
 
    const goToAddProject = () => {
-    history.push(`/project-add`);
+    if(projects !== undefined){
+        history.push(`/project-add`);
+    }
 }
 
 const goToAddClient = () => {
-   history.push(`/client-add`);
+    if(projects !== undefined){
+        history.push(`/client-add`);
+    }
 }   
 
     return (
@@ -35,11 +39,14 @@ const goToAddClient = () => {
                      </thead>
                      <tbody className="row grid">
                         {
+                            projects?
                             projects.map((P) => 
                             P.IsActive === true?
                             <CandP key={P.ProjectId} project={P} client={P.Client}/>
                             : ""
                             )
+                            : <div><p className="center" style={{color:"black"}}>no projects found</p></div> 
+                    
                         }
                     </tbody>
             </table>

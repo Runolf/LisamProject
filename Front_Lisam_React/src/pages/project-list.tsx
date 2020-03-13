@@ -12,8 +12,8 @@ const List: FunctionComponent = () => {
    
 
     return (
-            <div>
-              <table className="container centered ">
+            <div> {projects? 
+                <table className="container centered ">
                     <thead>
                         <tr style={{color: "black"}}>
                             <th>Project number</th>
@@ -27,7 +27,12 @@ const List: FunctionComponent = () => {
                         : ""
                     )} 
                     </tbody>
-                </table>
+                </table> 
+                : <p style={{margin:"50px 50px 50px 650px"}}>
+                    no projects found
+                </p>
+            }
+              
             </div>
     );
 
